@@ -1,0 +1,6962 @@
+[
+    {
+        "district_abbr": "Ala. 7",
+        "district_full": "Alabama District 7",
+        "margin": "D+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 3",
+        "district_full": "Arizona District 3",
+        "margin": "D+81",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 4",
+        "district_full": "Arizona District 4",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 7",
+        "district_full": "Arizona District 7",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 1",
+        "district_full": "California District 1",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": "56%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 2",
+        "district_full": "California District 2",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "53%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 3",
+        "district_full": "California District 3",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": "50%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 4",
+        "district_full": "California District 4",
+        "margin": "D+3",
+        "race_called": false,
+        "pct_in": "42%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-4.html"
+    },
+    {
+        "district_abbr": "Calif. 6",
+        "district_full": "California District 6",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "50%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 7",
+        "district_full": "California District 7",
+        "margin": "D+15",
+        "race_called": false,
+        "pct_in": "42%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-7.html"
+    },
+    {
+        "district_abbr": "Calif. 8",
+        "district_full": "California District 8",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 9",
+        "district_full": "California District 9",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "56%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 10",
+        "district_full": "California District 10",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "62%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 11",
+        "district_full": "California District 11",
+        "margin": "D+9",
+        "race_called": false,
+        "pct_in": "69%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-11.html"
+    },
+    {
+        "district_abbr": "Calif. 12",
+        "district_full": "California District 12",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": "52%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 13",
+        "district_full": "California District 13",
+        "margin": "D+23",
+        "race_called": true,
+        "pct_in": "57%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 14",
+        "district_full": "California District 14",
+        "margin": "D+13",
+        "race_called": false,
+        "pct_in": "53%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-14.html"
+    },
+    {
+        "district_abbr": "Calif. 15",
+        "district_full": "California District 15",
+        "margin": "D+56",
+        "race_called": true,
+        "pct_in": "59%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 16",
+        "district_full": "California District 16",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": "54%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 17",
+        "district_full": "California District 17",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": "53%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 18",
+        "district_full": "California District 18",
+        "margin": "D+44",
+        "race_called": true,
+        "pct_in": "55%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 19",
+        "district_full": "California District 19",
+        "margin": "D+45",
+        "race_called": true,
+        "pct_in": "59%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 21",
+        "district_full": "California District 21",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "60%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 24",
+        "district_full": "California District 24",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "65%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 25",
+        "district_full": "California District 25",
+        "margin": "D+30",
+        "race_called": true,
+        "pct_in": "49%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 26",
+        "district_full": "California District 26",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": "69%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 27",
+        "district_full": "California District 27",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 28",
+        "district_full": "California District 28",
+        "margin": "D+40",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 29",
+        "district_full": "California District 29",
+        "margin": "D+18",
+        "race_called": true,
+        "pct_in": "80%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 30",
+        "district_full": "California District 30",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": "80%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 31",
+        "district_full": "California District 31",
+        "margin": "D+30",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 32",
+        "district_full": "California District 32",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "76%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 33",
+        "district_full": "California District 33",
+        "margin": "D+35",
+        "race_called": true,
+        "pct_in": "59%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 34",
+        "district_full": "California District 34",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 35",
+        "district_full": "California District 35",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": "62%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 36",
+        "district_full": "California District 36",
+        "margin": "D+44",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 37",
+        "district_full": "California District 37",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 38",
+        "district_full": "California District 38",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 39",
+        "district_full": "California District 39",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "48%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 41",
+        "district_full": "California District 41",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 42",
+        "district_full": "California District 42",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "74%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 43",
+        "district_full": "California District 43",
+        "margin": "D+64",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 44",
+        "district_full": "California District 44",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": "80%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 45",
+        "district_full": "California District 45",
+        "margin": "D+19",
+        "race_called": true,
+        "pct_in": "73%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 46",
+        "district_full": "California District 46",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "71%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 47",
+        "district_full": "California District 47",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "71%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 49",
+        "district_full": "California District 49",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "62%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 50",
+        "district_full": "California District 50",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": "60%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 51",
+        "district_full": "California District 51",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "60%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 52",
+        "district_full": "California District 52",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "64%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 1",
+        "district_full": "Colorado District 1",
+        "margin": "D+64",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 2",
+        "district_full": "Colorado District 2",
+        "margin": "D+50",
+        "race_called": true,
+        "pct_in": "91%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 6",
+        "district_full": "Colorado District 6",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 7",
+        "district_full": "Colorado District 7",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 1",
+        "district_full": "Connecticut District 1",
+        "margin": "D+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 2",
+        "district_full": "Connecticut District 2",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 3",
+        "district_full": "Connecticut District 3",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 4",
+        "district_full": "Connecticut District 4",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 5",
+        "district_full": "Connecticut District 5",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Del. 1",
+        "district_full": "Delaware At-Large District",
+        "margin": "D+29",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 10",
+        "district_full": "Florida District 10",
+        "margin": "D Uncontested",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 20",
+        "district_full": "Florida District 20",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 23",
+        "district_full": "Florida District 23",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 24",
+        "district_full": "Florida District 24",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 2",
+        "district_full": "Georgia District 2",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 4",
+        "district_full": "Georgia District 4",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 5",
+        "district_full": "Georgia District 5",
+        "margin": "D+80",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 6",
+        "district_full": "Georgia District 6",
+        "margin": "D+62",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 13",
+        "district_full": "Georgia District 13",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Hawaii 1",
+        "district_full": "Hawaii District 1",
+        "margin": "D+49",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Hawaii 2",
+        "district_full": "Hawaii District 2",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 1",
+        "district_full": "Illinois District 1",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": "85%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 2",
+        "district_full": "Illinois District 2",
+        "margin": "D+46",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 3",
+        "district_full": "Illinois District 3",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": "83%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 4",
+        "district_full": "Illinois District 4",
+        "margin": "D+55",
+        "race_called": true,
+        "pct_in": "84%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 5",
+        "district_full": "Illinois District 5",
+        "margin": "D+51",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 6",
+        "district_full": "Illinois District 6",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 7",
+        "district_full": "Illinois District 7",
+        "margin": "D+78",
+        "race_called": true,
+        "pct_in": "76%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 8",
+        "district_full": "Illinois District 8",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 9",
+        "district_full": "Illinois District 9",
+        "margin": "D+52",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 10",
+        "district_full": "Illinois District 10",
+        "margin": "D+40",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 11",
+        "district_full": "Illinois District 11",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 13",
+        "district_full": "Illinois District 13",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 14",
+        "district_full": "Illinois District 14",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 17",
+        "district_full": "Illinois District 17",
+        "margin": "D+20",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 1",
+        "district_full": "Indiana District 1",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 7",
+        "district_full": "Indiana District 7",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 3",
+        "district_full": "Kansas District 3",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 3",
+        "district_full": "Kentucky District 3",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 2",
+        "district_full": "Louisiana District 2",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Maine 1",
+        "district_full": "Maine District 1",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 2",
+        "district_full": "Maryland District 2",
+        "margin": "D+23",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 3",
+        "district_full": "Maryland District 3",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": "82%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 4",
+        "district_full": "Maryland District 4",
+        "margin": "D+83",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 5",
+        "district_full": "Maryland District 5",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "82%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 6",
+        "district_full": "Maryland District 6",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "83%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 7",
+        "district_full": "Maryland District 7",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": "68%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 8",
+        "district_full": "Maryland District 8",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 1",
+        "district_full": "Massachusetts District 1",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 2",
+        "district_full": "Massachusetts District 2",
+        "margin": "D Uncontested",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 3",
+        "district_full": "Massachusetts District 3",
+        "margin": "D+37",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 4",
+        "district_full": "Massachusetts District 4",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 5",
+        "district_full": "Massachusetts District 5",
+        "margin": "D Uncontested",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 6",
+        "district_full": "Massachusetts District 6",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 7",
+        "district_full": "Massachusetts District 7",
+        "margin": "D Uncontested",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 8",
+        "district_full": "Massachusetts District 8",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 9",
+        "district_full": "Massachusetts District 9",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 3",
+        "district_full": "Michigan District 3",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 6",
+        "district_full": "Michigan District 6",
+        "margin": "D+37",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 8",
+        "district_full": "Michigan District 8",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 11",
+        "district_full": "Michigan District 11",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 12",
+        "district_full": "Michigan District 12",
+        "margin": "D+55",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 13",
+        "district_full": "Michigan District 13",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": "69%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 2",
+        "district_full": "Minnesota District 2",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 3",
+        "district_full": "Minnesota District 3",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 4",
+        "district_full": "Minnesota District 4",
+        "margin": "D+46",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 5",
+        "district_full": "Minnesota District 5",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 2",
+        "district_full": "Mississippi District 2",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 1",
+        "district_full": "Missouri District 1",
+        "margin": "D+68",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 5",
+        "district_full": "Missouri District 5",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Neb. 2",
+        "district_full": "Nebraska District 2",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Nev. 1",
+        "district_full": "Nevada District 1",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Nev. 3",
+        "district_full": "Nevada District 3",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "Nev. 4",
+        "district_full": "Nevada District 4",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.H. 1",
+        "district_full": "New Hampshire District 1",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.H. 2",
+        "district_full": "New Hampshire District 2",
+        "margin": "D+20",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 1",
+        "district_full": "New Jersey District 1",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 3",
+        "district_full": "New Jersey District 3",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 5",
+        "district_full": "New Jersey District 5",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 6",
+        "district_full": "New Jersey District 6",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 8",
+        "district_full": "New Jersey District 8",
+        "margin": "D+84",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 9",
+        "district_full": "New Jersey District 9",
+        "margin": "D+35",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 10",
+        "district_full": "New Jersey District 10",
+        "margin": "D+69",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 11",
+        "district_full": "New Jersey District 11",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 12",
+        "district_full": "New Jersey District 12",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.M. 1",
+        "district_full": "New Mexico District 1",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.M. 3",
+        "district_full": "New Mexico District 3",
+        "margin": "D+23",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 3",
+        "district_full": "New York District 3",
+        "margin": "D+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 4",
+        "district_full": "New York District 4",
+        "margin": "D+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 5",
+        "district_full": "New York District 5",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": "91%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 6",
+        "district_full": "New York District 6",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 7",
+        "district_full": "New York District 7",
+        "margin": "D+68",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 8",
+        "district_full": "New York District 8",
+        "margin": "D+59",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 9",
+        "district_full": "New York District 9",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 10",
+        "district_full": "New York District 10",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 12",
+        "district_full": "New York District 12",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 13",
+        "district_full": "New York District 13",
+        "margin": "D+76",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 14",
+        "district_full": "New York District 14",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 15",
+        "district_full": "New York District 15",
+        "margin": "D+66",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 16",
+        "district_full": "New York District 16",
+        "margin": "D+59",
+        "race_called": true,
+        "pct_in": "39%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 18",
+        "district_full": "New York District 18",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 19",
+        "district_full": "New York District 19",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 20",
+        "district_full": "New York District 20",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 22",
+        "district_full": "New York District 22",
+        "margin": "D+17",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 25",
+        "district_full": "New York District 25",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 26",
+        "district_full": "New York District 26",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": "84%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 2",
+        "district_full": "North Carolina District 2",
+        "margin": "D+52",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 4",
+        "district_full": "North Carolina District 4",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 12",
+        "district_full": "North Carolina District 12",
+        "margin": "D+62",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 1",
+        "district_full": "Ohio District 1",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 3",
+        "district_full": "Ohio District 3",
+        "margin": "D+54",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 11",
+        "district_full": "Ohio District 11",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 13",
+        "district_full": "Ohio District 13",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 1",
+        "district_full": "Oregon District 1",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 3",
+        "district_full": "Oregon District 3",
+        "margin": "D+54",
+        "race_called": true,
+        "pct_in": "82%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 4",
+        "district_full": "Oregon District 4",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 5",
+        "district_full": "Oregon District 5",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 6",
+        "district_full": "Oregon District 6",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "72%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 2",
+        "district_full": "Pennsylvania District 2",
+        "margin": "D+62",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 3",
+        "district_full": "Pennsylvania District 3",
+        "margin": "D+87",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 4",
+        "district_full": "Pennsylvania District 4",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 5",
+        "district_full": "Pennsylvania District 5",
+        "margin": "D+44",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 6",
+        "district_full": "Pennsylvania District 6",
+        "margin": "D+29",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 12",
+        "district_full": "Pennsylvania District 12",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 17",
+        "district_full": "Pennsylvania District 17",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "R.I. 1",
+        "district_full": "Rhode Island District 1",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "R.I. 2",
+        "district_full": "Rhode Island District 2",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 6",
+        "district_full": "South Carolina District 6",
+        "margin": "D+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 7",
+        "district_full": "Texas District 7",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 16",
+        "district_full": "Texas District 16",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 18",
+        "district_full": "Texas District 18",
+        "margin": "D+72",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 20",
+        "district_full": "Texas District 20",
+        "margin": "D+55",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 28",
+        "district_full": "Texas District 28",
+        "margin": "D+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 29",
+        "district_full": "Texas District 29",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 30",
+        "district_full": "Texas District 30",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 33",
+        "district_full": "Texas District 33",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 37",
+        "district_full": "Texas District 37",
+        "margin": "D+68",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 1",
+        "district_full": "Utah District 1",
+        "margin": "D+47",
+        "race_called": true,
+        "pct_in": "68%",
+        "url": null
+    },
+    {
+        "district_abbr": "Vt. 1",
+        "district_full": "Vermont At-Large District",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 3",
+        "district_full": "Virginia District 3",
+        "margin": "D+49",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 4",
+        "district_full": "Virginia District 4",
+        "margin": "D+46",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 7",
+        "district_full": "Virginia District 7",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 8",
+        "district_full": "Virginia District 8",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 10",
+        "district_full": "Virginia District 10",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 11",
+        "district_full": "Virginia District 11",
+        "margin": "D+50",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 1",
+        "district_full": "Washington District 1",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "76%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 2",
+        "district_full": "Washington District 2",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "78%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 6",
+        "district_full": "Washington District 6",
+        "margin": "D+29",
+        "race_called": true,
+        "pct_in": "74%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 7",
+        "district_full": "Washington District 7",
+        "margin": "D+75",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 8",
+        "district_full": "Washington District 8",
+        "margin": "D+12",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 9",
+        "district_full": "Washington District 9",
+        "margin": "D+51",
+        "race_called": true,
+        "pct_in": "74%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 10",
+        "district_full": "Washington District 10",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": "70%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 2",
+        "district_full": "Wisconsin District 2",
+        "margin": "D Uncontested",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 4",
+        "district_full": "Wisconsin District 4",
+        "margin": "D+63",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 1",
+        "district_full": "Arizona District 1",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 6",
+        "district_full": "Arizona District 6",
+        "margin": "D+8",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-6.html"
+    },
+    {
+        "district_abbr": "Calif. 48",
+        "district_full": "California District 48",
+        "margin": "D+19",
+        "race_called": true,
+        "pct_in": "54%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 8",
+        "district_full": "Colorado District 8",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 25",
+        "district_full": "Florida District 25",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 1",
+        "district_full": "Iowa District 1",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 3",
+        "district_full": "Iowa District 3",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 7",
+        "district_full": "New Jersey District 7",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.M. 2",
+        "district_full": "New Mexico District 2",
+        "margin": "D+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 11",
+        "district_full": "North Carolina District 11",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 9",
+        "district_full": "Ohio District 9",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 7",
+        "district_full": "Pennsylvania District 7",
+        "margin": "D+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 8",
+        "district_full": "Pennsylvania District 8",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 10",
+        "district_full": "Pennsylvania District 10",
+        "margin": "D+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 34",
+        "district_full": "Texas District 34",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 2",
+        "district_full": "Virginia District 2",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 3",
+        "district_full": "Washington District 3",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 3",
+        "district_full": "Wisconsin District 3",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 22",
+        "district_full": "California District 22",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": "65%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 5",
+        "district_full": "Colorado District 5",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-colorado-us-house-5.html"
+    },
+    {
+        "district_abbr": "Fla. 14",
+        "district_full": "Florida District 14",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 22",
+        "district_full": "Florida District 22",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 2",
+        "district_full": "Iowa District 2",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 6",
+        "district_full": "Kentucky District 6",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 4",
+        "district_full": "Michigan District 4",
+        "margin": "D+1.8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 7",
+        "district_full": "Michigan District 7",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 10",
+        "district_full": "Michigan District 10",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mont. 1",
+        "district_full": "Montana District 1",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 17",
+        "district_full": "New York District 17",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-new-york-us-house-17.html"
+    },
+    {
+        "district_abbr": "N.C. 1",
+        "district_full": "North Carolina District 1",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 7",
+        "district_full": "Ohio District 7",
+        "margin": "D+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 1",
+        "district_full": "Pennsylvania District 1",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 1",
+        "district_full": "South Carolina District 1",
+        "margin": "D+1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-south-carolina-us-house-1.html"
+    },
+    {
+        "district_abbr": "Texas 15",
+        "district_full": "Texas District 15",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 35",
+        "district_full": "Texas District 35",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 1",
+        "district_full": "Virginia District 1",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 2",
+        "district_full": "Alabama District 2",
+        "margin": "D+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Alaska 1",
+        "district_full": "Alaska At-Large District",
+        "margin": "R+9",
+        "race_called": false,
+        "pct_in": "74%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-alaska-us-house-at-large.html"
+    },
+    {
+        "district_abbr": "Ariz. 2",
+        "district_full": "Arizona District 2",
+        "margin": "R+0.98",
+        "race_called": false,
+        "pct_in": "94%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-2.html"
+    },
+    {
+        "district_abbr": "Colo. 4",
+        "district_full": "Colorado District 4",
+        "margin": "D+0.87",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-colorado-us-house-4.html"
+    },
+    {
+        "district_abbr": "Fla. 7",
+        "district_full": "Florida District 7",
+        "margin": "R+0.52",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-7.html"
+    },
+    {
+        "district_abbr": "Fla. 9",
+        "district_full": "Florida District 9",
+        "margin": "D+0.51",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-9.html"
+    },
+    {
+        "district_abbr": "Fla. 13",
+        "district_full": "Florida District 13",
+        "margin": "R+0.8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-13.html"
+    },
+    {
+        "district_abbr": "Fla. 27",
+        "district_full": "Florida District 27",
+        "margin": "R+0.44",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-27.html"
+    },
+    {
+        "district_abbr": "Ind. 5",
+        "district_full": "Indiana District 5",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Maine 2",
+        "district_full": "Maine District 2",
+        "margin": "R+1.6",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-maine-us-house-2.html"
+    },
+    {
+        "district_abbr": "Minn. 1",
+        "district_full": "Minnesota District 1",
+        "margin": "D+0.1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-minnesota-us-house-1.html"
+    },
+    {
+        "district_abbr": "Nev. 2",
+        "district_full": "Nevada District 2",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 21",
+        "district_full": "New York District 21",
+        "margin": "R+2",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-new-york-us-house-21.html"
+    },
+    {
+        "district_abbr": "Ohio 10",
+        "district_full": "Ohio District 10",
+        "margin": "D+1.6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-ohio-us-house-10.html"
+    },
+    {
+        "district_abbr": "Ohio 15",
+        "district_full": "Ohio District 15",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 23",
+        "district_full": "Texas District 23",
+        "margin": "D+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 5",
+        "district_full": "Virginia District 5",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 1",
+        "district_full": "Wisconsin District 1",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 1",
+        "district_full": "Alabama District 1",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 3",
+        "district_full": "Alabama District 3",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 4",
+        "district_full": "Alabama District 4",
+        "margin": "R+50",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 5",
+        "district_full": "Alabama District 5",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 6",
+        "district_full": "Alabama District 6",
+        "margin": "R+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 5",
+        "district_full": "Arizona District 5",
+        "margin": "R+3",
+        "race_called": false,
+        "pct_in": "89%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-5.html"
+    },
+    {
+        "district_abbr": "Ariz. 8",
+        "district_full": "Arizona District 8",
+        "margin": "R+3",
+        "race_called": false,
+        "pct_in": "88%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-8.html"
+    },
+    {
+        "district_abbr": "Ariz. 9",
+        "district_full": "Arizona District 9",
+        "margin": "R+16",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 1",
+        "district_full": "Arkansas District 1",
+        "margin": "R+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 2",
+        "district_full": "Arkansas District 2",
+        "margin": "R+1.8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 3",
+        "district_full": "Arkansas District 3",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 4",
+        "district_full": "Arkansas District 4",
+        "margin": "R+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 5",
+        "district_full": "California District 5",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": "66%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 20",
+        "district_full": "California District 20",
+        "margin": "R+24",
+        "race_called": true,
+        "pct_in": "63%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 23",
+        "district_full": "California District 23",
+        "margin": "R+3",
+        "race_called": false,
+        "pct_in": "58%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-23.html"
+    },
+    {
+        "district_abbr": "Calif. 40",
+        "district_full": "California District 40",
+        "margin": "R+8",
+        "race_called": false,
+        "pct_in": "52%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-40.html"
+    },
+    {
+        "district_abbr": "Colo. 3",
+        "district_full": "Colorado District 3",
+        "margin": "R+1.9",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-colorado-us-house-3.html"
+    },
+    {
+        "district_abbr": "Fla. 1",
+        "district_full": "Florida District 1",
+        "margin": "R+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 2",
+        "district_full": "Florida District 2",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 3",
+        "district_full": "Florida District 3",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 4",
+        "district_full": "Florida District 4",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 5",
+        "district_full": "Florida District 5",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 6",
+        "district_full": "Florida District 6",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 8",
+        "district_full": "Florida District 8",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 11",
+        "district_full": "Florida District 11",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 12",
+        "district_full": "Florida District 12",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 15",
+        "district_full": "Florida District 15",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 16",
+        "district_full": "Florida District 16",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 17",
+        "district_full": "Florida District 17",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 18",
+        "district_full": "Florida District 18",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 19",
+        "district_full": "Florida District 19",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 21",
+        "district_full": "Florida District 21",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 26",
+        "district_full": "Florida District 26",
+        "margin": "R+0.76",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-26.html"
+    },
+    {
+        "district_abbr": "Fla. 28",
+        "district_full": "Florida District 28",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 1",
+        "district_full": "Georgia District 1",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 3",
+        "district_full": "Georgia District 3",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 7",
+        "district_full": "Georgia District 7",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 8",
+        "district_full": "Georgia District 8",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 9",
+        "district_full": "Georgia District 9",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 10",
+        "district_full": "Georgia District 10",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 11",
+        "district_full": "Georgia District 11",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 12",
+        "district_full": "Georgia District 12",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 14",
+        "district_full": "Georgia District 14",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Idaho 1",
+        "district_full": "Idaho District 1",
+        "margin": "R+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Idaho 2",
+        "district_full": "Idaho District 2",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 12",
+        "district_full": "Illinois District 12",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 15",
+        "district_full": "Illinois District 15",
+        "margin": "R+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 16",
+        "district_full": "Illinois District 16",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 2",
+        "district_full": "Indiana District 2",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 3",
+        "district_full": "Indiana District 3",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 4",
+        "district_full": "Indiana District 4",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 6",
+        "district_full": "Indiana District 6",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 8",
+        "district_full": "Indiana District 8",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 9",
+        "district_full": "Indiana District 9",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 4",
+        "district_full": "Iowa District 4",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 1",
+        "district_full": "Kansas District 1",
+        "margin": "R+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 2",
+        "district_full": "Kansas District 2",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 4",
+        "district_full": "Kansas District 4",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 1",
+        "district_full": "Kentucky District 1",
+        "margin": "R+35",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 2",
+        "district_full": "Kentucky District 2",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 4",
+        "district_full": "Kentucky District 4",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 5",
+        "district_full": "Kentucky District 5",
+        "margin": "R+46",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 1",
+        "district_full": "Louisiana District 1",
+        "margin": "R+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 3",
+        "district_full": "Louisiana District 3",
+        "margin": "R+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 4",
+        "district_full": "Louisiana District 4",
+        "margin": "R+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 5",
+        "district_full": "Louisiana District 5",
+        "margin": "Advanced",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-louisiana-us-house-5.html"
+    },
+    {
+        "district_abbr": "La. 6",
+        "district_full": "Louisiana District 6",
+        "margin": "D+0.25",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-louisiana-us-house-6.html"
+    },
+    {
+        "district_abbr": "Md. 1",
+        "district_full": "Maryland District 1",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 1",
+        "district_full": "Michigan District 1",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 2",
+        "district_full": "Michigan District 2",
+        "margin": "R+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 5",
+        "district_full": "Michigan District 5",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 9",
+        "district_full": "Michigan District 9",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 6",
+        "district_full": "Minnesota District 6",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 7",
+        "district_full": "Minnesota District 7",
+        "margin": "R+30",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 8",
+        "district_full": "Minnesota District 8",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 1",
+        "district_full": "Mississippi District 1",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 3",
+        "district_full": "Mississippi District 3",
+        "margin": "R+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 4",
+        "district_full": "Mississippi District 4",
+        "margin": "R+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 2",
+        "district_full": "Missouri District 2",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 3",
+        "district_full": "Missouri District 3",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 4",
+        "district_full": "Missouri District 4",
+        "margin": "R+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 6",
+        "district_full": "Missouri District 6",
+        "margin": "R+20",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 7",
+        "district_full": "Missouri District 7",
+        "margin": "R+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 8",
+        "district_full": "Missouri District 8",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mont. 2",
+        "district_full": "Montana District 2",
+        "margin": "R+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Neb. 1",
+        "district_full": "Nebraska District 1",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Neb. 3",
+        "district_full": "Nebraska District 3",
+        "margin": "R+51",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 2",
+        "district_full": "New Jersey District 2",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-new-jersey-us-house-2.html"
+    },
+    {
+        "district_abbr": "N.J. 4",
+        "district_full": "New Jersey District 4",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 1",
+        "district_full": "New York District 1",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 2",
+        "district_full": "New York District 2",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 11",
+        "district_full": "New York District 11",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": "91%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 23",
+        "district_full": "New York District 23",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 24",
+        "district_full": "New York District 24",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 3",
+        "district_full": "North Carolina District 3",
+        "margin": "R+0.1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-3.html"
+    },
+    {
+        "district_abbr": "N.C. 5",
+        "district_full": "North Carolina District 5",
+        "margin": "D+0.03",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-5.html"
+    },
+    {
+        "district_abbr": "N.C. 6",
+        "district_full": "North Carolina District 6",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 7",
+        "district_full": "North Carolina District 7",
+        "margin": "R+0.76",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-7.html"
+    },
+    {
+        "district_abbr": "N.C. 8",
+        "district_full": "North Carolina District 8",
+        "margin": "R+1.8",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-8.html"
+    },
+    {
+        "district_abbr": "N.C. 9",
+        "district_full": "North Carolina District 9",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-9.html"
+    },
+    {
+        "district_abbr": "N.C. 10",
+        "district_full": "North Carolina District 10",
+        "margin": "R+1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-10.html"
+    },
+    {
+        "district_abbr": "N.C. 13",
+        "district_full": "North Carolina District 13",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 14",
+        "district_full": "North Carolina District 14",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.D. 1",
+        "district_full": "North Dakota At-Large District",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 2",
+        "district_full": "Ohio District 2",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 4",
+        "district_full": "Ohio District 4",
+        "margin": "R+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 5",
+        "district_full": "Ohio District 5",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 6",
+        "district_full": "Ohio District 6",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 8",
+        "district_full": "Ohio District 8",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 12",
+        "district_full": "Ohio District 12",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 14",
+        "district_full": "Ohio District 14",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 1",
+        "district_full": "Oklahoma District 1",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 2",
+        "district_full": "Oklahoma District 2",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 3",
+        "district_full": "Oklahoma District 3",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 4",
+        "district_full": "Oklahoma District 4",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 5",
+        "district_full": "Oklahoma District 5",
+        "margin": "R+1.3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 2",
+        "district_full": "Oregon District 2",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 9",
+        "district_full": "Pennsylvania District 9",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 11",
+        "district_full": "Pennsylvania District 11",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 13",
+        "district_full": "Pennsylvania District 13",
+        "margin": "R+35",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 14",
+        "district_full": "Pennsylvania District 14",
+        "margin": "R+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 15",
+        "district_full": "Pennsylvania District 15",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 16",
+        "district_full": "Pennsylvania District 16",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 2",
+        "district_full": "South Carolina District 2",
+        "margin": "R+1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-south-carolina-us-house-2.html"
+    },
+    {
+        "district_abbr": "S.C. 3",
+        "district_full": "South Carolina District 3",
+        "margin": "R+29",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 4",
+        "district_full": "South Carolina District 4",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 5",
+        "district_full": "South Carolina District 5",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 7",
+        "district_full": "South Carolina District 7",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.D. 1",
+        "district_full": "South Dakota At-Large District",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 1",
+        "district_full": "Tennessee District 1",
+        "margin": "R+38",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 2",
+        "district_full": "Tennessee District 2",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 3",
+        "district_full": "Tennessee District 3",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 4",
+        "district_full": "Tennessee District 4",
+        "margin": "D+0.14",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-tennessee-us-house-4.html"
+    },
+    {
+        "district_abbr": "Tenn. 5",
+        "district_full": "Tennessee District 5",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 6",
+        "district_full": "Tennessee District 6",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 7",
+        "district_full": "Tennessee District 7",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 8",
+        "district_full": "Tennessee District 8",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 9",
+        "district_full": "Tennessee District 9",
+        "margin": "R+1.1",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-tennessee-us-house-9.html"
+    },
+    {
+        "district_abbr": "Texas 1",
+        "district_full": "Texas District 1",
+        "margin": "R+38",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 2",
+        "district_full": "Texas District 2",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 3",
+        "district_full": "Texas District 3",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 4",
+        "district_full": "Texas District 4",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 5",
+        "district_full": "Texas District 5",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 6",
+        "district_full": "Texas District 6",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 8",
+        "district_full": "Texas District 8",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 9",
+        "district_full": "Texas District 9",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 10",
+        "district_full": "Texas District 10",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 11",
+        "district_full": "Texas District 11",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 12",
+        "district_full": "Texas District 12",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 13",
+        "district_full": "Texas District 13",
+        "margin": "R+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 14",
+        "district_full": "Texas District 14",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 17",
+        "district_full": "Texas District 17",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 19",
+        "district_full": "Texas District 19",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 21",
+        "district_full": "Texas District 21",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 22",
+        "district_full": "Texas District 22",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 24",
+        "district_full": "Texas District 24",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 25",
+        "district_full": "Texas District 25",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 26",
+        "district_full": "Texas District 26",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 27",
+        "district_full": "Texas District 27",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 31",
+        "district_full": "Texas District 31",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 32",
+        "district_full": "Texas District 32",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 36",
+        "district_full": "Texas District 36",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 38",
+        "district_full": "Texas District 38",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 2",
+        "district_full": "Utah District 2",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 3",
+        "district_full": "Utah District 3",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": "71%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 4",
+        "district_full": "Utah District 4",
+        "margin": "R+12",
+        "race_called": false,
+        "pct_in": "68%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-utah-us-house-4.html"
+    },
+    {
+        "district_abbr": "Va. 6",
+        "district_full": "Virginia District 6",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 9",
+        "district_full": "Virginia District 9",
+        "margin": "R+32",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 4",
+        "district_full": "Washington District 4",
+        "margin": "R+9",
+        "race_called": false,
+        "pct_in": "80%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-washington-us-house-4.html"
+    },
+    {
+        "district_abbr": "Wash. 5",
+        "district_full": "Washington District 5",
+        "margin": "R+2",
+        "race_called": false,
+        "pct_in": "69%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-washington-us-house-5.html"
+    },
+    {
+        "district_abbr": "W.Va. 1",
+        "district_full": "West Virginia District 1",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "W.Va. 2",
+        "district_full": "West Virginia District 2",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 5",
+        "district_full": "Wisconsin District 5",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 6",
+        "district_full": "Wisconsin District 6",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 7",
+        "district_full": "Wisconsin District 7",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 8",
+        "district_full": "Wisconsin District 8",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wyo. 1",
+        "district_full": "Wyoming At-Large District",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 22",
+        "district_full": "California District 22",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": "65%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 5",
+        "district_full": "Colorado District 5",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-colorado-us-house-5.html"
+    },
+    {
+        "district_abbr": "Fla. 14",
+        "district_full": "Florida District 14",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 22",
+        "district_full": "Florida District 22",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 2",
+        "district_full": "Iowa District 2",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 6",
+        "district_full": "Kentucky District 6",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 4",
+        "district_full": "Michigan District 4",
+        "margin": "D+1.8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 7",
+        "district_full": "Michigan District 7",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 10",
+        "district_full": "Michigan District 10",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mont. 1",
+        "district_full": "Montana District 1",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 17",
+        "district_full": "New York District 17",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-new-york-us-house-17.html"
+    },
+    {
+        "district_abbr": "N.C. 1",
+        "district_full": "North Carolina District 1",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 7",
+        "district_full": "Ohio District 7",
+        "margin": "D+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 1",
+        "district_full": "Pennsylvania District 1",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 1",
+        "district_full": "South Carolina District 1",
+        "margin": "D+1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-south-carolina-us-house-1.html"
+    },
+    {
+        "district_abbr": "Texas 15",
+        "district_full": "Texas District 15",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 35",
+        "district_full": "Texas District 35",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 1",
+        "district_full": "Virginia District 1",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 1",
+        "district_full": "Arizona District 1",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 6",
+        "district_full": "Arizona District 6",
+        "margin": "D+8",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-6.html"
+    },
+    {
+        "district_abbr": "Calif. 48",
+        "district_full": "California District 48",
+        "margin": "D+19",
+        "race_called": true,
+        "pct_in": "54%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 8",
+        "district_full": "Colorado District 8",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 25",
+        "district_full": "Florida District 25",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 1",
+        "district_full": "Iowa District 1",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 3",
+        "district_full": "Iowa District 3",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 7",
+        "district_full": "New Jersey District 7",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.M. 2",
+        "district_full": "New Mexico District 2",
+        "margin": "D+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 11",
+        "district_full": "North Carolina District 11",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 9",
+        "district_full": "Ohio District 9",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 7",
+        "district_full": "Pennsylvania District 7",
+        "margin": "D+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 8",
+        "district_full": "Pennsylvania District 8",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 10",
+        "district_full": "Pennsylvania District 10",
+        "margin": "D+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 34",
+        "district_full": "Texas District 34",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 2",
+        "district_full": "Virginia District 2",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 3",
+        "district_full": "Washington District 3",
+        "margin": "D+9",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 3",
+        "district_full": "Wisconsin District 3",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 2",
+        "district_full": "Alabama District 2",
+        "margin": "D+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Alaska 1",
+        "district_full": "Alaska At-Large District",
+        "margin": "R+9",
+        "race_called": false,
+        "pct_in": "74%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-alaska-us-house-at-large.html"
+    },
+    {
+        "district_abbr": "Ariz. 2",
+        "district_full": "Arizona District 2",
+        "margin": "R+0.98",
+        "race_called": false,
+        "pct_in": "94%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-2.html"
+    },
+    {
+        "district_abbr": "Colo. 4",
+        "district_full": "Colorado District 4",
+        "margin": "D+0.87",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-colorado-us-house-4.html"
+    },
+    {
+        "district_abbr": "Fla. 7",
+        "district_full": "Florida District 7",
+        "margin": "R+0.52",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-7.html"
+    },
+    {
+        "district_abbr": "Fla. 9",
+        "district_full": "Florida District 9",
+        "margin": "D+0.51",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-9.html"
+    },
+    {
+        "district_abbr": "Fla. 13",
+        "district_full": "Florida District 13",
+        "margin": "R+0.8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-13.html"
+    },
+    {
+        "district_abbr": "Fla. 27",
+        "district_full": "Florida District 27",
+        "margin": "R+0.44",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-27.html"
+    },
+    {
+        "district_abbr": "Ind. 5",
+        "district_full": "Indiana District 5",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Maine 2",
+        "district_full": "Maine District 2",
+        "margin": "R+1.6",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-maine-us-house-2.html"
+    },
+    {
+        "district_abbr": "Minn. 1",
+        "district_full": "Minnesota District 1",
+        "margin": "D+0.1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-minnesota-us-house-1.html"
+    },
+    {
+        "district_abbr": "Nev. 2",
+        "district_full": "Nevada District 2",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 21",
+        "district_full": "New York District 21",
+        "margin": "R+2",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-new-york-us-house-21.html"
+    },
+    {
+        "district_abbr": "Ohio 10",
+        "district_full": "Ohio District 10",
+        "margin": "D+1.6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-ohio-us-house-10.html"
+    },
+    {
+        "district_abbr": "Ohio 15",
+        "district_full": "Ohio District 15",
+        "margin": "D+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 23",
+        "district_full": "Texas District 23",
+        "margin": "D+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 5",
+        "district_full": "Virginia District 5",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 1",
+        "district_full": "Wisconsin District 1",
+        "margin": "D+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 7",
+        "district_full": "Alabama District 7",
+        "margin": "D+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 3",
+        "district_full": "Arizona District 3",
+        "margin": "D+81",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 4",
+        "district_full": "Arizona District 4",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 7",
+        "district_full": "Arizona District 7",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 1",
+        "district_full": "California District 1",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": "56%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 2",
+        "district_full": "California District 2",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "53%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 3",
+        "district_full": "California District 3",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": "50%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 4",
+        "district_full": "California District 4",
+        "margin": "D+3",
+        "race_called": false,
+        "pct_in": "42%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-4.html"
+    },
+    {
+        "district_abbr": "Calif. 6",
+        "district_full": "California District 6",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "50%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 7",
+        "district_full": "California District 7",
+        "margin": "D+15",
+        "race_called": false,
+        "pct_in": "42%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-7.html"
+    },
+    {
+        "district_abbr": "Calif. 8",
+        "district_full": "California District 8",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 9",
+        "district_full": "California District 9",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "56%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 10",
+        "district_full": "California District 10",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "62%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 11",
+        "district_full": "California District 11",
+        "margin": "D+9",
+        "race_called": false,
+        "pct_in": "69%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-11.html"
+    },
+    {
+        "district_abbr": "Calif. 12",
+        "district_full": "California District 12",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": "52%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 13",
+        "district_full": "California District 13",
+        "margin": "D+23",
+        "race_called": true,
+        "pct_in": "57%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 14",
+        "district_full": "California District 14",
+        "margin": "D+13",
+        "race_called": false,
+        "pct_in": "53%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-14.html"
+    },
+    {
+        "district_abbr": "Calif. 15",
+        "district_full": "California District 15",
+        "margin": "D+56",
+        "race_called": true,
+        "pct_in": "59%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 16",
+        "district_full": "California District 16",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": "54%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 17",
+        "district_full": "California District 17",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": "53%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 18",
+        "district_full": "California District 18",
+        "margin": "D+44",
+        "race_called": true,
+        "pct_in": "55%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 19",
+        "district_full": "California District 19",
+        "margin": "D+45",
+        "race_called": true,
+        "pct_in": "59%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 21",
+        "district_full": "California District 21",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "60%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 24",
+        "district_full": "California District 24",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "65%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 25",
+        "district_full": "California District 25",
+        "margin": "D+30",
+        "race_called": true,
+        "pct_in": "49%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 26",
+        "district_full": "California District 26",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": "69%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 27",
+        "district_full": "California District 27",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 28",
+        "district_full": "California District 28",
+        "margin": "D+40",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 29",
+        "district_full": "California District 29",
+        "margin": "D+18",
+        "race_called": true,
+        "pct_in": "80%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 30",
+        "district_full": "California District 30",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": "80%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 31",
+        "district_full": "California District 31",
+        "margin": "D+30",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 32",
+        "district_full": "California District 32",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "76%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 33",
+        "district_full": "California District 33",
+        "margin": "D+35",
+        "race_called": true,
+        "pct_in": "59%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 34",
+        "district_full": "California District 34",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 35",
+        "district_full": "California District 35",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": "62%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 36",
+        "district_full": "California District 36",
+        "margin": "D+44",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 37",
+        "district_full": "California District 37",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 38",
+        "district_full": "California District 38",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 39",
+        "district_full": "California District 39",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "48%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 41",
+        "district_full": "California District 41",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 42",
+        "district_full": "California District 42",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "74%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 43",
+        "district_full": "California District 43",
+        "margin": "D+64",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 44",
+        "district_full": "California District 44",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": "80%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 45",
+        "district_full": "California District 45",
+        "margin": "D+19",
+        "race_called": true,
+        "pct_in": "73%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 46",
+        "district_full": "California District 46",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "71%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 47",
+        "district_full": "California District 47",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "71%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 49",
+        "district_full": "California District 49",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "62%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 50",
+        "district_full": "California District 50",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": "60%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 51",
+        "district_full": "California District 51",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "60%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 52",
+        "district_full": "California District 52",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "64%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 1",
+        "district_full": "Colorado District 1",
+        "margin": "D+64",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 2",
+        "district_full": "Colorado District 2",
+        "margin": "D+50",
+        "race_called": true,
+        "pct_in": "91%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 6",
+        "district_full": "Colorado District 6",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "Colo. 7",
+        "district_full": "Colorado District 7",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 1",
+        "district_full": "Connecticut District 1",
+        "margin": "D+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 2",
+        "district_full": "Connecticut District 2",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 3",
+        "district_full": "Connecticut District 3",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 4",
+        "district_full": "Connecticut District 4",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Conn. 5",
+        "district_full": "Connecticut District 5",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Del. 1",
+        "district_full": "Delaware At-Large District",
+        "margin": "D+29",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 10",
+        "district_full": "Florida District 10",
+        "margin": "D Uncontested Unc.",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 20",
+        "district_full": "Florida District 20",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 23",
+        "district_full": "Florida District 23",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 24",
+        "district_full": "Florida District 24",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 2",
+        "district_full": "Georgia District 2",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 4",
+        "district_full": "Georgia District 4",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 5",
+        "district_full": "Georgia District 5",
+        "margin": "D+80",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 6",
+        "district_full": "Georgia District 6",
+        "margin": "D+62",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 13",
+        "district_full": "Georgia District 13",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Hawaii 1",
+        "district_full": "Hawaii District 1",
+        "margin": "D+49",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Hawaii 2",
+        "district_full": "Hawaii District 2",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 1",
+        "district_full": "Illinois District 1",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": "85%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 2",
+        "district_full": "Illinois District 2",
+        "margin": "D+46",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 3",
+        "district_full": "Illinois District 3",
+        "margin": "D+53",
+        "race_called": true,
+        "pct_in": "83%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 4",
+        "district_full": "Illinois District 4",
+        "margin": "D+55",
+        "race_called": true,
+        "pct_in": "84%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 5",
+        "district_full": "Illinois District 5",
+        "margin": "D+51",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 6",
+        "district_full": "Illinois District 6",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 7",
+        "district_full": "Illinois District 7",
+        "margin": "D+78",
+        "race_called": true,
+        "pct_in": "76%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 8",
+        "district_full": "Illinois District 8",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 9",
+        "district_full": "Illinois District 9",
+        "margin": "D+52",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 10",
+        "district_full": "Illinois District 10",
+        "margin": "D+40",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 11",
+        "district_full": "Illinois District 11",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 13",
+        "district_full": "Illinois District 13",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 14",
+        "district_full": "Illinois District 14",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 17",
+        "district_full": "Illinois District 17",
+        "margin": "D+20",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 1",
+        "district_full": "Indiana District 1",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 7",
+        "district_full": "Indiana District 7",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 3",
+        "district_full": "Kansas District 3",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 3",
+        "district_full": "Kentucky District 3",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 2",
+        "district_full": "Louisiana District 2",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Maine 1",
+        "district_full": "Maine District 1",
+        "margin": "D+32",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 2",
+        "district_full": "Maryland District 2",
+        "margin": "D+23",
+        "race_called": true,
+        "pct_in": "79%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 3",
+        "district_full": "Maryland District 3",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": "82%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 4",
+        "district_full": "Maryland District 4",
+        "margin": "D+83",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 5",
+        "district_full": "Maryland District 5",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "82%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 6",
+        "district_full": "Maryland District 6",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "83%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 7",
+        "district_full": "Maryland District 7",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": "68%",
+        "url": null
+    },
+    {
+        "district_abbr": "Md. 8",
+        "district_full": "Maryland District 8",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 1",
+        "district_full": "Massachusetts District 1",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 2",
+        "district_full": "Massachusetts District 2",
+        "margin": "D Uncontested Unc.",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 3",
+        "district_full": "Massachusetts District 3",
+        "margin": "D+37",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 4",
+        "district_full": "Massachusetts District 4",
+        "margin": "D+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 5",
+        "district_full": "Massachusetts District 5",
+        "margin": "D Uncontested Unc.",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 6",
+        "district_full": "Massachusetts District 6",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 7",
+        "district_full": "Massachusetts District 7",
+        "margin": "D Uncontested Unc.",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 8",
+        "district_full": "Massachusetts District 8",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mass. 9",
+        "district_full": "Massachusetts District 9",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 3",
+        "district_full": "Michigan District 3",
+        "margin": "D+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 6",
+        "district_full": "Michigan District 6",
+        "margin": "D+37",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 8",
+        "district_full": "Michigan District 8",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 11",
+        "district_full": "Michigan District 11",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 12",
+        "district_full": "Michigan District 12",
+        "margin": "D+55",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 13",
+        "district_full": "Michigan District 13",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": "69%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 2",
+        "district_full": "Minnesota District 2",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 3",
+        "district_full": "Minnesota District 3",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 4",
+        "district_full": "Minnesota District 4",
+        "margin": "D+46",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 5",
+        "district_full": "Minnesota District 5",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 2",
+        "district_full": "Mississippi District 2",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 1",
+        "district_full": "Missouri District 1",
+        "margin": "D+68",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 5",
+        "district_full": "Missouri District 5",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Neb. 2",
+        "district_full": "Nebraska District 2",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Nev. 1",
+        "district_full": "Nevada District 1",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Nev. 3",
+        "district_full": "Nevada District 3",
+        "margin": "D+21",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "Nev. 4",
+        "district_full": "Nevada District 4",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.H. 1",
+        "district_full": "New Hampshire District 1",
+        "margin": "D+14",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.H. 2",
+        "district_full": "New Hampshire District 2",
+        "margin": "D+20",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 1",
+        "district_full": "New Jersey District 1",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 3",
+        "district_full": "New Jersey District 3",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 5",
+        "district_full": "New Jersey District 5",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 6",
+        "district_full": "New Jersey District 6",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 8",
+        "district_full": "New Jersey District 8",
+        "margin": "D+84",
+        "race_called": true,
+        "pct_in": "81%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 9",
+        "district_full": "New Jersey District 9",
+        "margin": "D+35",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 10",
+        "district_full": "New Jersey District 10",
+        "margin": "D+69",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 11",
+        "district_full": "New Jersey District 11",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 12",
+        "district_full": "New Jersey District 12",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.M. 1",
+        "district_full": "New Mexico District 1",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.M. 3",
+        "district_full": "New Mexico District 3",
+        "margin": "D+23",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 3",
+        "district_full": "New York District 3",
+        "margin": "D+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 4",
+        "district_full": "New York District 4",
+        "margin": "D+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 5",
+        "district_full": "New York District 5",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": "91%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 6",
+        "district_full": "New York District 6",
+        "margin": "D+38",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 7",
+        "district_full": "New York District 7",
+        "margin": "D+68",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 8",
+        "district_full": "New York District 8",
+        "margin": "D+59",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 9",
+        "district_full": "New York District 9",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 10",
+        "district_full": "New York District 10",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 12",
+        "district_full": "New York District 12",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 13",
+        "district_full": "New York District 13",
+        "margin": "D+76",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 14",
+        "district_full": "New York District 14",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 15",
+        "district_full": "New York District 15",
+        "margin": "D+66",
+        "race_called": true,
+        "pct_in": "90%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 16",
+        "district_full": "New York District 16",
+        "margin": "D+59",
+        "race_called": true,
+        "pct_in": "39%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 18",
+        "district_full": "New York District 18",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 19",
+        "district_full": "New York District 19",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 20",
+        "district_full": "New York District 20",
+        "margin": "D+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 22",
+        "district_full": "New York District 22",
+        "margin": "D+17",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 25",
+        "district_full": "New York District 25",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 26",
+        "district_full": "New York District 26",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": "84%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 2",
+        "district_full": "North Carolina District 2",
+        "margin": "D+52",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 4",
+        "district_full": "North Carolina District 4",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 12",
+        "district_full": "North Carolina District 12",
+        "margin": "D+62",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 1",
+        "district_full": "Ohio District 1",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 3",
+        "district_full": "Ohio District 3",
+        "margin": "D+54",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 11",
+        "district_full": "Ohio District 11",
+        "margin": "D+67",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 13",
+        "district_full": "Ohio District 13",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 1",
+        "district_full": "Oregon District 1",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 3",
+        "district_full": "Oregon District 3",
+        "margin": "D+54",
+        "race_called": true,
+        "pct_in": "82%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 4",
+        "district_full": "Oregon District 4",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 5",
+        "district_full": "Oregon District 5",
+        "margin": "D+11",
+        "race_called": true,
+        "pct_in": "87%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 6",
+        "district_full": "Oregon District 6",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": "72%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 2",
+        "district_full": "Pennsylvania District 2",
+        "margin": "D+62",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 3",
+        "district_full": "Pennsylvania District 3",
+        "margin": "D+87",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 4",
+        "district_full": "Pennsylvania District 4",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 5",
+        "district_full": "Pennsylvania District 5",
+        "margin": "D+44",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 6",
+        "district_full": "Pennsylvania District 6",
+        "margin": "D+29",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 12",
+        "district_full": "Pennsylvania District 12",
+        "margin": "D+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 17",
+        "district_full": "Pennsylvania District 17",
+        "margin": "D+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "R.I. 1",
+        "district_full": "Rhode Island District 1",
+        "margin": "D+41",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "R.I. 2",
+        "district_full": "Rhode Island District 2",
+        "margin": "D+24",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 6",
+        "district_full": "South Carolina District 6",
+        "margin": "D+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 7",
+        "district_full": "Texas District 7",
+        "margin": "D+43",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 16",
+        "district_full": "Texas District 16",
+        "margin": "D+42",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 18",
+        "district_full": "Texas District 18",
+        "margin": "D+72",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 20",
+        "district_full": "Texas District 20",
+        "margin": "D+55",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 28",
+        "district_full": "Texas District 28",
+        "margin": "D+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 29",
+        "district_full": "Texas District 29",
+        "margin": "D+60",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 30",
+        "district_full": "Texas District 30",
+        "margin": "D+65",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 33",
+        "district_full": "Texas District 33",
+        "margin": "D+57",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 37",
+        "district_full": "Texas District 37",
+        "margin": "D+68",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 1",
+        "district_full": "Utah District 1",
+        "margin": "D+47",
+        "race_called": true,
+        "pct_in": "68%",
+        "url": null
+    },
+    {
+        "district_abbr": "Vt. 1",
+        "district_full": "Vermont At-Large District",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 3",
+        "district_full": "Virginia District 3",
+        "margin": "D+49",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 4",
+        "district_full": "Virginia District 4",
+        "margin": "D+46",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 7",
+        "district_full": "Virginia District 7",
+        "margin": "D+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 8",
+        "district_full": "Virginia District 8",
+        "margin": "D+61",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 10",
+        "district_full": "Virginia District 10",
+        "margin": "D+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 11",
+        "district_full": "Virginia District 11",
+        "margin": "D+50",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 1",
+        "district_full": "Washington District 1",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "76%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 2",
+        "district_full": "Washington District 2",
+        "margin": "D+34",
+        "race_called": true,
+        "pct_in": "78%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 6",
+        "district_full": "Washington District 6",
+        "margin": "D+29",
+        "race_called": true,
+        "pct_in": "74%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 7",
+        "district_full": "Washington District 7",
+        "margin": "D+75",
+        "race_called": true,
+        "pct_in": "75%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 8",
+        "district_full": "Washington District 8",
+        "margin": "D+12",
+        "race_called": true,
+        "pct_in": "77%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 9",
+        "district_full": "Washington District 9",
+        "margin": "D+51",
+        "race_called": true,
+        "pct_in": "74%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 10",
+        "district_full": "Washington District 10",
+        "margin": "D+28",
+        "race_called": true,
+        "pct_in": "70%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 2",
+        "district_full": "Wisconsin District 2",
+        "margin": "D Uncontested Unc.",
+        "race_called": true,
+        "pct_in": "",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 4",
+        "district_full": "Wisconsin District 4",
+        "margin": "D+63",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 1",
+        "district_full": "Alabama District 1",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 3",
+        "district_full": "Alabama District 3",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 4",
+        "district_full": "Alabama District 4",
+        "margin": "R+50",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 5",
+        "district_full": "Alabama District 5",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ala. 6",
+        "district_full": "Alabama District 6",
+        "margin": "R+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ariz. 5",
+        "district_full": "Arizona District 5",
+        "margin": "R+3",
+        "race_called": false,
+        "pct_in": "89%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-5.html"
+    },
+    {
+        "district_abbr": "Ariz. 8",
+        "district_full": "Arizona District 8",
+        "margin": "R+3",
+        "race_called": false,
+        "pct_in": "88%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-arizona-us-house-8.html"
+    },
+    {
+        "district_abbr": "Ariz. 9",
+        "district_full": "Arizona District 9",
+        "margin": "R+16",
+        "race_called": true,
+        "pct_in": "88%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 1",
+        "district_full": "Arkansas District 1",
+        "margin": "R+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 2",
+        "district_full": "Arkansas District 2",
+        "margin": "R+1.8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 3",
+        "district_full": "Arkansas District 3",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ark. 4",
+        "district_full": "Arkansas District 4",
+        "margin": "R+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 5",
+        "district_full": "California District 5",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": "66%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 20",
+        "district_full": "California District 20",
+        "margin": "R+24",
+        "race_called": true,
+        "pct_in": "63%",
+        "url": null
+    },
+    {
+        "district_abbr": "Calif. 23",
+        "district_full": "California District 23",
+        "margin": "R+3",
+        "race_called": false,
+        "pct_in": "58%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-23.html"
+    },
+    {
+        "district_abbr": "Calif. 40",
+        "district_full": "California District 40",
+        "margin": "R+8",
+        "race_called": false,
+        "pct_in": "52%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-california-us-house-40.html"
+    },
+    {
+        "district_abbr": "Colo. 3",
+        "district_full": "Colorado District 3",
+        "margin": "R+1.9",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-colorado-us-house-3.html"
+    },
+    {
+        "district_abbr": "Fla. 1",
+        "district_full": "Florida District 1",
+        "margin": "R+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 2",
+        "district_full": "Florida District 2",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 3",
+        "district_full": "Florida District 3",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 4",
+        "district_full": "Florida District 4",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 5",
+        "district_full": "Florida District 5",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 6",
+        "district_full": "Florida District 6",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 8",
+        "district_full": "Florida District 8",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 11",
+        "district_full": "Florida District 11",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 12",
+        "district_full": "Florida District 12",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 15",
+        "district_full": "Florida District 15",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 16",
+        "district_full": "Florida District 16",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 17",
+        "district_full": "Florida District 17",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 18",
+        "district_full": "Florida District 18",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 19",
+        "district_full": "Florida District 19",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 21",
+        "district_full": "Florida District 21",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Fla. 26",
+        "district_full": "Florida District 26",
+        "margin": "R+0.76",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-florida-us-house-26.html"
+    },
+    {
+        "district_abbr": "Fla. 28",
+        "district_full": "Florida District 28",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 1",
+        "district_full": "Georgia District 1",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 3",
+        "district_full": "Georgia District 3",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 7",
+        "district_full": "Georgia District 7",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 8",
+        "district_full": "Georgia District 8",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 9",
+        "district_full": "Georgia District 9",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 10",
+        "district_full": "Georgia District 10",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 11",
+        "district_full": "Georgia District 11",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 12",
+        "district_full": "Georgia District 12",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ga. 14",
+        "district_full": "Georgia District 14",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Idaho 1",
+        "district_full": "Idaho District 1",
+        "margin": "R+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Idaho 2",
+        "district_full": "Idaho District 2",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 12",
+        "district_full": "Illinois District 12",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 15",
+        "district_full": "Illinois District 15",
+        "margin": "R+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ill. 16",
+        "district_full": "Illinois District 16",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": "94%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 2",
+        "district_full": "Indiana District 2",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 3",
+        "district_full": "Indiana District 3",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 4",
+        "district_full": "Indiana District 4",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 6",
+        "district_full": "Indiana District 6",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 8",
+        "district_full": "Indiana District 8",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ind. 9",
+        "district_full": "Indiana District 9",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Iowa 4",
+        "district_full": "Iowa District 4",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 1",
+        "district_full": "Kansas District 1",
+        "margin": "R+22",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 2",
+        "district_full": "Kansas District 2",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Kan. 4",
+        "district_full": "Kansas District 4",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 1",
+        "district_full": "Kentucky District 1",
+        "margin": "R+35",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 2",
+        "district_full": "Kentucky District 2",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 4",
+        "district_full": "Kentucky District 4",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ky. 5",
+        "district_full": "Kentucky District 5",
+        "margin": "R+46",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 1",
+        "district_full": "Louisiana District 1",
+        "margin": "R+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 3",
+        "district_full": "Louisiana District 3",
+        "margin": "R+34",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 4",
+        "district_full": "Louisiana District 4",
+        "margin": "R+36",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "La. 5",
+        "district_full": "Louisiana District 5",
+        "margin": "Advanced",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-louisiana-us-house-5.html"
+    },
+    {
+        "district_abbr": "La. 6",
+        "district_full": "Louisiana District 6",
+        "margin": "D+0.25",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-louisiana-us-house-6.html"
+    },
+    {
+        "district_abbr": "Md. 1",
+        "district_full": "Maryland District 1",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": "86%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 1",
+        "district_full": "Michigan District 1",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 2",
+        "district_full": "Michigan District 2",
+        "margin": "R+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 5",
+        "district_full": "Michigan District 5",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": "95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mich. 9",
+        "district_full": "Michigan District 9",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 6",
+        "district_full": "Minnesota District 6",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 7",
+        "district_full": "Minnesota District 7",
+        "margin": "R+30",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Minn. 8",
+        "district_full": "Minnesota District 8",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 1",
+        "district_full": "Mississippi District 1",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 3",
+        "district_full": "Mississippi District 3",
+        "margin": "R+16",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Miss. 4",
+        "district_full": "Mississippi District 4",
+        "margin": "R+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 2",
+        "district_full": "Missouri District 2",
+        "margin": "D+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 3",
+        "district_full": "Missouri District 3",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 4",
+        "district_full": "Missouri District 4",
+        "margin": "R+25",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 6",
+        "district_full": "Missouri District 6",
+        "margin": "R+20",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 7",
+        "district_full": "Missouri District 7",
+        "margin": "R+27",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mo. 8",
+        "district_full": "Missouri District 8",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Mont. 2",
+        "district_full": "Montana District 2",
+        "margin": "R+26",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Neb. 1",
+        "district_full": "Nebraska District 1",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": "92%",
+        "url": null
+    },
+    {
+        "district_abbr": "Neb. 3",
+        "district_full": "Nebraska District 3",
+        "margin": "R+51",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.J. 2",
+        "district_full": "New Jersey District 2",
+        "margin": "D+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-new-jersey-us-house-2.html"
+    },
+    {
+        "district_abbr": "N.J. 4",
+        "district_full": "New Jersey District 4",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 1",
+        "district_full": "New York District 1",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 2",
+        "district_full": "New York District 2",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 11",
+        "district_full": "New York District 11",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": "91%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 23",
+        "district_full": "New York District 23",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.Y. 24",
+        "district_full": "New York District 24",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 3",
+        "district_full": "North Carolina District 3",
+        "margin": "R+0.1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-3.html"
+    },
+    {
+        "district_abbr": "N.C. 5",
+        "district_full": "North Carolina District 5",
+        "margin": "D+0.03",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-5.html"
+    },
+    {
+        "district_abbr": "N.C. 6",
+        "district_full": "North Carolina District 6",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 7",
+        "district_full": "North Carolina District 7",
+        "margin": "R+0.76",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-7.html"
+    },
+    {
+        "district_abbr": "N.C. 8",
+        "district_full": "North Carolina District 8",
+        "margin": "R+1.8",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-8.html"
+    },
+    {
+        "district_abbr": "N.C. 9",
+        "district_full": "North Carolina District 9",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-9.html"
+    },
+    {
+        "district_abbr": "N.C. 10",
+        "district_full": "North Carolina District 10",
+        "margin": "R+1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-north-carolina-us-house-10.html"
+    },
+    {
+        "district_abbr": "N.C. 13",
+        "district_full": "North Carolina District 13",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.C. 14",
+        "district_full": "North Carolina District 14",
+        "margin": "D+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "N.D. 1",
+        "district_full": "North Dakota At-Large District",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 2",
+        "district_full": "Ohio District 2",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 4",
+        "district_full": "Ohio District 4",
+        "margin": "R+33",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 5",
+        "district_full": "Ohio District 5",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 6",
+        "district_full": "Ohio District 6",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 8",
+        "district_full": "Ohio District 8",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 12",
+        "district_full": "Ohio District 12",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ohio 14",
+        "district_full": "Ohio District 14",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 1",
+        "district_full": "Oklahoma District 1",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 2",
+        "district_full": "Oklahoma District 2",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 3",
+        "district_full": "Oklahoma District 3",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 4",
+        "district_full": "Oklahoma District 4",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Okla. 5",
+        "district_full": "Oklahoma District 5",
+        "margin": "R+1.3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Ore. 2",
+        "district_full": "Oregon District 2",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": "93%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 9",
+        "district_full": "Pennsylvania District 9",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 11",
+        "district_full": "Pennsylvania District 11",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 13",
+        "district_full": "Pennsylvania District 13",
+        "margin": "R+35",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 14",
+        "district_full": "Pennsylvania District 14",
+        "margin": "R+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 15",
+        "district_full": "Pennsylvania District 15",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Pa. 16",
+        "district_full": "Pennsylvania District 16",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 2",
+        "district_full": "South Carolina District 2",
+        "margin": "R+1",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-south-carolina-us-house-2.html"
+    },
+    {
+        "district_abbr": "S.C. 3",
+        "district_full": "South Carolina District 3",
+        "margin": "R+29",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 4",
+        "district_full": "South Carolina District 4",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 5",
+        "district_full": "South Carolina District 5",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.C. 7",
+        "district_full": "South Carolina District 7",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "S.D. 1",
+        "district_full": "South Dakota At-Large District",
+        "margin": "R+28",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 1",
+        "district_full": "Tennessee District 1",
+        "margin": "R+38",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 2",
+        "district_full": "Tennessee District 2",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 3",
+        "district_full": "Tennessee District 3",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 4",
+        "district_full": "Tennessee District 4",
+        "margin": "D+0.14",
+        "race_called": false,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-tennessee-us-house-4.html"
+    },
+    {
+        "district_abbr": "Tenn. 5",
+        "district_full": "Tennessee District 5",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 6",
+        "district_full": "Tennessee District 6",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 7",
+        "district_full": "Tennessee District 7",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 8",
+        "district_full": "Tennessee District 8",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Tenn. 9",
+        "district_full": "Tennessee District 9",
+        "margin": "R+1.1",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-tennessee-us-house-9.html"
+    },
+    {
+        "district_abbr": "Texas 1",
+        "district_full": "Texas District 1",
+        "margin": "R+38",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 2",
+        "district_full": "Texas District 2",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 3",
+        "district_full": "Texas District 3",
+        "margin": "R+5",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 4",
+        "district_full": "Texas District 4",
+        "margin": "R+12",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 5",
+        "district_full": "Texas District 5",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 6",
+        "district_full": "Texas District 6",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 8",
+        "district_full": "Texas District 8",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 9",
+        "district_full": "Texas District 9",
+        "margin": "D+15",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 10",
+        "district_full": "Texas District 10",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 11",
+        "district_full": "Texas District 11",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 12",
+        "district_full": "Texas District 12",
+        "margin": "R+6",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 13",
+        "district_full": "Texas District 13",
+        "margin": "R+31",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 14",
+        "district_full": "Texas District 14",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 17",
+        "district_full": "Texas District 17",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 19",
+        "district_full": "Texas District 19",
+        "margin": "R+39",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 21",
+        "district_full": "Texas District 21",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 22",
+        "district_full": "Texas District 22",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 24",
+        "district_full": "Texas District 24",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 25",
+        "district_full": "Texas District 25",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 26",
+        "district_full": "Texas District 26",
+        "margin": "R+10",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 27",
+        "district_full": "Texas District 27",
+        "margin": "R+2",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 31",
+        "district_full": "Texas District 31",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 32",
+        "district_full": "Texas District 32",
+        "margin": "R+3",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 36",
+        "district_full": "Texas District 36",
+        "margin": "R+7",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Texas 38",
+        "district_full": "Texas District 38",
+        "margin": "R+4",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 2",
+        "district_full": "Utah District 2",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": "89%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 3",
+        "district_full": "Utah District 3",
+        "margin": "R+23",
+        "race_called": true,
+        "pct_in": "71%",
+        "url": null
+    },
+    {
+        "district_abbr": "Utah 4",
+        "district_full": "Utah District 4",
+        "margin": "R+12",
+        "race_called": false,
+        "pct_in": "68%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-utah-us-house-4.html"
+    },
+    {
+        "district_abbr": "Va. 6",
+        "district_full": "Virginia District 6",
+        "margin": "R+11",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Va. 9",
+        "district_full": "Virginia District 9",
+        "margin": "R+32",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wash. 4",
+        "district_full": "Washington District 4",
+        "margin": "R+9",
+        "race_called": false,
+        "pct_in": "80%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-washington-us-house-4.html"
+    },
+    {
+        "district_abbr": "Wash. 5",
+        "district_full": "Washington District 5",
+        "margin": "R+2",
+        "race_called": false,
+        "pct_in": "69%",
+        "url": "https://www.nytimes.com/interactive/2026/11/03/us/elections/results-washington-us-house-5.html"
+    },
+    {
+        "district_abbr": "W.Va. 1",
+        "district_full": "West Virginia District 1",
+        "margin": "R+17",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "W.Va. 2",
+        "district_full": "West Virginia District 2",
+        "margin": "R+19",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 5",
+        "district_full": "Wisconsin District 5",
+        "margin": "R+18",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 6",
+        "district_full": "Wisconsin District 6",
+        "margin": "R+9",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 7",
+        "district_full": "Wisconsin District 7",
+        "margin": "R+13",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wis. 8",
+        "district_full": "Wisconsin District 8",
+        "margin": "R+8",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    },
+    {
+        "district_abbr": "Wyo. 1",
+        "district_full": "Wyoming At-Large District",
+        "margin": "R+21",
+        "race_called": true,
+        "pct_in": ">95%",
+        "url": null
+    }
+]

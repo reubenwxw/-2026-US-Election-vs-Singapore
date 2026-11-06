@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Singapore vs US Election Partisan Lean Dashboard</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    margin: 0;
+    padding: 30px;
+    line-height: 1.5;
+  }
+  .container {
+    max-width: 1150px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    padding: 40px;
+  }
+  h1 {
+    font-size: 25px;
+    color: #0f172a;
+    margin-bottom: 6px;
+    font-weight: 800;
+  }
+  .subtitle {
+    font-size: 14.5px;
+    color: #64748b;
+    margin-bottom: 25px;
+  }
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 35px;
+  }
+  .stat-card {
+    background: #f1f5f9;
+    border-radius: 8px;
+    padding: 16px;
+    border-left: 5px solid #3b82f6;
+  }
+  .stat-card.c2011 { border-left-color: #2b5c8f; }
+  .stat-card.c2020 { border-left-color: #d95f02; }
+  .stat-card.c2025 { border-left-color: #7570b3; }
+  .stat-card.cus26 { border-left-color: #b91c1c; }
+  .stat-title {
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #475569;
+  }
+  .stat-value {
+    font-size: 23px;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 4px 0;
+  }
+  .stat-sub {
+    font-size: 12px;
+    color: #64748b;
+  }
+  .chart-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 35px;
+  }
+  .chart-header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .chart-desc {
+    font-size: 13.5px;
+    color: #64748b;
+    margin-bottom: 20px;
+  }
+  .svg-container {
+    width: 100%;
+    overflow-x: auto;
+  }
+  svg text {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  .dot {
+    transition: r 0.2s, opacity 0.2s;
+    cursor: pointer;
+  }
+  .dot:hover {
+    r: 7;
+    opacity: 1;
+    stroke: #000;
+    stroke-width: 2;
+  }
+  .tooltip {
+    position: absolute;
+    background: rgba(15, 23, 42, 0.95);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    pointer-events: none;
+    display: none;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  th {
+    background: #f8fafc;
+    font-weight: 700;
+    color: #334155;
+  }
+  tr:hover td {
+    background: #f1f5f9;
+  }
+  .lean-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+  .badge-left { background: #fee2e2; color: #b91c1c; }
+  .badge-right { background: #dbeafe; color: #1e40af; }
+  .badge-supermaj { background: #fee2e2; color: #991b1b; font-weight: 700; border: 1px solid #f87171; }
+  .badge-maj { background: #dbeafe; color: #1e40af; font-weight: 700; border: 1px solid #60a5fa; }
+  .badge-crack { background: #ffedd5; color: #9a3412; font-weight: 700; border: 1px solid #fb923c; }
+  .badge-median { background: #f3e8ff; color: #6b21a8; font-weight: 700; border: 1px solid #c084fc; }
+  .seats-votes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px; }
+  .curve-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; }
+  .curve-title { font-size: 13.5px; font-weight: 800; color: #0f172a; margin-bottom: 6px; }
+  .curve-desc { font-size: 11.5px; color: #64748b; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Singapore vs US Elections: Partisan Lean Comparison</h1>
+  <div class="subtitle">Standardized Bipolar Scale: <strong>PAP & Republicans on the LEFT</strong> (Red), <strong>Opposition & Democrats on the RIGHT</strong> (Blue)</div>
+
+  <div class="stat-grid">
+    <div class="stat-card c2011">
+      <div class="stat-title">Singapore 2011 GE</div>
+      <div class="stat-value">PAP +10.14%</div>
+      <div class="stat-sub">Coordinate: <strong>-10.14% (Left)</strong></div>
+      <div class="stat-sub">National PAP: 60.14%</div>
+    </div>
+    <div class="stat-card c2020">
+      <div class="stat-title">Singapore 2020 GE</div>
+      <div class="stat-value">PAP +11.23%</div>
+      <div class="stat-sub">Coordinate: <strong>-11.23% (Left)</strong></div>
+      <div class="stat-sub">National PAP: 61.23%</div>
+    </div>
+    <div class="stat-card c2025">
+      <div class="stat-title">Singapore 2025 GE</div>
+      <div class="stat-value">PAP +15.57%</div>
+      <div class="stat-sub">Coordinate: <strong>-15.57% (Left)</strong></div>
+      <div class="stat-sub">National PAP: 65.57%</div>
+    </div>
+    <div class="stat-card cus26">
+      <div class="stat-title">US House 2026 (NYT)</div>
+      <div class="stat-value">D +6.53%</div>
+      <div class="stat-sub">Coordinate: <strong>+6.53% (Right)</strong></div>
+      <div class="stat-sub">D: 260 | R: 174</div>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-header">Standardized Cross-System Distribution: PAP & Republicans on the LEFT</div>
+    <div class="chart-desc">
+      All elections plotted on the <strong>identical horizontal scale</strong> (-40% on left to +45% on right). 
+      The <strong>LEFT side (Red tint)</strong> represents PAP and Republican lean. 
+      The <strong>RIGHT side (Blue tint)</strong> represents Opposition and Democratic lean.
+    </div>
+
+    <div class="svg-container">
+      <svg id="facetedChart" viewBox="0 0 950 560" width="100%" height="560">
+        <!-- SVG rendered via JavaScript -->
+      </svg>
+    </div>
+  </div>
+
+  <div class="chart-box">
+    <div class="chart-header">Cross-System Comparison Table</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Electoral System</th>
+          <th>Total Seats</th>
+          <th>Leading Party (Side)</th>
+          <th>National / Mean Position</th>
+          <th>Furthest Left (PAP / GOP)</th>
+          <th>Furthest Right (Opp / Dem)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Singapore 2011 GE</strong></td>
+          <td>27</td>
+          <td>PAP (Left)</td>
+          <td><span class="lean-badge badge-left">PAP +10.14% (-10.14%)</span></td>
+          <td>Hong Kah North (PAP +20.6%)</td>
+          <td>Hougang (Opp +14.8%)</td>
+        </tr>
+        <tr>
+          <td><strong>Singapore 2020 GE</strong></td>
+          <td>31</td>
+          <td>PAP (Left)</td>
+          <td><span class="lean-badge badge-left">PAP +11.23% (-11.23%)</span></td>
+          <td>Jurong (PAP +24.6%)</td>
+          <td>Hougang (Opp +11.2%)</td>
+        </tr>
+        <tr>
+          <td><strong>Singapore 2025 GE</strong></td>
+          <td>33</td>
+          <td>PAP (Left)</td>
+          <td><span class="lean-badge badge-left">PAP +15.57% (-15.57%)</span></td>
+          <td>Queenstown (PAP +31.1%)</td>
+          <td>Hougang (Opp +12.2%)</td>
+        </tr>
+        <tr>
+          <td><strong>US House 2026 (NYT)</strong></td>
+          <td>435</td>
+          <td>Democrat (Right)</td>
+          <td><span class="lean-badge badge-right">D+6.53% (+6.53%)</span></td>
+          <td>NE-03 (R+51 / -25.5%)</td>
+          <td>PA-03 (D+87 / +43.5%)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Dummymandering & Seats-Votes Curves Section -->
+  <div class="chart-box" style="margin-top: 35px;">
+    <div class="chart-header">Dummymandering Dynamics, Cracking Zones & Seats-Votes Curves</div>
+    <div class="chart-desc">
+      Comparing structural map fragility, the <strong>Mean-Median Difference</strong>, volatile <strong>Cracking Zones</strong> (seats clustered within &plusmn;3% to &plusmn;5% margin), and the <strong>Seats-Votes Curves</strong> marking Singapore constitutional thresholds (<strong>2/3 Supermajority</strong> and <strong>50% Majority</strong>).
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Electoral System</th>
+          <th>Total Seats</th>
+          <th>Mean Vote Share</th>
+          <th>Median Vote Share</th>
+          <th>Mean-Median Diff</th>
+          <th>Cracking Zone (50-55%)</th>
+          <th>Swing to Break 2/3 Supermajority</th>
+          <th>Swing to Break 50% Majority</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Singapore 2020 GE</strong></td>
+          <td>93 MPs</td>
+          <td>61.35% (PAP)</td>
+          <td>62.00% (PAP)</td>
+          <td><span class="lean-badge badge-median">-0.65%</span></td>
+          <td><span class="lean-badge badge-crack">12 MPs (12.9%)</span></td>
+          <td><span class="lean-badge badge-supermaj">+8.64%</span> (to 52.59% PAP) &bull; <em>Chua Chu Kang</em></td>
+          <td><span class="lean-badge badge-maj">+13.10%</span> (to 48.13% PAP) &bull; <em>Tanjong Pagar</em></td>
+        </tr>
+        <tr>
+          <td><strong>Singapore 2025 GE</strong></td>
+          <td>97 MPs</td>
+          <td>65.80% (PAP)</td>
+          <td>68.12% (PAP)</td>
+          <td><span class="lean-badge badge-median">-2.33%</span></td>
+          <td><span class="lean-badge badge-crack">7 MPs (7.2%)</span></td>
+          <td><span class="lean-badge badge-supermaj">+11.38%</span> (to 54.19% PAP) &bull; <em>Bukit Panjang</em></td>
+          <td><span class="lean-badge badge-maj">+18.49%</span> (to 47.08% PAP) &bull; <em>Kebun Baru</em></td>
+        </tr>
+        <tr>
+          <td><strong>US House (2026 Midterm)</strong></td>
+          <td>435 Seats</td>
+          <td>56.99% (Dem)</td>
+          <td>54.50% (Dem)</td>
+          <td><span class="lean-badge badge-median">+2.49%</span></td>
+          <td><span class="lean-badge badge-crack">132 Seats (30.3%)</span></td>
+          <td><em>N/A (Two-Party Parity)</em></td>
+          <td><span class="lean-badge badge-maj">+4.50%</span> (to 52.49% Dem) &bull; <em>218th Seat</em></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="seats-votes-grid">
+      <div class="curve-card">
+        <div class="curve-title">Singapore Seats-Votes Curve: The Supermajority Cliff</div>
+        <div class="curve-desc">Popular Vote % vs Seat Share % in Parliament, marking the 2/3 (66.7%) and 50% thresholds.</div>
+        <div class="svg-container" style="background:#ffffff; border-radius:6px; border:1px solid #cbd5e1; padding:10px;">
+          <svg id="sg-curve-svg" width="100%" height="280" viewBox="0 0 500 280"></svg>
+        </div>
+      </div>
+      <div class="curve-card">
+        <div class="curve-title">US House Seats-Votes Curve: Competitive Parity</div>
+        <div class="curve-desc">Democratic Popular Vote % vs House Seats Won %, showing the 218-seat tipping point.</div>
+        <div class="svg-container" style="background:#ffffff; border-radius:6px; border:1px solid #cbd5e1; padding:10px;">
+          <svg id="us-curve-svg" width="100%" height="280" viewBox="0 0 500 280"></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tooltip" class="tooltip"></div>
+
+<script>
+const data = {"2011": [{"constituency": "Hong Kah North", "pap_pct": 70.61, "coord": -20.61, "pap_lean": 20.61, "opp_parties": "SPP", "total_votes": 25712}, {"constituency": "Ang Mo Kio", "pap_pct": 69.33, "coord": -19.33, "pap_lean": 19.33, "opp_parties": "RP", "total_votes": 162528}, {"constituency": "Radin Mas", "pap_pct": 67.1, "coord": -17.1, "pap_lean": 17.1, "opp_parties": "NSP", "total_votes": 27732}, {"constituency": "Jurong", "pap_pct": 66.96, "coord": -16.96, "pap_lean": 16.96, "opp_parties": "NSP", "total_votes": 114381}, {"constituency": "Yuhua", "pap_pct": 66.86, "coord": -16.86, "pap_lean": 16.86, "opp_parties": "SDP", "total_votes": 21079}, {"constituency": "West Coast", "pap_pct": 66.57, "coord": -16.57, "pap_lean": 16.57, "opp_parties": "RP", "total_votes": 109006}, {"constituency": "Bukit Panjang", "pap_pct": 66.27, "coord": -16.27, "pap_lean": 16.27, "opp_parties": "SDP", "total_votes": 30747}, {"constituency": "Whampoa", "pap_pct": 66.1, "coord": -16.1, "pap_lean": 16.1, "opp_parties": "NSP", "total_votes": 19711}, {"constituency": "Pasir Ris-Punggol", "pap_pct": 64.79, "coord": -14.79, "pap_lean": 14.79, "opp_parties": "SDA", "total_votes": 155094}, {"constituency": "Sembawang", "pap_pct": 63.9, "coord": -13.9, "pap_lean": 13.9, "opp_parties": "SDP", "total_votes": 131857}, {"constituency": "Chua Chu Kang", "pap_pct": 61.2, "coord": -11.2, "pap_lean": 11.2, "opp_parties": "NSP", "total_votes": 146595}, {"constituency": "Pioneer", "pap_pct": 60.73, "coord": -10.73, "pap_lean": 10.73, "opp_parties": "NSP", "total_votes": 24030}, {"constituency": "Holland-Bukit Timah", "pap_pct": 60.08, "coord": -10.08, "pap_lean": 10.08, "opp_parties": "SDP", "total_votes": 81179}, {"constituency": "Mountbatten", "pap_pct": 58.62, "coord": -8.62, "pap_lean": 8.62, "opp_parties": "NSP", "total_votes": 20446}, {"constituency": "Moulmein-Kallang", "pap_pct": 58.55, "coord": -8.55, "pap_lean": 8.55, "opp_parties": "WP", "total_votes": 76659}, {"constituency": "Nee Soon", "pap_pct": 58.4, "coord": -8.4, "pap_lean": 8.4, "opp_parties": "WP", "total_votes": 138263}, {"constituency": "Sengkang West", "pap_pct": 58.11, "coord": -8.11, "pap_lean": 8.11, "opp_parties": "WP", "total_votes": 25280}, {"constituency": "Tampines", "pap_pct": 57.22, "coord": -7.22, "pap_lean": 7.22, "opp_parties": "NSP", "total_votes": 127109}, {"constituency": "Bishan-Toa Payoh", "pap_pct": 56.93, "coord": -6.93, "pap_lean": 6.93, "opp_parties": "SPP", "total_votes": 109590}, {"constituency": "Marine Parade", "pap_pct": 56.64, "coord": -6.64, "pap_lean": 6.64, "opp_parties": "NSP", "total_votes": 138212}, {"constituency": "East Coast", "pap_pct": 54.83, "coord": -4.83, "pap_lean": 4.83, "opp_parties": "WP", "total_votes": 109421}, {"constituency": "Punggol East", "pap_pct": 54.54, "coord": -4.54, "pap_lean": 4.54, "opp_parties": "WP, SDA", "total_votes": 31158}, {"constituency": "Joo Chiat", "pap_pct": 51.02, "coord": -1.02, "pap_lean": 1.02, "opp_parties": "WP", "total_votes": 18944}, {"constituency": "Potong Pasir", "pap_pct": 50.36, "coord": -0.36, "pap_lean": 0.36, "opp_parties": "SPP", "total_votes": 15870}, {"constituency": "Aljunied", "pap_pct": 45.28, "coord": 4.72, "pap_lean": -4.72, "opp_parties": "WP", "total_votes": 132118}, {"constituency": "Hougang", "pap_pct": 35.2, "coord": 14.8, "pap_lean": -14.8, "opp_parties": "WP", "total_votes": 22915}], "2020": [{"constituency": "Jurong", "pap_pct": 74.61, "coord": -24.61, "pap_lean": 24.61, "opp_parties": "RDU", "total_votes": 123106}, {"constituency": "Radin Mas", "pap_pct": 74.01, "coord": -24.01, "pap_lean": 24.01, "opp_parties": "RP", "total_votes": 22786}, {"constituency": "Mountbatten", "pap_pct": 73.82, "coord": -23.82, "pap_lean": 23.82, "opp_parties": "PV", "total_votes": 22060}, {"constituency": "Ang Mo Kio", "pap_pct": 71.91, "coord": -21.91, "pap_lean": 21.91, "opp_parties": "RP", "total_votes": 173274}, {"constituency": "Macpherson", "pap_pct": 71.74, "coord": -21.74, "pap_lean": 21.74, "opp_parties": "PPP", "total_votes": 26498}, {"constituency": "Yuhua", "pap_pct": 70.54, "coord": -20.54, "pap_lean": 20.54, "opp_parties": "SDP", "total_votes": 20032}, {"constituency": "Sembawang", "pap_pct": 67.29, "coord": -17.29, "pap_lean": 17.29, "opp_parties": "NSP", "total_votes": 139954}, {"constituency": "Bishan-Toa Payoh", "pap_pct": 67.23, "coord": -17.23, "pap_lean": 17.23, "opp_parties": "SPP", "total_votes": 93679}, {"constituency": "Tampines", "pap_pct": 66.41, "coord": -16.41, "pap_lean": 16.41, "opp_parties": "NSP", "total_votes": 142543}, {"constituency": "Holland-Bukit Timah", "pap_pct": 66.36, "coord": -16.36, "pap_lean": 16.36, "opp_parties": "SDP", "total_votes": 107318}, {"constituency": "Jalan Besar", "pap_pct": 65.36, "coord": -15.36, "pap_lean": 15.36, "opp_parties": "PV", "total_votes": 98892}, {"constituency": "Pasir Ris-Punggol", "pap_pct": 64.16, "coord": -14.16, "pap_lean": 14.16, "opp_parties": "SDA, PV", "total_votes": 157316}, {"constituency": "Marsiling-Yew Tee", "pap_pct": 63.18, "coord": -13.18, "pap_lean": 13.18, "opp_parties": "SDP", "total_votes": 110503}, {"constituency": "Tanjong Pagar", "pap_pct": 63.1, "coord": -13.1, "pap_lean": 13.1, "opp_parties": "PSP", "total_votes": 124137}, {"constituency": "Kebun Baru", "pap_pct": 62.92, "coord": -12.92, "pap_lean": 12.92, "opp_parties": "PSP", "total_votes": 21151}, {"constituency": "Pioneer", "pap_pct": 62.0, "coord": -12.0, "pap_lean": 12.0, "opp_parties": "-, PSP", "total_votes": 23537}, {"constituency": "Nee Soon", "pap_pct": 61.9, "coord": -11.9, "pap_lean": 11.9, "opp_parties": "PSP", "total_votes": 139439}, {"constituency": "Hong Kah North", "pap_pct": 60.99, "coord": -10.99, "pap_lean": 10.99, "opp_parties": "PSP", "total_votes": 26804}, {"constituency": "Punggol West", "pap_pct": 60.98, "coord": -10.98, "pap_lean": 10.98, "opp_parties": "WP", "total_votes": 25672}, {"constituency": "Yio Chu Kang", "pap_pct": 60.82, "coord": -10.82, "pap_lean": 10.82, "opp_parties": "PSP", "total_votes": 24294}, {"constituency": "Potong Pasir", "pap_pct": 60.67, "coord": -10.67, "pap_lean": 10.67, "opp_parties": "SPP", "total_votes": 18566}, {"constituency": "Chua Chu Kang", "pap_pct": 58.64, "coord": -8.64, "pap_lean": 8.64, "opp_parties": "PSP", "total_votes": 101566}, {"constituency": "Marine Parade", "pap_pct": 57.74, "coord": -7.74, "pap_lean": 7.74, "opp_parties": "WP", "total_votes": 130250}, {"constituency": "Marymount", "pap_pct": 55.04, "coord": -5.04, "pap_lean": 5.04, "opp_parties": "PSP", "total_votes": 22116}, {"constituency": "Bukit Batok", "pap_pct": 54.8, "coord": -4.8, "pap_lean": 4.8, "opp_parties": "SDP", "total_votes": 28287}, {"constituency": "Bukit Panjang", "pap_pct": 53.73, "coord": -3.73, "pap_lean": 3.73, "opp_parties": "SDP", "total_votes": 33661}, {"constituency": "East Coast", "pap_pct": 53.39, "coord": -3.39, "pap_lean": 3.39, "opp_parties": "WP", "total_votes": 114519}, {"constituency": "West Coast", "pap_pct": 51.68, "coord": -1.68, "pap_lean": 1.68, "opp_parties": "PSP", "total_votes": 138654}, {"constituency": "Sengkang", "pap_pct": 47.88, "coord": 2.12, "pap_lean": -2.12, "opp_parties": "WP", "total_votes": 115536}, {"constituency": "Aljunied", "pap_pct": 40.05, "coord": 9.95, "pap_lean": -9.95, "opp_parties": "WP", "total_votes": 143145}, {"constituency": "Hougang", "pap_pct": 38.79, "coord": 11.21, "pap_lean": -11.21, "opp_parties": "WP", "total_votes": 25242}], "2025": [{"constituency": "Queenstown", "pap_pct": 81.13, "coord": -31.13, "pap_lean": 31.13, "opp_parties": "PAR", "total_votes": 25873}, {"constituency": "Tanjong Pagar", "pap_pct": 81.02, "coord": -31.02, "pap_lean": 31.02, "opp_parties": "PAR", "total_votes": 122093}, {"constituency": "Jurong Central", "pap_pct": 80.51, "coord": -30.51, "pap_lean": 30.51, "opp_parties": "RDU", "total_votes": 27260}, {"constituency": "Holland-Bukit Timah", "pap_pct": 79.25, "coord": -29.25, "pap_lean": 29.25, "opp_parties": "RDU", "total_votes": 109698}, {"constituency": "Ang Mo Kio", "pap_pct": 78.95, "coord": -28.95, "pap_lean": 28.95, "opp_parties": "PPP, SUP", "total_votes": 146365}, {"constituency": "Yio Chu Kang", "pap_pct": 78.75, "coord": -28.75, "pap_lean": 28.75, "opp_parties": "PAR", "total_votes": 22942}, {"constituency": "Jurong East-Bukit Batok", "pap_pct": 76.67, "coord": -26.67, "pap_lean": 26.67, "opp_parties": "RDU", "total_votes": 130034}, {"constituency": "Bukit Gombak", "pap_pct": 75.81, "coord": -25.81, "pap_lean": 25.81, "opp_parties": "PSP", "total_votes": 23672}, {"constituency": "Jalan Besar", "pap_pct": 75.21, "coord": -25.21, "pap_lean": 25.21, "opp_parties": "PAR", "total_votes": 93869}, {"constituency": "Bishan-Toa Payoh", "pap_pct": 75.18, "coord": -25.18, "pap_lean": 25.18, "opp_parties": "SPP", "total_votes": 88399}, {"constituency": "Nee Soon", "pap_pct": 73.81, "coord": -23.81, "pap_lean": 23.81, "opp_parties": "RDU", "total_votes": 139512}, {"constituency": "Marsiling-Yew Tee", "pap_pct": 73.48, "coord": -23.48, "pap_lean": 23.48, "opp_parties": "SDP", "total_votes": 110424}, {"constituency": "Marymount", "pap_pct": 70.73, "coord": -20.73, "pap_lean": 20.73, "opp_parties": "PSP", "total_votes": 21141}, {"constituency": "Potong Pasir", "pap_pct": 69.2, "coord": -19.2, "pap_lean": 19.2, "opp_parties": "SPP, PAR", "total_votes": 27872}, {"constituency": "Radin Mas", "pap_pct": 69.12, "coord": -19.12, "pap_lean": 19.12, "opp_parties": "PAR, -", "total_votes": 22937}, {"constituency": "Kebun Baru", "pap_pct": 68.49, "coord": -18.49, "pap_lean": 18.49, "opp_parties": "PSP", "total_votes": 20129}, {"constituency": "Sembawang", "pap_pct": 67.76, "coord": -17.76, "pap_lean": 17.76, "opp_parties": "NSP, SDP", "total_votes": 124194}, {"constituency": "Pasir Ris-Changi", "pap_pct": 67.68, "coord": -17.68, "pap_lean": 17.68, "opp_parties": "SDA", "total_votes": 90381}, {"constituency": "Pioneer", "pap_pct": 65.45, "coord": -15.45, "pap_lean": 15.45, "opp_parties": "PSP", "total_votes": 23470}, {"constituency": "Mountbatten", "pap_pct": 63.82, "coord": -13.82, "pap_lean": 13.82, "opp_parties": "-", "total_votes": 19745}, {"constituency": "Chua Chu Kang", "pap_pct": 63.6, "coord": -13.6, "pap_lean": 13.6, "opp_parties": "PSP", "total_votes": 86702}, {"constituency": "Bukit Panjang", "pap_pct": 61.38, "coord": -11.38, "pap_lean": 11.38, "opp_parties": "SDP", "total_votes": 31203}, {"constituency": "West Coast-Jurong West", "pap_pct": 59.99, "coord": -9.99, "pap_lean": 9.99, "opp_parties": "PSP", "total_votes": 147665}, {"constituency": "East Coast", "pap_pct": 58.73, "coord": -8.73, "pap_lean": 8.73, "opp_parties": "WP", "total_votes": 136393}, {"constituency": "Tampines Changkat", "pap_pct": 56.16, "coord": -6.16, "pap_lean": 6.16, "opp_parties": "WP", "total_votes": 22217}, {"constituency": "Punggol", "pap_pct": 55.17, "coord": -5.17, "pap_lean": 5.17, "opp_parties": "WP", "total_votes": 115534}, {"constituency": "Sembawang West", "pap_pct": 53.18, "coord": -3.18, "pap_lean": 3.18, "opp_parties": "SDP", "total_votes": 22563}, {"constituency": "Tampines", "pap_pct": 52.02, "coord": -2.02, "pap_lean": 2.02, "opp_parties": "PPP, WP, NSP", "total_votes": 137631}, {"constituency": "Jalan Kayu", "pap_pct": 51.47, "coord": -1.47, "pap_lean": 1.47, "opp_parties": "WP", "total_votes": 27483}, {"constituency": "Sengkang", "pap_pct": 43.68, "coord": 6.32, "pap_lean": -6.32, "opp_parties": "WP", "total_votes": 118256}, {"constituency": "Aljunied", "pap_pct": 40.29, "coord": 9.71, "pap_lean": -9.71, "opp_parties": "WP", "total_votes": 132725}, {"constituency": "Hougang", "pap_pct": 37.85, "coord": 12.15, "pap_lean": -12.15, "opp_parties": "WP", "total_votes": 27283}]};
+const summaries = {"2011": {"year": 2011, "nat_pap_pct": 60.14, "nat_coord": -10.14, "nat_pap_lean": 10.14, "mean_coord": -9.47, "min_ward": {"constituency": "Hong Kah North", "pap_pct": 70.61, "coord": -20.61, "pap_lean": 20.61, "opp_parties": "SPP", "total_votes": 25712}, "max_ward": {"constituency": "Hougang", "pap_pct": 35.2, "coord": 14.8, "pap_lean": -14.8, "opp_parties": "WP", "total_votes": 22915}, "total_valid": 2015636, "wards_count": 26}, "2020": {"year": 2020, "nat_pap_pct": 61.23, "nat_coord": -11.23, "nat_pap_lean": 11.23, "mean_coord": -11.35, "min_ward": {"constituency": "Jurong", "pap_pct": 74.61, "coord": -24.61, "pap_lean": 24.61, "opp_parties": "RDU", "total_votes": 123106}, "max_ward": {"constituency": "Hougang", "pap_pct": 38.79, "coord": 11.21, "pap_lean": -11.21, "opp_parties": "WP", "total_votes": 25242}, "total_valid": 2494537, "wards_count": 31}, "2025": {"year": 2025, "nat_pap_pct": 65.57, "nat_coord": -15.57, "nat_pap_lean": 15.57, "mean_coord": -15.8, "min_ward": {"constituency": "Queenstown", "pap_pct": 81.13, "coord": -31.13, "pap_lean": 31.13, "opp_parties": "PAR", "total_votes": 25873}, "max_ward": {"constituency": "Hougang", "pap_pct": 37.85, "coord": 12.15, "pap_lean": -12.15, "opp_parties": "WP", "total_votes": 27283}, "total_valid": 2395665, "wards_count": 32}};
+const usDistricts = [{"district": "AL-07", "full": "Alabama District 7", "coord": 19.5, "winner": "Democrat", "margin": "D+39.0", "status": "Contested"}, {"district": "AZ-03", "full": "Arizona District 3", "coord": 40.5, "winner": "Democrat", "margin": "D+81.0", "status": "Contested"}, {"district": "AZ-04", "full": "Arizona District 4", "coord": 13.5, "winner": "Democrat", "margin": "D+27.0", "status": "Contested"}, {"district": "AZ-07", "full": "Arizona District 7", "coord": 21.5, "winner": "Democrat", "margin": "D+43.0", "status": "Contested"}, {"district": "CA-01", "full": "California District 1", "coord": 5.5, "winner": "Democrat", "margin": "D+11.0", "status": "Contested"}, {"district": "CA-02", "full": "California District 2", "coord": 16.0, "winner": "Democrat", "margin": "D+32.0", "status": "Contested"}, {"district": "CA-03", "full": "California District 3", "coord": 7.0, "winner": "Democrat", "margin": "D+14.0", "status": "Contested"}, {"district": "CA-04", "full": "California District 4", "coord": 1.5, "winner": "Democrat", "margin": "D+3.0", "status": "Contested"}, {"district": "CA-06", "full": "California District 6", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "CA-07", "full": "California District 7", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "CA-08", "full": "California District 8", "coord": 21.5, "winner": "Democrat", "margin": "D+43.0", "status": "Contested"}, {"district": "CA-09", "full": "California District 9", "coord": 16.0, "winner": "Democrat", "margin": "D+32.0", "status": "Contested"}, {"district": "CA-10", "full": "California District 10", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "CA-11", "full": "California District 11", "coord": 4.5, "winner": "Democrat", "margin": "D+9.0", "status": "Contested"}, {"district": "CA-12", "full": "California District 12", "coord": 30.0, "winner": "Democrat", "margin": "D+60.0", "status": "Contested"}, {"district": "CA-13", "full": "California District 13", "coord": 11.5, "winner": "Democrat", "margin": "D+23.0", "status": "Contested"}, {"district": "CA-14", "full": "California District 14", "coord": 6.5, "winner": "Democrat", "margin": "D+13.0", "status": "Contested"}, {"district": "CA-15", "full": "California District 15", "coord": 28.0, "winner": "Democrat", "margin": "D+56.0", "status": "Contested"}, {"district": "CA-16", "full": "California District 16", "coord": 26.5, "winner": "Democrat", "margin": "D+53.0", "status": "Contested"}, {"district": "CA-17", "full": "California District 17", "coord": 21.0, "winner": "Democrat", "margin": "D+42.0", "status": "Contested"}, {"district": "CA-18", "full": "California District 18", "coord": 22.0, "winner": "Democrat", "margin": "D+44.0", "status": "Contested"}, {"district": "CA-19", "full": "California District 19", "coord": 22.5, "winner": "Democrat", "margin": "D+45.0", "status": "Contested"}, {"district": "CA-21", "full": "California District 21", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "CA-24", "full": "California District 24", "coord": 16.0, "winner": "Democrat", "margin": "D+32.0", "status": "Contested"}, {"district": "CA-25", "full": "California District 25", "coord": 15.0, "winner": "Democrat", "margin": "D+30.0", "status": "Contested"}, {"district": "CA-26", "full": "California District 26", "coord": 12.0, "winner": "Democrat", "margin": "D+24.0", "status": "Contested"}, {"district": "CA-27", "full": "California District 27", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "CA-28", "full": "California District 28", "coord": 20.0, "winner": "Democrat", "margin": "D+40.0", "status": "Contested"}, {"district": "CA-29", "full": "California District 29", "coord": 9.0, "winner": "Democrat", "margin": "D+18.0", "status": "Contested"}, {"district": "CA-30", "full": "California District 30", "coord": 26.5, "winner": "Democrat", "margin": "D+53.0", "status": "Contested"}, {"district": "CA-31", "full": "California District 31", "coord": 15.0, "winner": "Democrat", "margin": "D+30.0", "status": "Contested"}, {"district": "CA-32", "full": "California District 32", "coord": 17.0, "winner": "Democrat", "margin": "D+34.0", "status": "Contested"}, {"district": "CA-33", "full": "California District 33", "coord": 17.5, "winner": "Democrat", "margin": "D+35.0", "status": "Contested"}, {"district": "CA-34", "full": "California District 34", "coord": 10.5, "winner": "Democrat", "margin": "D+21.0", "status": "Contested"}, {"district": "CA-35", "full": "California District 35", "coord": 15.5, "winner": "Democrat", "margin": "D+31.0", "status": "Contested"}, {"district": "CA-36", "full": "California District 36", "coord": 22.0, "winner": "Democrat", "margin": "D+44.0", "status": "Contested"}, {"district": "CA-37", "full": "California District 37", "coord": 12.0, "winner": "Democrat", "margin": "D+24.0", "status": "Contested"}, {"district": "CA-38", "full": "California District 38", "coord": 16.0, "winner": "Democrat", "margin": "D+32.0", "status": "Contested"}, {"district": "CA-39", "full": "California District 39", "coord": 16.0, "winner": "Democrat", "margin": "D+32.0", "status": "Contested"}, {"district": "CA-41", "full": "California District 41", "coord": 16.5, "winner": "Democrat", "margin": "D+33.0", "status": "Contested"}, {"district": "CA-42", "full": "California District 42", "coord": 10.5, "winner": "Democrat", "margin": "D+21.0", "status": "Contested"}, {"district": "CA-43", "full": "California District 43", "coord": 32.0, "winner": "Democrat", "margin": "D+64.0", "status": "Contested"}, {"district": "CA-44", "full": "California District 44", "coord": 30.5, "winner": "Democrat", "margin": "D+61.0", "status": "Contested"}, {"district": "CA-45", "full": "California District 45", "coord": 9.5, "winner": "Democrat", "margin": "D+19.0", "status": "Contested"}, {"district": "CA-46", "full": "California District 46", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "CA-47", "full": "California District 47", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "CA-49", "full": "California District 49", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "CA-50", "full": "California District 50", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "CA-51", "full": "California District 51", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "CA-52", "full": "California District 52", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "CO-01", "full": "Colorado District 1", "coord": 32.0, "winner": "Democrat", "margin": "D+64.0", "status": "Contested"}, {"district": "CO-02", "full": "Colorado District 2", "coord": 25.0, "winner": "Democrat", "margin": "D+50.0", "status": "Contested"}, {"district": "CO-06", "full": "Colorado District 6", "coord": 17.0, "winner": "Democrat", "margin": "D+34.0", "status": "Contested"}, {"district": "CO-07", "full": "Colorado District 7", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "CT-01", "full": "Connecticut District 1", "coord": 18.0, "winner": "Democrat", "margin": "D+36.0", "status": "Contested"}, {"district": "CT-02", "full": "Connecticut District 2", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "CT-03", "full": "Connecticut District 3", "coord": 12.0, "winner": "Democrat", "margin": "D+24.0", "status": "Contested"}, {"district": "CT-04", "full": "Connecticut District 4", "coord": 16.5, "winner": "Democrat", "margin": "D+33.0", "status": "Contested"}, {"district": "CT-05", "full": "Connecticut District 5", "coord": 8.0, "winner": "Democrat", "margin": "D+16.0", "status": "Contested"}, {"district": "DE-AL", "full": "Delaware At-Large District", "coord": 14.5, "winner": "Democrat", "margin": "D+29.0", "status": "Contested"}, {"district": "FL-10", "full": "Florida District 10", "coord": null, "winner": "Democrat", "status": "Uncontested"}, {"district": "FL-20", "full": "Florida District 20", "coord": 26.5, "winner": "Democrat", "margin": "D+53.0", "status": "Contested"}, {"district": "FL-23", "full": "Florida District 23", "coord": 15.5, "winner": "Democrat", "margin": "D+31.0", "status": "Contested"}, {"district": "FL-24", "full": "Florida District 24", "coord": 30.5, "winner": "Democrat", "margin": "D+61.0", "status": "Contested"}, {"district": "GA-02", "full": "Georgia District 2", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "GA-04", "full": "Georgia District 4", "coord": 32.5, "winner": "Democrat", "margin": "D+65.0", "status": "Contested"}, {"district": "GA-05", "full": "Georgia District 5", "coord": 40.0, "winner": "Democrat", "margin": "D+80.0", "status": "Contested"}, {"district": "GA-06", "full": "Georgia District 6", "coord": 31.0, "winner": "Democrat", "margin": "D+62.0", "status": "Contested"}, {"district": "GA-13", "full": "Georgia District 13", "coord": 30.0, "winner": "Democrat", "margin": "D+60.0", "status": "Contested"}, {"district": "HI-01", "full": "Hawaii District 1", "coord": 24.5, "winner": "Democrat", "margin": "D+49.0", "status": "Contested"}, {"district": "HI-02", "full": "Hawaii District 2", "coord": 16.5, "winner": "Democrat", "margin": "D+33.0", "status": "Contested"}, {"district": "IL-01", "full": "Illinois District 1", "coord": 21.5, "winner": "Democrat", "margin": "D+43.0", "status": "Contested"}, {"district": "IL-02", "full": "Illinois District 2", "coord": 23.0, "winner": "Democrat", "margin": "D+46.0", "status": "Contested"}, {"district": "IL-03", "full": "Illinois District 3", "coord": 26.5, "winner": "Democrat", "margin": "D+53.0", "status": "Contested"}, {"district": "IL-04", "full": "Illinois District 4", "coord": 27.5, "winner": "Democrat", "margin": "D+55.0", "status": "Contested"}, {"district": "IL-05", "full": "Illinois District 5", "coord": 25.5, "winner": "Democrat", "margin": "D+51.0", "status": "Contested"}, {"district": "IL-06", "full": "Illinois District 6", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "IL-07", "full": "Illinois District 7", "coord": 39.0, "winner": "Democrat", "margin": "D+78.0", "status": "Contested"}, {"district": "IL-08", "full": "Illinois District 8", "coord": 14.0, "winner": "Democrat", "margin": "D+28.0", "status": "Contested"}, {"district": "IL-09", "full": "Illinois District 9", "coord": 26.0, "winner": "Democrat", "margin": "D+52.0", "status": "Contested"}, {"district": "IL-10", "full": "Illinois District 10", "coord": 20.0, "winner": "Democrat", "margin": "D+40.0", "status": "Contested"}, {"district": "IL-11", "full": "Illinois District 11", "coord": 14.0, "winner": "Democrat", "margin": "D+28.0", "status": "Contested"}, {"district": "IL-13", "full": "Illinois District 13", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "IL-14", "full": "Illinois District 14", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "IL-17", "full": "Illinois District 17", "coord": 10.0, "winner": "Democrat", "margin": "D+20.0", "status": "Contested"}, {"district": "IN-01", "full": "Indiana District 1", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "IN-07", "full": "Indiana District 7", "coord": 28.5, "winner": "Democrat", "margin": "D+57.0", "status": "Contested"}, {"district": "KS-03", "full": "Kansas District 3", "coord": 10.5, "winner": "Democrat", "margin": "D+21.0", "status": "Contested"}, {"district": "KY-03", "full": "Kentucky District 3", "coord": 20.5, "winner": "Democrat", "margin": "D+41.0", "status": "Contested"}, {"district": "LA-02", "full": "Louisiana District 2", "coord": 32.5, "winner": "Democrat", "margin": "D+65.0", "status": "Contested"}, {"district": "ME-01", "full": "Maine District 1", "coord": 16.0, "winner": "Democrat", "margin": "D+32.0", "status": "Contested"}, {"district": "MD-02", "full": "Maryland District 2", "coord": 11.5, "winner": "Democrat", "margin": "D+23.0", "status": "Contested"}, {"district": "MD-03", "full": "Maryland District 3", "coord": 15.5, "winner": "Democrat", "margin": "D+31.0", "status": "Contested"}, {"district": "MD-04", "full": "Maryland District 4", "coord": 41.5, "winner": "Democrat", "margin": "D+83.0", "status": "Contested"}, {"district": "MD-05", "full": "Maryland District 5", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "MD-06", "full": "Maryland District 6", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "MD-07", "full": "Maryland District 7", "coord": 33.5, "winner": "Democrat", "margin": "D+67.0", "status": "Contested"}, {"district": "MD-08", "full": "Maryland District 8", "coord": 33.5, "winner": "Democrat", "margin": "D+67.0", "status": "Contested"}, {"district": "MA-01", "full": "Massachusetts District 1", "coord": 15.5, "winner": "Democrat", "margin": "D+31.0", "status": "Contested"}, {"district": "MA-02", "full": "Massachusetts District 2", "coord": null, "winner": "Democrat", "status": "Uncontested"}, {"district": "MA-03", "full": "Massachusetts District 3", "coord": 18.5, "winner": "Democrat", "margin": "D+37.0", "status": "Contested"}, {"district": "MA-04", "full": "Massachusetts District 4", "coord": 16.5, "winner": "Democrat", "margin": "D+33.0", "status": "Contested"}, {"district": "MA-05", "full": "Massachusetts District 5", "coord": null, "winner": "Democrat", "status": "Uncontested"}, {"district": "MA-06", "full": "Massachusetts District 6", "coord": 13.5, "winner": "Democrat", "margin": "D+27.0", "status": "Contested"}, {"district": "MA-07", "full": "Massachusetts District 7", "coord": null, "winner": "Democrat", "status": "Uncontested"}, {"district": "MA-08", "full": "Massachusetts District 8", "coord": 21.5, "winner": "Democrat", "margin": "D+43.0", "status": "Contested"}, {"district": "MA-09", "full": "Massachusetts District 9", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "MI-03", "full": "Michigan District 3", "coord": 8.0, "winner": "Democrat", "margin": "D+16.0", "status": "Contested"}, {"district": "MI-06", "full": "Michigan District 6", "coord": 18.5, "winner": "Democrat", "margin": "D+37.0", "status": "Contested"}, {"district": "MI-08", "full": "Michigan District 8", "coord": 7.0, "winner": "Democrat", "margin": "D+14.0", "status": "Contested"}, {"district": "MI-11", "full": "Michigan District 11", "coord": 12.0, "winner": "Democrat", "margin": "D+24.0", "status": "Contested"}, {"district": "MI-12", "full": "Michigan District 12", "coord": 27.5, "winner": "Democrat", "margin": "D+55.0", "status": "Contested"}, {"district": "MI-13", "full": "Michigan District 13", "coord": 28.5, "winner": "Democrat", "margin": "D+57.0", "status": "Contested"}, {"district": "MN-02", "full": "Minnesota District 2", "coord": 7.0, "winner": "Democrat", "margin": "D+14.0", "status": "Contested"}, {"district": "MN-03", "full": "Minnesota District 3", "coord": 14.0, "winner": "Democrat", "margin": "D+28.0", "status": "Contested"}, {"district": "MN-04", "full": "Minnesota District 4", "coord": 23.0, "winner": "Democrat", "margin": "D+46.0", "status": "Contested"}, {"district": "MN-05", "full": "Minnesota District 5", "coord": 30.0, "winner": "Democrat", "margin": "D+60.0", "status": "Contested"}, {"district": "MS-02", "full": "Mississippi District 2", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "MO-01", "full": "Missouri District 1", "coord": 34.0, "winner": "Democrat", "margin": "D+68.0", "status": "Contested"}, {"district": "MO-05", "full": "Missouri District 5", "coord": 20.5, "winner": "Democrat", "margin": "D+41.0", "status": "Contested"}, {"district": "NE-02", "full": "Nebraska District 2", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "NV-01", "full": "Nevada District 1", "coord": 10.5, "winner": "Democrat", "margin": "D+21.0", "status": "Contested"}, {"district": "NV-03", "full": "Nevada District 3", "coord": 10.5, "winner": "Democrat", "margin": "D+21.0", "status": "Contested"}, {"district": "NV-04", "full": "Nevada District 4", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "NH-01", "full": "New Hampshire District 1", "coord": 7.0, "winner": "Democrat", "margin": "D+14.0", "status": "Contested"}, {"district": "NH-02", "full": "New Hampshire District 2", "coord": 10.0, "winner": "Democrat", "margin": "D+20.0", "status": "Contested"}, {"district": "NJ-01", "full": "New Jersey District 1", "coord": 20.5, "winner": "Democrat", "margin": "D+41.0", "status": "Contested"}, {"district": "NJ-03", "full": "New Jersey District 3", "coord": 13.5, "winner": "Democrat", "margin": "D+27.0", "status": "Contested"}, {"district": "NJ-05", "full": "New Jersey District 5", "coord": 14.0, "winner": "Democrat", "margin": "D+28.0", "status": "Contested"}, {"district": "NJ-06", "full": "New Jersey District 6", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "NJ-08", "full": "New Jersey District 8", "coord": 42.0, "winner": "Democrat", "margin": "D+84.0", "status": "Contested"}, {"district": "NJ-09", "full": "New Jersey District 9", "coord": 17.5, "winner": "Democrat", "margin": "D+35.0", "status": "Contested"}, {"district": "NJ-10", "full": "New Jersey District 10", "coord": 34.5, "winner": "Democrat", "margin": "D+69.0", "status": "Contested"}, {"district": "NJ-11", "full": "New Jersey District 11", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "NJ-12", "full": "New Jersey District 12", "coord": 21.0, "winner": "Democrat", "margin": "D+42.0", "status": "Contested"}, {"district": "NM-01", "full": "New Mexico District 1", "coord": 13.5, "winner": "Democrat", "margin": "D+27.0", "status": "Contested"}, {"district": "NM-03", "full": "New Mexico District 3", "coord": 11.5, "winner": "Democrat", "margin": "D+23.0", "status": "Contested"}, {"district": "NY-03", "full": "New York District 3", "coord": 5.0, "winner": "Democrat", "margin": "D+10.0", "status": "Contested"}, {"district": "NY-04", "full": "New York District 4", "coord": 6.5, "winner": "Democrat", "margin": "D+13.0", "status": "Contested"}, {"district": "NY-05", "full": "New York District 5", "coord": 30.5, "winner": "Democrat", "margin": "D+61.0", "status": "Contested"}, {"district": "NY-06", "full": "New York District 6", "coord": 19.0, "winner": "Democrat", "margin": "D+38.0", "status": "Contested"}, {"district": "NY-07", "full": "New York District 7", "coord": 34.0, "winner": "Democrat", "margin": "D+68.0", "status": "Contested"}, {"district": "NY-08", "full": "New York District 8", "coord": 29.5, "winner": "Democrat", "margin": "D+59.0", "status": "Contested"}, {"district": "NY-09", "full": "New York District 9", "coord": 32.5, "winner": "Democrat", "margin": "D+65.0", "status": "Contested"}, {"district": "NY-10", "full": "New York District 10", "coord": 33.5, "winner": "Democrat", "margin": "D+67.0", "status": "Contested"}, {"district": "NY-12", "full": "New York District 12", "coord": 28.5, "winner": "Democrat", "margin": "D+57.0", "status": "Contested"}, {"district": "NY-13", "full": "New York District 13", "coord": 38.0, "winner": "Democrat", "margin": "D+76.0", "status": "Contested"}, {"district": "NY-14", "full": "New York District 14", "coord": 28.5, "winner": "Democrat", "margin": "D+57.0", "status": "Contested"}, {"district": "NY-15", "full": "New York District 15", "coord": 33.0, "winner": "Democrat", "margin": "D+66.0", "status": "Contested"}, {"district": "NY-16", "full": "New York District 16", "coord": 29.5, "winner": "Democrat", "margin": "D+59.0", "status": "Contested"}, {"district": "NY-18", "full": "New York District 18", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "NY-19", "full": "New York District 19", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "NY-20", "full": "New York District 20", "coord": 13.5, "winner": "Democrat", "margin": "D+27.0", "status": "Contested"}, {"district": "NY-22", "full": "New York District 22", "coord": 8.5, "winner": "Democrat", "margin": "D+17.0", "status": "Contested"}, {"district": "NY-25", "full": "New York District 25", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "NY-26", "full": "New York District 26", "coord": 15.5, "winner": "Democrat", "margin": "D+31.0", "status": "Contested"}, {"district": "NC-02", "full": "North Carolina District 2", "coord": 26.0, "winner": "Democrat", "margin": "D+52.0", "status": "Contested"}, {"district": "NC-04", "full": "North Carolina District 4", "coord": 30.0, "winner": "Democrat", "margin": "D+60.0", "status": "Contested"}, {"district": "NC-12", "full": "North Carolina District 12", "coord": 31.0, "winner": "Democrat", "margin": "D+62.0", "status": "Contested"}, {"district": "OH-01", "full": "Ohio District 1", "coord": 5.5, "winner": "Democrat", "margin": "D+11.0", "status": "Contested"}, {"district": "OH-03", "full": "Ohio District 3", "coord": 27.0, "winner": "Democrat", "margin": "D+54.0", "status": "Contested"}, {"district": "OH-11", "full": "Ohio District 11", "coord": 33.5, "winner": "Democrat", "margin": "D+67.0", "status": "Contested"}, {"district": "OH-13", "full": "Ohio District 13", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "OR-01", "full": "Oregon District 1", "coord": 21.0, "winner": "Democrat", "margin": "D+42.0", "status": "Contested"}, {"district": "OR-03", "full": "Oregon District 3", "coord": 27.0, "winner": "Democrat", "margin": "D+54.0", "status": "Contested"}, {"district": "OR-04", "full": "Oregon District 4", "coord": 5.5, "winner": "Democrat", "margin": "D+11.0", "status": "Contested"}, {"district": "OR-05", "full": "Oregon District 5", "coord": 5.5, "winner": "Democrat", "margin": "D+11.0", "status": "Contested"}, {"district": "OR-06", "full": "Oregon District 6", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "PA-02", "full": "Pennsylvania District 2", "coord": 31.0, "winner": "Democrat", "margin": "D+62.0", "status": "Contested"}, {"district": "PA-03", "full": "Pennsylvania District 3", "coord": 43.5, "winner": "Democrat", "margin": "D+87.0", "status": "Contested"}, {"district": "PA-04", "full": "Pennsylvania District 4", "coord": 17.0, "winner": "Democrat", "margin": "D+34.0", "status": "Contested"}, {"district": "PA-05", "full": "Pennsylvania District 5", "coord": 22.0, "winner": "Democrat", "margin": "D+44.0", "status": "Contested"}, {"district": "PA-06", "full": "Pennsylvania District 6", "coord": 14.5, "winner": "Democrat", "margin": "D+29.0", "status": "Contested"}, {"district": "PA-12", "full": "Pennsylvania District 12", "coord": 15.5, "winner": "Democrat", "margin": "D+31.0", "status": "Contested"}, {"district": "PA-17", "full": "Pennsylvania District 17", "coord": 13.0, "winner": "Democrat", "margin": "D+26.0", "status": "Contested"}, {"district": "RI-01", "full": "Rhode Island District 1", "coord": 20.5, "winner": "Democrat", "margin": "D+41.0", "status": "Contested"}, {"district": "RI-02", "full": "Rhode Island District 2", "coord": 12.0, "winner": "Democrat", "margin": "D+24.0", "status": "Contested"}, {"district": "SC-06", "full": "South Carolina District 6", "coord": 19.5, "winner": "Democrat", "margin": "D+39.0", "status": "Contested"}, {"district": "TX-07", "full": "Texas District 7", "coord": 21.5, "winner": "Democrat", "margin": "D+43.0", "status": "Contested"}, {"district": "TX-16", "full": "Texas District 16", "coord": 21.0, "winner": "Democrat", "margin": "D+42.0", "status": "Contested"}, {"district": "TX-18", "full": "Texas District 18", "coord": 36.0, "winner": "Democrat", "margin": "D+72.0", "status": "Contested"}, {"district": "TX-20", "full": "Texas District 20", "coord": 27.5, "winner": "Democrat", "margin": "D+55.0", "status": "Contested"}, {"district": "TX-28", "full": "Texas District 28", "coord": 18.0, "winner": "Democrat", "margin": "D+36.0", "status": "Contested"}, {"district": "TX-29", "full": "Texas District 29", "coord": 30.0, "winner": "Democrat", "margin": "D+60.0", "status": "Contested"}, {"district": "TX-30", "full": "Texas District 30", "coord": 32.5, "winner": "Democrat", "margin": "D+65.0", "status": "Contested"}, {"district": "TX-33", "full": "Texas District 33", "coord": 28.5, "winner": "Democrat", "margin": "D+57.0", "status": "Contested"}, {"district": "TX-37", "full": "Texas District 37", "coord": 34.0, "winner": "Democrat", "margin": "D+68.0", "status": "Contested"}, {"district": "UT-01", "full": "Utah District 1", "coord": 23.5, "winner": "Democrat", "margin": "D+47.0", "status": "Contested"}, {"district": "VT-AL", "full": "Vermont At-Large District", "coord": 17.0, "winner": "Democrat", "margin": "D+34.0", "status": "Contested"}, {"district": "VA-03", "full": "Virginia District 3", "coord": 24.5, "winner": "Democrat", "margin": "D+49.0", "status": "Contested"}, {"district": "VA-04", "full": "Virginia District 4", "coord": 23.0, "winner": "Democrat", "margin": "D+46.0", "status": "Contested"}, {"district": "VA-07", "full": "Virginia District 7", "coord": 11.0, "winner": "Democrat", "margin": "D+22.0", "status": "Contested"}, {"district": "VA-08", "full": "Virginia District 8", "coord": 30.5, "winner": "Democrat", "margin": "D+61.0", "status": "Contested"}, {"district": "VA-10", "full": "Virginia District 10", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "VA-11", "full": "Virginia District 11", "coord": 25.0, "winner": "Democrat", "margin": "D+50.0", "status": "Contested"}, {"district": "WA-01", "full": "Washington District 1", "coord": 17.0, "winner": "Democrat", "margin": "D+34.0", "status": "Contested"}, {"district": "WA-02", "full": "Washington District 2", "coord": 17.0, "winner": "Democrat", "margin": "D+34.0", "status": "Contested"}, {"district": "WA-06", "full": "Washington District 6", "coord": 14.5, "winner": "Democrat", "margin": "D+29.0", "status": "Contested"}, {"district": "WA-07", "full": "Washington District 7", "coord": 37.5, "winner": "Democrat", "margin": "D+75.0", "status": "Contested"}, {"district": "WA-08", "full": "Washington District 8", "coord": 6.0, "winner": "Democrat", "margin": "D+12.0", "status": "Contested"}, {"district": "WA-09", "full": "Washington District 9", "coord": 25.5, "winner": "Democrat", "margin": "D+51.0", "status": "Contested"}, {"district": "WA-10", "full": "Washington District 10", "coord": 14.0, "winner": "Democrat", "margin": "D+28.0", "status": "Contested"}, {"district": "WI-02", "full": "Wisconsin District 2", "coord": null, "winner": "Democrat", "status": "Uncontested"}, {"district": "WI-04", "full": "Wisconsin District 4", "coord": 31.5, "winner": "Democrat", "margin": "D+63.0", "status": "Contested"}, {"district": "AZ-01", "full": "Arizona District 1", "coord": 3.5, "winner": "Democrat", "margin": "D+7.0", "status": "Contested"}, {"district": "AZ-06", "full": "Arizona District 6", "coord": 4.0, "winner": "Democrat", "margin": "D+8.0", "status": "Contested"}, {"district": "CA-48", "full": "California District 48", "coord": 9.5, "winner": "Democrat", "margin": "D+19.0", "status": "Contested"}, {"district": "CO-08", "full": "Colorado District 8", "coord": 7.0, "winner": "Democrat", "margin": "D+14.0", "status": "Contested"}, {"district": "FL-25", "full": "Florida District 25", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "IA-01", "full": "Iowa District 1", "coord": 4.5, "winner": "Democrat", "margin": "D+9.0", "status": "Contested"}, {"district": "IA-03", "full": "Iowa District 3", "coord": 3.5, "winner": "Democrat", "margin": "D+7.0", "status": "Contested"}, {"district": "NJ-07", "full": "New Jersey District 7", "coord": 8.0, "winner": "Democrat", "margin": "D+16.0", "status": "Contested"}, {"district": "NM-02", "full": "New Mexico District 2", "coord": 8.5, "winner": "Democrat", "margin": "D+17.0", "status": "Contested"}, {"district": "NC-11", "full": "North Carolina District 11", "coord": 8.0, "winner": "Democrat", "margin": "D+16.0", "status": "Contested"}, {"district": "OH-09", "full": "Ohio District 9", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "PA-07", "full": "Pennsylvania District 7", "coord": 6.0, "winner": "Democrat", "margin": "D+12.0", "status": "Contested"}, {"district": "PA-08", "full": "Pennsylvania District 8", "coord": 4.5, "winner": "Democrat", "margin": "D+9.0", "status": "Contested"}, {"district": "PA-10", "full": "Pennsylvania District 10", "coord": 5.0, "winner": "Democrat", "margin": "D+10.0", "status": "Contested"}, {"district": "TX-34", "full": "Texas District 34", "coord": 8.0, "winner": "Democrat", "margin": "D+16.0", "status": "Contested"}, {"district": "VA-02", "full": "Virginia District 2", "coord": 4.5, "winner": "Democrat", "margin": "D+9.0", "status": "Contested"}, {"district": "WA-03", "full": "Washington District 3", "coord": 4.5, "winner": "Democrat", "margin": "D+9.0", "status": "Contested"}, {"district": "WI-03", "full": "Wisconsin District 3", "coord": 3.5, "winner": "Democrat", "margin": "D+7.0", "status": "Contested"}, {"district": "CA-22", "full": "California District 22", "coord": 16.5, "winner": "Democrat", "margin": "D+33.0", "status": "Contested"}, {"district": "CO-05", "full": "Colorado District 5", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "FL-14", "full": "Florida District 14", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "FL-22", "full": "Florida District 22", "coord": 2.0, "winner": "Democrat", "margin": "D+4.0", "status": "Contested"}, {"district": "IA-02", "full": "Iowa District 2", "coord": 2.0, "winner": "Democrat", "margin": "D+4.0", "status": "Contested"}, {"district": "KY-06", "full": "Kentucky District 6", "coord": 4.5, "winner": "Democrat", "margin": "D+9.0", "status": "Contested"}, {"district": "MI-04", "full": "Michigan District 4", "coord": 0.9, "winner": "Democrat", "margin": "D+1.8", "status": "Contested"}, {"district": "MI-07", "full": "Michigan District 7", "coord": 1.5, "winner": "Democrat", "margin": "D+3.0", "status": "Contested"}, {"district": "MI-10", "full": "Michigan District 10", "coord": 3.5, "winner": "Democrat", "margin": "D+7.0", "status": "Contested"}, {"district": "MT-01", "full": "Montana District 1", "coord": 2.0, "winner": "Democrat", "margin": "D+4.0", "status": "Contested"}, {"district": "NY-17", "full": "New York District 17", "coord": 2.0, "winner": "Democrat", "margin": "D+4.0", "status": "Contested"}, {"district": "NC-01", "full": "North Carolina District 1", "coord": 1.5, "winner": "Democrat", "margin": "D+3.0", "status": "Contested"}, {"district": "OH-07", "full": "Ohio District 7", "coord": 5.0, "winner": "Democrat", "margin": "D+10.0", "status": "Contested"}, {"district": "PA-01", "full": "Pennsylvania District 1", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "SC-01", "full": "South Carolina District 1", "coord": 0.5, "winner": "Democrat", "margin": "D+1.0", "status": "Contested"}, {"district": "TX-15", "full": "Texas District 15", "coord": 12.5, "winner": "Democrat", "margin": "D+25.0", "status": "Contested"}, {"district": "TX-35", "full": "Texas District 35", "coord": 5.5, "winner": "Democrat", "margin": "D+11.0", "status": "Contested"}, {"district": "VA-01", "full": "Virginia District 1", "coord": 1.0, "winner": "Democrat", "margin": "D+2.0", "status": "Contested"}, {"district": "AL-02", "full": "Alabama District 2", "coord": 4.0, "winner": "Democrat", "margin": "D+8.0", "status": "Contested"}, {"district": "AK-AL", "full": "Alaska At-Large District", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "AZ-02", "full": "Arizona District 2", "coord": -0.49, "winner": "Republican", "margin": "R+0.98", "status": "Contested"}, {"district": "CO-04", "full": "Colorado District 4", "coord": 0.43, "winner": "Democrat", "margin": "D+0.87", "status": "Contested"}, {"district": "FL-07", "full": "Florida District 7", "coord": -0.26, "winner": "Republican", "margin": "R+0.52", "status": "Contested"}, {"district": "FL-09", "full": "Florida District 9", "coord": 0.26, "winner": "Democrat", "margin": "D+0.51", "status": "Contested"}, {"district": "FL-13", "full": "Florida District 13", "coord": -0.4, "winner": "Republican", "margin": "R+0.8", "status": "Contested"}, {"district": "FL-27", "full": "Florida District 27", "coord": -0.22, "winner": "Republican", "margin": "R+0.44", "status": "Contested"}, {"district": "IN-05", "full": "Indiana District 5", "coord": 1.5, "winner": "Democrat", "margin": "D+3.0", "status": "Contested"}, {"district": "ME-02", "full": "Maine District 2", "coord": -0.8, "winner": "Republican", "margin": "R+1.6", "status": "Contested"}, {"district": "MN-01", "full": "Minnesota District 1", "coord": 0.05, "winner": "Democrat", "margin": "D+0.1", "status": "Contested"}, {"district": "NV-02", "full": "Nevada District 2", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "NY-21", "full": "New York District 21", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "OH-10", "full": "Ohio District 10", "coord": 0.8, "winner": "Democrat", "margin": "D+1.6", "status": "Contested"}, {"district": "OH-15", "full": "Ohio District 15", "coord": 3.5, "winner": "Democrat", "margin": "D+7.0", "status": "Contested"}, {"district": "TX-23", "full": "Texas District 23", "coord": 4.0, "winner": "Democrat", "margin": "D+8.0", "status": "Contested"}, {"district": "VA-05", "full": "Virginia District 5", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "WI-01", "full": "Wisconsin District 1", "coord": 2.0, "winner": "Democrat", "margin": "D+4.0", "status": "Contested"}, {"district": "AL-01", "full": "Alabama District 1", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "AL-03", "full": "Alabama District 3", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "AL-04", "full": "Alabama District 4", "coord": -25.0, "winner": "Republican", "margin": "R+50.0", "status": "Contested"}, {"district": "AL-05", "full": "Alabama District 5", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "AL-06", "full": "Alabama District 6", "coord": -7.5, "winner": "Republican", "margin": "R+15.0", "status": "Contested"}, {"district": "AZ-05", "full": "Arizona District 5", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "AZ-08", "full": "Arizona District 8", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "AZ-09", "full": "Arizona District 9", "coord": -8.0, "winner": "Republican", "margin": "R+16.0", "status": "Contested"}, {"district": "AR-01", "full": "Arkansas District 1", "coord": -17.0, "winner": "Republican", "margin": "R+34.0", "status": "Contested"}, {"district": "AR-02", "full": "Arkansas District 2", "coord": -0.9, "winner": "Republican", "margin": "R+1.8", "status": "Contested"}, {"district": "AR-03", "full": "Arkansas District 3", "coord": -6.5, "winner": "Republican", "margin": "R+13.0", "status": "Contested"}, {"district": "AR-04", "full": "Arkansas District 4", "coord": -15.5, "winner": "Republican", "margin": "R+31.0", "status": "Contested"}, {"district": "CA-05", "full": "California District 5", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "CA-20", "full": "California District 20", "coord": -12.0, "winner": "Republican", "margin": "R+24.0", "status": "Contested"}, {"district": "CA-23", "full": "California District 23", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "CA-40", "full": "California District 40", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "CO-03", "full": "Colorado District 3", "coord": -0.95, "winner": "Republican", "margin": "R+1.9", "status": "Contested"}, {"district": "FL-01", "full": "Florida District 1", "coord": -13.5, "winner": "Republican", "margin": "R+27.0", "status": "Contested"}, {"district": "FL-02", "full": "Florida District 2", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "FL-03", "full": "Florida District 3", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "FL-04", "full": "Florida District 4", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "FL-05", "full": "Florida District 5", "coord": -6.5, "winner": "Republican", "margin": "R+13.0", "status": "Contested"}, {"district": "FL-06", "full": "Florida District 6", "coord": -9.5, "winner": "Republican", "margin": "R+19.0", "status": "Contested"}, {"district": "FL-08", "full": "Florida District 8", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "FL-11", "full": "Florida District 11", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "FL-12", "full": "Florida District 12", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "FL-15", "full": "Florida District 15", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "FL-16", "full": "Florida District 16", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "FL-17", "full": "Florida District 17", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "FL-18", "full": "Florida District 18", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "FL-19", "full": "Florida District 19", "coord": -11.5, "winner": "Republican", "margin": "R+23.0", "status": "Contested"}, {"district": "FL-21", "full": "Florida District 21", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "FL-26", "full": "Florida District 26", "coord": -0.38, "winner": "Republican", "margin": "R+0.76", "status": "Contested"}, {"district": "FL-28", "full": "Florida District 28", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "GA-01", "full": "Georgia District 1", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "GA-03", "full": "Georgia District 3", "coord": -8.5, "winner": "Republican", "margin": "R+17.0", "status": "Contested"}, {"district": "GA-07", "full": "Georgia District 7", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "GA-08", "full": "Georgia District 8", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}, {"district": "GA-09", "full": "Georgia District 9", "coord": -9.5, "winner": "Republican", "margin": "R+19.0", "status": "Contested"}, {"district": "GA-10", "full": "Georgia District 10", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "GA-11", "full": "Georgia District 11", "coord": -5.5, "winner": "Republican", "margin": "R+11.0", "status": "Contested"}, {"district": "GA-12", "full": "Georgia District 12", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "GA-14", "full": "Georgia District 14", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "ID-01", "full": "Idaho District 1", "coord": -18.0, "winner": "Republican", "margin": "R+36.0", "status": "Contested"}, {"district": "ID-02", "full": "Idaho District 2", "coord": -5.5, "winner": "Republican", "margin": "R+11.0", "status": "Contested"}, {"district": "IL-12", "full": "Illinois District 12", "coord": -19.5, "winner": "Republican", "margin": "R+39.0", "status": "Contested"}, {"district": "IL-15", "full": "Illinois District 15", "coord": -17.0, "winner": "Republican", "margin": "R+34.0", "status": "Contested"}, {"district": "IL-16", "full": "Illinois District 16", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "IN-02", "full": "Indiana District 2", "coord": -2.5, "winner": "Republican", "margin": "R+5.0", "status": "Contested"}, {"district": "IN-03", "full": "Indiana District 3", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "IN-04", "full": "Indiana District 4", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "IN-06", "full": "Indiana District 6", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "IN-08", "full": "Indiana District 8", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "IN-09", "full": "Indiana District 9", "coord": -5.5, "winner": "Republican", "margin": "R+11.0", "status": "Contested"}, {"district": "IA-04", "full": "Iowa District 4", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "KS-01", "full": "Kansas District 1", "coord": -11.0, "winner": "Republican", "margin": "R+22.0", "status": "Contested"}, {"district": "KS-02", "full": "Kansas District 2", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "KS-04", "full": "Kansas District 4", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "KY-01", "full": "Kentucky District 1", "coord": -17.5, "winner": "Republican", "margin": "R+35.0", "status": "Contested"}, {"district": "KY-02", "full": "Kentucky District 2", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "KY-04", "full": "Kentucky District 4", "coord": -6.5, "winner": "Republican", "margin": "R+13.0", "status": "Contested"}, {"district": "KY-05", "full": "Kentucky District 5", "coord": -23.0, "winner": "Republican", "margin": "R+46.0", "status": "Contested"}, {"district": "LA-01", "full": "Louisiana District 1", "coord": -13.5, "winner": "Republican", "margin": "R+27.0", "status": "Contested"}, {"district": "LA-03", "full": "Louisiana District 3", "coord": -17.0, "winner": "Republican", "margin": "R+34.0", "status": "Contested"}, {"district": "LA-04", "full": "Louisiana District 4", "coord": -18.0, "winner": "Republican", "margin": "R+36.0", "status": "Contested"}, {"district": "LA-05", "full": "Louisiana District 5", "coord": null, "winner": "TBD", "status": "Advanced"}, {"district": "LA-06", "full": "Louisiana District 6", "coord": 0.12, "winner": "Democrat", "margin": "D+0.25", "status": "Contested"}, {"district": "MD-01", "full": "Maryland District 1", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "MI-01", "full": "Michigan District 1", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "MI-02", "full": "Michigan District 2", "coord": -12.5, "winner": "Republican", "margin": "R+25.0", "status": "Contested"}, {"district": "MI-05", "full": "Michigan District 5", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}, {"district": "MI-09", "full": "Michigan District 9", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "MN-06", "full": "Minnesota District 6", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "MN-07", "full": "Minnesota District 7", "coord": -15.0, "winner": "Republican", "margin": "R+30.0", "status": "Contested"}, {"district": "MN-08", "full": "Minnesota District 8", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "MS-01", "full": "Mississippi District 1", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "MS-03", "full": "Mississippi District 3", "coord": -8.0, "winner": "Republican", "margin": "R+16.0", "status": "Contested"}, {"district": "MS-04", "full": "Mississippi District 4", "coord": -12.5, "winner": "Republican", "margin": "R+25.0", "status": "Contested"}, {"district": "MO-02", "full": "Missouri District 2", "coord": 2.5, "winner": "Democrat", "margin": "D+5.0", "status": "Contested"}, {"district": "MO-03", "full": "Missouri District 3", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "MO-04", "full": "Missouri District 4", "coord": -12.5, "winner": "Republican", "margin": "R+25.0", "status": "Contested"}, {"district": "MO-06", "full": "Missouri District 6", "coord": -10.0, "winner": "Republican", "margin": "R+20.0", "status": "Contested"}, {"district": "MO-07", "full": "Missouri District 7", "coord": -13.5, "winner": "Republican", "margin": "R+27.0", "status": "Contested"}, {"district": "MO-08", "full": "Missouri District 8", "coord": -19.5, "winner": "Republican", "margin": "R+39.0", "status": "Contested"}, {"district": "MT-02", "full": "Montana District 2", "coord": -13.0, "winner": "Republican", "margin": "R+26.0", "status": "Contested"}, {"district": "NE-01", "full": "Nebraska District 1", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "NE-03", "full": "Nebraska District 3", "coord": -25.5, "winner": "Republican", "margin": "R+51.0", "status": "Contested"}, {"district": "NJ-02", "full": "New Jersey District 2", "coord": 1.5, "winner": "Democrat", "margin": "D+3.0", "status": "Contested"}, {"district": "NJ-04", "full": "New Jersey District 4", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "NY-01", "full": "New York District 1", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "NY-02", "full": "New York District 2", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "NY-11", "full": "New York District 11", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "NY-23", "full": "New York District 23", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}, {"district": "NY-24", "full": "New York District 24", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}, {"district": "NC-03", "full": "North Carolina District 3", "coord": -0.05, "winner": "Republican", "margin": "R+0.1", "status": "Contested"}, {"district": "NC-05", "full": "North Carolina District 5", "coord": 0.01, "winner": "Democrat", "margin": "D+0.03", "status": "Contested"}, {"district": "NC-06", "full": "North Carolina District 6", "coord": 1.0, "winner": "Democrat", "margin": "D+2.0", "status": "Contested"}, {"district": "NC-07", "full": "North Carolina District 7", "coord": -0.38, "winner": "Republican", "margin": "R+0.76", "status": "Contested"}, {"district": "NC-08", "full": "North Carolina District 8", "coord": -0.9, "winner": "Republican", "margin": "R+1.8", "status": "Contested"}, {"district": "NC-09", "full": "North Carolina District 9", "coord": 1.0, "winner": "Democrat", "margin": "D+2.0", "status": "Contested"}, {"district": "NC-10", "full": "North Carolina District 10", "coord": -0.5, "winner": "Republican", "margin": "R+1.0", "status": "Contested"}, {"district": "NC-13", "full": "North Carolina District 13", "coord": 1.0, "winner": "Democrat", "margin": "D+2.0", "status": "Contested"}, {"district": "NC-14", "full": "North Carolina District 14", "coord": 1.0, "winner": "Democrat", "margin": "D+2.0", "status": "Contested"}, {"district": "ND-AL", "full": "North Dakota At-Large District", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}, {"district": "OH-02", "full": "Ohio District 2", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "OH-04", "full": "Ohio District 4", "coord": -16.5, "winner": "Republican", "margin": "R+33.0", "status": "Contested"}, {"district": "OH-05", "full": "Ohio District 5", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "OH-06", "full": "Ohio District 6", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}, {"district": "OH-08", "full": "Ohio District 8", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "OH-12", "full": "Ohio District 12", "coord": -9.5, "winner": "Republican", "margin": "R+19.0", "status": "Contested"}, {"district": "OH-14", "full": "Ohio District 14", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "OK-01", "full": "Oklahoma District 1", "coord": -2.5, "winner": "Republican", "margin": "R+5.0", "status": "Contested"}, {"district": "OK-02", "full": "Oklahoma District 2", "coord": -19.5, "winner": "Republican", "margin": "R+39.0", "status": "Contested"}, {"district": "OK-03", "full": "Oklahoma District 3", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "OK-04", "full": "Oklahoma District 4", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "OK-05", "full": "Oklahoma District 5", "coord": -0.65, "winner": "Republican", "margin": "R+1.3", "status": "Contested"}, {"district": "OR-02", "full": "Oregon District 2", "coord": -11.5, "winner": "Republican", "margin": "R+23.0", "status": "Contested"}, {"district": "PA-09", "full": "Pennsylvania District 9", "coord": -11.5, "winner": "Republican", "margin": "R+23.0", "status": "Contested"}, {"district": "PA-11", "full": "Pennsylvania District 11", "coord": -5.5, "winner": "Republican", "margin": "R+11.0", "status": "Contested"}, {"district": "PA-13", "full": "Pennsylvania District 13", "coord": -17.5, "winner": "Republican", "margin": "R+35.0", "status": "Contested"}, {"district": "PA-14", "full": "Pennsylvania District 14", "coord": -7.5, "winner": "Republican", "margin": "R+15.0", "status": "Contested"}, {"district": "PA-15", "full": "Pennsylvania District 15", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "PA-16", "full": "Pennsylvania District 16", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "SC-02", "full": "South Carolina District 2", "coord": -0.5, "winner": "Republican", "margin": "R+1.0", "status": "Contested"}, {"district": "SC-03", "full": "South Carolina District 3", "coord": -14.5, "winner": "Republican", "margin": "R+29.0", "status": "Contested"}, {"district": "SC-04", "full": "South Carolina District 4", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "SC-05", "full": "South Carolina District 5", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "SC-07", "full": "South Carolina District 7", "coord": -6.5, "winner": "Republican", "margin": "R+13.0", "status": "Contested"}, {"district": "SD-AL", "full": "South Dakota At-Large District", "coord": -14.0, "winner": "Republican", "margin": "R+28.0", "status": "Contested"}, {"district": "TN-01", "full": "Tennessee District 1", "coord": -19.0, "winner": "Republican", "margin": "R+38.0", "status": "Contested"}, {"district": "TN-02", "full": "Tennessee District 2", "coord": -8.5, "winner": "Republican", "margin": "R+17.0", "status": "Contested"}, {"district": "TN-03", "full": "Tennessee District 3", "coord": -8.5, "winner": "Republican", "margin": "R+17.0", "status": "Contested"}, {"district": "TN-04", "full": "Tennessee District 4", "coord": 0.07, "winner": "Democrat", "margin": "D+0.14", "status": "Contested"}, {"district": "TN-05", "full": "Tennessee District 5", "coord": -2.5, "winner": "Republican", "margin": "R+5.0", "status": "Contested"}, {"district": "TN-06", "full": "Tennessee District 6", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "TN-07", "full": "Tennessee District 7", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "TN-08", "full": "Tennessee District 8", "coord": -2.5, "winner": "Republican", "margin": "R+5.0", "status": "Contested"}, {"district": "TN-09", "full": "Tennessee District 9", "coord": -0.55, "winner": "Republican", "margin": "R+1.1", "status": "Contested"}, {"district": "TX-01", "full": "Texas District 1", "coord": -19.0, "winner": "Republican", "margin": "R+38.0", "status": "Contested"}, {"district": "TX-02", "full": "Texas District 2", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "TX-03", "full": "Texas District 3", "coord": -2.5, "winner": "Republican", "margin": "R+5.0", "status": "Contested"}, {"district": "TX-04", "full": "Texas District 4", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "TX-05", "full": "Texas District 5", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "TX-06", "full": "Texas District 6", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "TX-08", "full": "Texas District 8", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "TX-09", "full": "Texas District 9", "coord": 7.5, "winner": "Democrat", "margin": "D+15.0", "status": "Contested"}, {"district": "TX-10", "full": "Texas District 10", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "TX-11", "full": "Texas District 11", "coord": -9.5, "winner": "Republican", "margin": "R+19.0", "status": "Contested"}, {"district": "TX-12", "full": "Texas District 12", "coord": -3.0, "winner": "Republican", "margin": "R+6.0", "status": "Contested"}, {"district": "TX-13", "full": "Texas District 13", "coord": -15.5, "winner": "Republican", "margin": "R+31.0", "status": "Contested"}, {"district": "TX-14", "full": "Texas District 14", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "TX-17", "full": "Texas District 17", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "TX-19", "full": "Texas District 19", "coord": -19.5, "winner": "Republican", "margin": "R+39.0", "status": "Contested"}, {"district": "TX-21", "full": "Texas District 21", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "TX-22", "full": "Texas District 22", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "TX-24", "full": "Texas District 24", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "TX-25", "full": "Texas District 25", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "TX-26", "full": "Texas District 26", "coord": -5.0, "winner": "Republican", "margin": "R+10.0", "status": "Contested"}, {"district": "TX-27", "full": "Texas District 27", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "TX-31", "full": "Texas District 31", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "TX-32", "full": "Texas District 32", "coord": -1.5, "winner": "Republican", "margin": "R+3.0", "status": "Contested"}, {"district": "TX-36", "full": "Texas District 36", "coord": -3.5, "winner": "Republican", "margin": "R+7.0", "status": "Contested"}, {"district": "TX-38", "full": "Texas District 38", "coord": -2.0, "winner": "Republican", "margin": "R+4.0", "status": "Contested"}, {"district": "UT-02", "full": "Utah District 2", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "UT-03", "full": "Utah District 3", "coord": -11.5, "winner": "Republican", "margin": "R+23.0", "status": "Contested"}, {"district": "UT-04", "full": "Utah District 4", "coord": -6.0, "winner": "Republican", "margin": "R+12.0", "status": "Contested"}, {"district": "VA-06", "full": "Virginia District 6", "coord": -5.5, "winner": "Republican", "margin": "R+11.0", "status": "Contested"}, {"district": "VA-09", "full": "Virginia District 9", "coord": -16.0, "winner": "Republican", "margin": "R+32.0", "status": "Contested"}, {"district": "WA-04", "full": "Washington District 4", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "WA-05", "full": "Washington District 5", "coord": -1.0, "winner": "Republican", "margin": "R+2.0", "status": "Contested"}, {"district": "WV-01", "full": "West Virginia District 1", "coord": -8.5, "winner": "Republican", "margin": "R+17.0", "status": "Contested"}, {"district": "WV-02", "full": "West Virginia District 2", "coord": -9.5, "winner": "Republican", "margin": "R+19.0", "status": "Contested"}, {"district": "WI-05", "full": "Wisconsin District 5", "coord": -9.0, "winner": "Republican", "margin": "R+18.0", "status": "Contested"}, {"district": "WI-06", "full": "Wisconsin District 6", "coord": -4.5, "winner": "Republican", "margin": "R+9.0", "status": "Contested"}, {"district": "WI-07", "full": "Wisconsin District 7", "coord": -6.5, "winner": "Republican", "margin": "R+13.0", "status": "Contested"}, {"district": "WI-08", "full": "Wisconsin District 8", "coord": -4.0, "winner": "Republican", "margin": "R+8.0", "status": "Contested"}, {"district": "WY-AL", "full": "Wyoming At-Large District", "coord": -10.5, "winner": "Republican", "margin": "R+21.0", "status": "Contested"}];
+const usSummary = {"total": 435, "contested": 429, "mean_coord": 6.53, "median_coord": 4.5, "dem_seats": 260, "rep_seats": 174};
+
+const svg = document.getElementById('facetedChart');
+const width = 950;
+const height = 560;
+const margin = { left: 140, right: 60, top: 40, bottom: 60 };
+const innerWidth = width - margin.left - margin.right;
+
+// Scale: -40 to +45
+const minX = -40;
+const maxX = 45;
+function scaleX(val) {
+  return margin.left + ((val - minX) / (maxX - minX)) * innerWidth;
+}
+
+const panels = [
+  { key: '2011', label: 'Singapore 2011', col: '#2b5c8f', avg: summaries[2011].nat_coord, type: 'sg', papLean: summaries[2011].nat_pap_lean },
+  { key: '2020', label: 'Singapore 2020', col: '#d95f02', avg: summaries[2020].nat_coord, type: 'sg', papLean: summaries[2020].nat_pap_lean },
+  { key: '2025', label: 'Singapore 2025', col: '#7570b3', avg: summaries[2025].nat_coord, type: 'sg', papLean: summaries[2025].nat_pap_lean },
+  { key: 'us26', label: 'US House 2026', col: '#b91c1c', avg: usSummary.mean_coord, type: 'us' }
+];
+
+const panelHeight = 85;
+const panelGap = 28;
+
+let svgHtml = '';
+
+const zeroX = scaleX(0);
+const startX = scaleX(minX);
+const endX = scaleX(maxX);
+
+// Background zones: Left = PAP & GOP (Red), Right = Opp & Dem (Blue)
+svgHtml += `<rect x="${startX}" y="${margin.top - 15}" width="${zeroX - startX}" height="${4 * (panelHeight + panelGap) - 10}" fill="#fee8e8" opacity="0.35"/>`;
+svgHtml += `<rect x="${zeroX}" y="${margin.top - 15}" width="${endX - zeroX}" height="${4 * (panelHeight + panelGap) - 10}" fill="#e8f0fe" opacity="0.35"/>`;
+
+svgHtml += `<text x="${zeroX - 15}" y="${margin.top - 20}" text-anchor="end" font-size="11" font-weight="700" fill="#dc2626">← PAP / REPUBLICAN LEAN</text>`;
+svgHtml += `<text x="${zeroX + 15}" y="${margin.top - 20}" text-anchor="start" font-size="11" font-weight="700" fill="#2563eb">OPPOSITION / DEMOCRATIC LEAN →</text>`;
+
+svgHtml += `<line x1="${zeroX}" y1="${margin.top - 15}" x2="${zeroX}" y2="${margin.top + 4 * (panelHeight + panelGap) - 15}" stroke="#64748b" stroke-dasharray="4,3" stroke-width="1.5"/>`;
+
+panels.forEach((p, idx) => {
+  const yTop = margin.top + idx * (panelHeight + panelGap);
+  const yMid = yTop + panelHeight / 2;
+  const avgX = scaleX(p.avg);
+  
+  svgHtml += `<line x1="${startX}" y1="${yMid}" x2="${endX}" y2="${yMid}" stroke="#e2e8f0" stroke-width="1.5"/>`;
+  svgHtml += `<text x="${margin.left - 18}" y="${yMid + 5}" text-anchor="end" font-size="12.5" font-weight="800" fill="${p.col}">${p.label}</text>`;
+  
+  // PROMINENT AVERAGE PARTISAN LEAN LINE
+  svgHtml += `<line x1="${avgX}" y1="${yTop}" x2="${avgX}" y2="${yTop + panelHeight}" stroke="#b91c1c" stroke-width="2.5" stroke-dasharray="6,4"/>`;
+  
+  const tagText = p.type === 'sg' ? `Avg: PAP +${p.papLean}%` : `Avg: D+${p.avg}%`;
+  const tagOffset = p.type === 'sg' ? -135 : 8;
+  
+  svgHtml += `
+    <g transform="translate(${avgX}, ${yTop + 14})">
+      <rect x="${tagOffset}" y="-12" width="128" height="22" rx="4" fill="#ffffff" stroke="#b91c1c" stroke-width="1.2" opacity="0.95"/>
+      <text x="${tagOffset + 8}" y="3" font-size="10" font-weight="800" fill="#b91c1c">${tagText}</text>
+    </g>
+  `;
+  
+  if (p.type === 'sg') {
+    const wards = data[p.key];
+    wards.forEach((w, wIdx) => {
+      const cx = scaleX(w.coord);
+      const cy = yMid + ((wIdx % 5) - 2) * 8;
+      svgHtml += `<circle class="dot" cx="${cx}" cy="${cy}" r="4.8" fill="${p.col}" stroke="#ffffff" stroke-width="1.2" opacity="0.85"
+                  data-title="${w.constituency} (${p.key})" data-coord="${w.coord}" data-extra="PAP Share: ${w.pap_pct}% | Opp: ${w.opp_parties}"/>`;
+    });
+  } else {
+    const contested = usDistricts.filter(d => d.coord !== null);
+    contested.forEach((d, dIdx) => {
+      const cx = scaleX(d.coord);
+      const cy = yMid + ((dIdx % 7) - 3) * 6;
+      svgHtml += `<circle class="dot" cx="${cx}" cy="${cy}" r="3.4" fill="${p.col}" stroke="#ffffff" stroke-width="0.8" opacity="0.65"
+                  data-title="${d.full} (2026)" data-coord="${d.coord}" data-extra="Winner: ${d.winner} | ${d.margin}"/>`;
+    });
+  }
+});
+
+const axisY = margin.top + 4 * (panelHeight + panelGap) - 15;
+svgHtml += `<line x1="${startX}" y1="${axisY}" x2="${endX}" y2="${axisY}" stroke="#94a3b8" stroke-width="1.5"/>`;
+
+for (let tick = minX; tick <= maxX; tick += 10) {
+  const tx = scaleX(tick);
+  svgHtml += `<line x1="${tx}" y1="${axisY}" x2="${tx}" y2="${axisY + 6}" stroke="#94a3b8" stroke-width="1.5"/>`;
+  let lbl = "0% (Parity)";
+  if (tick < 0) lbl = `PAP / R+${Math.abs(tick)}%`;
+  else if (tick > 0) lbl = `Opp / D+${tick}%`;
+  svgHtml += `<text x="${tx}" y="${axisY + 20}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#475569">${lbl}</text>`;
+}
+
+svg.innerHTML = svgHtml;
+
+const tooltip = document.getElementById('tooltip');
+document.querySelectorAll('.dot').forEach(d => {
+  d.addEventListener('mouseenter', (e) => {
+    const title = d.dataset.title;
+    const coord = parseFloat(d.dataset.coord);
+    const extra = d.dataset.extra;
+    const side = coord < 0 ? `PAP / Republican Lean (${Math.abs(coord)}%)` : (coord > 0 ? `Opposition / Democratic Lean (+${coord}%)` : `Even / Parity`);
+    tooltip.innerHTML = `<strong>${title}</strong><br>Position: <strong>${side}</strong><br>${extra}`;
+    tooltip.style.display = 'block';
+  });
+  d.addEventListener('mousemove', (e) => {
+    tooltip.style.left = (e.pageX + 15) + 'px';
+    tooltip.style.top = (e.pageY - 25) + 'px';
+  });
+  d.addEventListener('mouseleave', () => {
+    tooltip.style.display = 'none';
+  });
+});
+
+// Render Interactive Seats-Votes Curves
+function renderSeatsVotesCurves() {
+  const sgSvg = document.getElementById('sg-curve-svg');
+  const usSvg = document.getElementById('us-curve-svg');
+  if (!sgSvg || !usSvg) return;
+
+  const pL = 45, pR = 480, pT = 20, pB = 245;
+  const sgX = v => pL + ((v - 35) / (80 - 35)) * (pR - pL);
+  const sgY = s => pB - (s / 100) * (pB - pT);
+
+  let sgH = '';
+  const zL = sgX(48), zR = sgX(56);
+  sgH += `<rect x="${zL}" y="${pT}" width="${zR - zL}" height="${pB - pT}" fill="#fee2e2" opacity="0.45"/>`;
+  sgH += `<text x="${(zL+zR)/2}" y="${pT + 14}" text-anchor="middle" font-size="9" font-weight="700" fill="#991b1b">Cracking Cascade Zone</text>`;
+
+  sgH += `<line x1="${sgX(35)}" y1="${sgY(35)}" x2="${sgX(80)}" y2="${sgY(80)}" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="1.2"/>`;
+
+  const y23 = sgY(66.67);
+  sgH += `<line x1="${pL}" y1="${y23}" x2="${pR}" y2="${y23}" stroke="#b91c1c" stroke-dasharray="4,4" stroke-width="1.6"/>`;
+  sgH += `<text x="${pL + 5}" y="${y23 - 4}" font-size="9" font-weight="800" fill="#b91c1c">2/3 Supermajority (66.7% / 65 MPs)</text>`;
+
+  const y50 = sgY(50.0);
+  sgH += `<line x1="${pL}" y1="${y50}" x2="${pR}" y2="${y50}" stroke="#1e40af" stroke-dasharray="4,4" stroke-width="1.6"/>`;
+  sgH += `<text x="${pL + 5}" y="${y50 - 4}" font-size="9" font-weight="800" fill="#1e40af">50% Simple Majority (50.0% / 49 MPs)</text>`;
+
+  const x23_25 = sgX(54.19);
+  const x50_25 = sgX(47.08);
+  sgH += `<line x1="${x23_25}" y1="${y23}" x2="${x23_25}" y2="${pB}" stroke="#b91c1c" stroke-width="1.2" stroke-dasharray="2,2"/>`;
+  sgH += `<line x1="${x50_25}" y1="${y50}" x2="${x50_25}" y2="${pB}" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="2,2"/>`;
+
+  const pts25 = [
+    [35, 0], [42, 5], [46, 20], [47.08, 49.5], [50, 59.8], [54.19, 66.7], [58, 82.5], [62, 90.7], [65.8, 93.8], [72, 98], [80, 100]
+  ];
+  let dPath25 = 'M ' + pts25.map(p => `${sgX(p[0])},${sgY(p[1])}`).join(' L ');
+  sgH += `<path d="${dPath25}" fill="none" stroke="#7570b3" stroke-width="3"/>`;
+
+  sgH += `<circle class="dot" cx="${sgX(65.8)}" cy="${sgY(93.8)}" r="5.5" fill="#7570b3" stroke="#ffffff" stroke-width="1.5"
+          data-title="Singapore 2025 Actual" data-coord="-15.8" data-extra="PAP Vote: 65.8% | Seats Won: 93.8% (91/97 MPs)"/>`;
+  sgH += `<text x="${sgX(65.8) - 10}" y="${sgY(93.8) - 9}" font-size="9" font-weight="800" fill="#7570b3">2025 Actual (65.8% Vote -> 93.8% Seats)</text>`;
+
+  sgH += `<circle class="dot" cx="${sgX(61.35)}" cy="${sgY(89.2)}" r="5.5" fill="#d95f02" stroke="#ffffff" stroke-width="1.5"
+          data-title="Singapore 2020 Actual" data-coord="-11.35" data-extra="PAP Vote: 61.35% | Seats Won: 89.2% (83/93 MPs)"/>`;
+
+  sgH += `<line x1="${pL}" y1="${pB}" x2="${pR}" y2="${pB}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  sgH += `<line x1="${pL}" y1="${pT}" x2="${pL}" y2="${pB}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  for (let v = 40; v <= 80; v += 10) {
+    const tx = sgX(v);
+    sgH += `<line x1="${tx}" y1="${pB}" x2="${tx}" y2="${pB+4}" stroke="#94a3b8"/>`;
+    sgH += `<text x="${tx}" y="${pB + 16}" text-anchor="middle" font-size="9" fill="#475569">${v}%</text>`;
+  }
+  sgH += `<text x="${(pL+pR)/2}" y="${pB + 30}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#334155">PAP Popular Vote Share (%)</text>`;
+  sgSvg.innerHTML = sgH;
+
+  const usX = v => pL + ((v - 40) / (65 - 40)) * (pR - pL);
+  const usY = s => pB - (s / 100) * (pB - pT);
+
+  let usH = '';
+  const uzL = usX(47.5), uzR = usX(52.5);
+  usH += `<rect x="${uzL}" y="${pT}" width="${uzR - uzL}" height="${pB - pT}" fill="#fee2e2" opacity="0.45"/>`;
+  usH += `<text x="${(uzL+uzR)/2}" y="${pT + 14}" text-anchor="middle" font-size="9" font-weight="700" fill="#991b1b">132 Competitive Seats (&plusmn;5%)</text>`;
+
+  usH += `<line x1="${usX(40)}" y1="${usY(40)}" x2="${usX(65)}" y2="${usY(65)}" stroke="#cbd5e1" stroke-dasharray="3,3" stroke-width="1.2"/>`;
+
+  const uy50 = usY(50.0);
+  usH += `<line x1="${pL}" y1="${uy50}" x2="${pR}" y2="${uy50}" stroke="#1e40af" stroke-dasharray="4,4" stroke-width="1.6"/>`;
+  usH += `<text x="${pL + 5}" y="${uy50 - 4}" font-size="9" font-weight="800" fill="#1e40af">50% House Majority (218 Seats)</text>`;
+
+  const uxFlip = usX(52.49);
+  usH += `<line x1="${uxFlip}" y1="${uy50}" x2="${uxFlip}" y2="${pB}" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="2,2"/>`;
+  usH += `<text x="${uxFlip - 8}" y="${uy50 + 20}" font-size="8.5" font-weight="700" fill="#1e40af">Flip at 52.5% (+4.5% Swing)</text>`;
+
+  const ptsUS = [
+    [40, 22], [45, 34], [48, 41], [50, 46.2], [52.49, 50.1], [55, 54.8], [57, 59.8], [60, 68], [65, 82]
+  ];
+  let dPathUS = 'M ' + ptsUS.map(p => `${usX(p[0])},${usY(p[1])}`).join(' L ');
+  usH += `<path d="${dPathUS}" fill="none" stroke="#2b5c8f" stroke-width="3"/>`;
+
+  usH += `<circle class="dot" cx="${usX(57.0)}" cy="${usY(59.8)}" r="5.5" fill="#2b5c8f" stroke="#ffffff" stroke-width="1.5"
+          data-title="US House 2026 Midterm" data-coord="7.0" data-extra="Dem Vote: 57.0% | Seats Won: 260/435 (59.8%)"/>`;
+  usH += `<text x="${usX(57.0) - 20}" y="${usY(59.8) - 9}" font-size="9" font-weight="800" fill="#2b5c8f">2026 Actual (57.0% Vote -> 260 Seats)</text>`;
+
+  usH += `<line x1="${pL}" y1="${pB}" x2="${pR}" y2="${pB}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  usH += `<line x1="${pL}" y1="${pT}" x2="${pL}" y2="${pB}" stroke="#94a3b8" stroke-width="1.2"/>`;
+  for (let v = 40; v <= 65; v += 5) {
+    const tx = usX(v);
+    usH += `<line x1="${tx}" y1="${pB}" x2="${tx}" y2="${pB+4}" stroke="#94a3b8"/>`;
+    usH += `<text x="${tx}" y="${pB + 16}" text-anchor="middle" font-size="9" fill="#475569">${v}%</text>`;
+  }
+  usH += `<text x="${(pL+pR)/2}" y="${pB + 30}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#334155">Democratic Popular Vote Share (%)</text>`;
+  usSvg.innerHTML = usH;
+}
+
+renderSeatsVotesCurves();
+
+</script>
+
+</body>
+</html>
