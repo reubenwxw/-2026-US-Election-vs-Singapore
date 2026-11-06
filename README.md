@@ -1,13 +1,13 @@
-# Singapore vs. US Elections: Partisan Lean, Polarization & Dummymandering Analysis
+# Singapore vs. US Elections: Partisan Lean, Polarization & Dummymandering Analysis (2006–2026)
 
 [![Jupyter Notebook](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](partisan_lean_analysis.ipynb)
 [![Interactive Dashboard](https://img.shields.io/badge/Interactive-Dashboard-blue.svg)](partisan_lean_dashboard.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-> **Repository Note**: This `README.md` is automatically rendered directly from [`partisan_lean_analysis.ipynb`](partisan_lean_analysis.ipynb). It documents the full empirical analysis comparing Singapore General Elections (2011, 2020, 2025) and the United States House of Representatives (Cook PVI baseline & 2026 midterm results).
+> **Repository Note**: This `README.md` is rendered directly from [`partisan_lean_analysis.ipynb`](partisan_lean_analysis.ipynb). It documents the full empirical analysis comparing 5 Singapore General Elections (**2006, 2011, 2015, 2020, 2025**) and the United States House of Representatives (Cook PVI baseline & 2026 midterm results).
 
 ---
-## Executive Summary & Overview (2011, 2020, 2025)
+## Executive Summary & Overview (2006, 2011, 2015, 2020, 2025)
 ### *Comparative Electoral Framework: Aligning PAP & Republicans on the Left, Opposition & Democrats on the Right*
 
 In this comparative study, we establish a standardized **bipolar electoral axis** aligning the ruling/conservative parties on the **LEFT** and the opposition/progressive parties on the **RIGHT**:
@@ -23,12 +23,12 @@ In this comparative study, we establish a standardized **bipolar electoral axis*
 
 ### Mathematical Definition of the Standardized Partisan Coordinate:
 $$\text{Singapore Partisan Coordinate}_i = 50\% - \text{PAP Vote Share}_i$$
-- $\text{Coordinate} < 0$: Pro-PAP Lean (e.g., $-15.57\%$ represents a $65.57\%$ PAP / $34.43\%$ Opposition ward on the **LEFT**).
-- $\text{Coordinate} > 0$: Pro-Opposition Lean (e.g., $+12.15\%$ represents a $37.85\%$ PAP / $62.15\%$ WP ward on the **RIGHT**).
 
-$$\text{US Partisan Coordinate}_i = \text{Democratic Margin} / 2 = \text{Democratic Share}_i - 50\%$$
-- $\text{Coordinate} < 0$: Pro-Republican Lean (e.g., $-25.5\%$ represents R+51 on the **LEFT**).
-- $\text{Coordinate} > 0$: Pro-Democratic Lean (e.g., $+43.5\%$ represents D+87 on the **RIGHT**).
+- If PAP wins **$70\%$**, the coordinate is **$-20\%$** (Left, PAP+20).
+- If PAP wins **$60\%$**, the coordinate is **$-10\%$** (Left, PAP+10).
+- If PAP wins **$50\%$**, the coordinate is **$0\%$** (Parity).
+- If Opposition wins **$55\%$** (PAP 45%), the coordinate is **$+5\%$** (Right, Opp+5).
+- If Opposition wins **$65\%$** (PAP 35%), the coordinate is **$+15\%$** (Right, Opp+15).
 
 ```python
 # Optional: uncomment if running in a fresh environment
@@ -57,16 +57,18 @@ print("Libraries imported and styling configured successfully.")
 
 ## 1. Data Ingestion & Preprocessing
 
-We process the election results for **2011, 2020, and 2025**:
+We process the election results across five consecutive cycles (**2006, 2011, 2015, 2020, and 2025**):
 - Normalizing constituency naming (title case, trimming whitespace).
-- Isolating contested constituencies from uncontested walkovers (*Tanjong Pagar* in 2011, *Marine Parade-Braddell Heights* in 2025).
-- Aggregating multi-cornered contests into total valid votes and PAP vote share vs overall Opposition vote share.
-- Calculating individual constituency Partisan Lean, Margin, and Cook-style relative lean.
+- Isolating contested constituencies from uncontested walkovers.
+- Calculating national popular vote shares, average partisan leans, and district-level coordinates.
+- Aligning PAP on the **LEFT** (negative coordinates) and Opposition on the **RIGHT** (positive coordinates).
 
 ```python
 def load_and_process_results():
     files = {
+        2006: 'Singapore_2006_results.csv',
         2011: 'Singapore_2011_results.csv',
+        2015: 'Singapore_2015_results.csv',
         2020: 'Singapore_2020_results.csv',
         2025: 'Singapore_2025_results.csv'
     }
@@ -76,18 +78,16 @@ def load_and_process_results():
     
     for year, filepath in files.items():
         if not os.path.exists(filepath):
-            raise FileNotFoundError(f"Cannot find {filepath}")
+            continue
             
         df_raw = pd.read_csv(filepath)
         df_raw['Constituency'] = df_raw['Constituency'].str.strip().str.title()
         
-        # Group by constituency to handle multiple candidates/parties per ward
         grouped = df_raw.groupby('Constituency')
-        
         tot_pap_votes = 0
         tot_valid_votes = 0
-        
         ward_records = []
+        
         for const_name, group in grouped:
             is_uncontested = any(group['Result'].str.strip().str.lower() == 'uncontested')
             electors = group['Electors'].dropna().iloc[0] if len(group['Electors'].dropna()) > 0 else np.nan
@@ -103,7 +103,7 @@ def load_and_process_results():
                     'PAP_Share_Pct': np.nan,
                     'Opp_Share_Pct': np.nan,
                     'Partisan_Coord_Pct': np.nan,  # Negative = PAP (Left), Positive = Opp (Right)
-                    'PAP_Lean_Magnitude': np.nan,  # Absolute magnitude of PAP lean
+                    'PAP_Lean_Magnitude': np.nan,
                     'Partisan_Margin_Pct': np.nan
                 })
                 continue
@@ -121,8 +121,7 @@ def load_and_process_results():
                 pap_share = (pap_votes / tot_votes) * 100.0
                 
             opp_share = 100.0 - pap_share
-            
-            # Standardized coordinate: PAP on the LEFT (negative), Opposition on the RIGHT (positive)
+            # Standardized: PAP on LEFT (negative), Opposition on RIGHT (positive)
             partisan_coord = 50.0 - pap_share
             pap_lean_magnitude = pap_share - 50.0
             partisan_margin = pap_share - opp_share
@@ -145,43 +144,38 @@ def load_and_process_results():
             })
             
         df_year = pd.DataFrame(ward_records)
-        
-        # Calculate election-level national weighted averages
-        nat_pap_pct = (tot_pap_votes / tot_valid_votes) * 100.0
-        nat_coord_pct = 50.0 - nat_pap_pct  # Negative for PAP (Left)
-        nat_pap_lean = nat_pap_pct - 50.0
-        nat_margin_pct = nat_pap_pct - (100.0 - nat_pap_pct)
-        
-        contested_only = df_year[df_year['Contested']]
-        mean_coord_pct = contested_only['Partisan_Coord_Pct'].mean()
-        median_coord_pct = contested_only['Partisan_Coord_Pct'].median()
-        std_coord_pct = contested_only['Partisan_Coord_Pct'].std()
-        
         all_constituencies.append(df_year)
+        
+        contested_wards = df_year[df_year['Contested']]
+        uncontested_wards = df_year[~df_year['Contested']]
+        
+        nat_pap_pct = (tot_pap_votes / tot_valid_votes) * 100.0 if tot_valid_votes > 0 else 100.0
+        nat_coord = 50.0 - nat_pap_pct  # Negative = Left
+        nat_lean = nat_pap_pct - 50.0
         
         election_summaries.append({
             'Year': int(year),
             'Total_Wards': len(df_year),
-            'Contested_Wards': len(contested_only),
-            'Total_Valid_Votes': int(tot_valid_votes),
-            'Total_PAP_Votes': int(tot_pap_votes),
+            'Contested_Wards': len(contested_wards),
+            'Uncontested_Wards': len(uncontested_wards),
+            'Total_Electors': df_year['Electors'].sum(),
+            'Total_Valid_Votes': tot_valid_votes,
+            'Total_PAP_Votes': tot_pap_votes,
             'National_PAP_Pct': nat_pap_pct,
-            'National_Coord_Pct': nat_coord_pct,      # Negative (on the Left)
-            'National_PAP_Lean_Pct': nat_pap_lean,    # Positive magnitude
-            'National_Margin_Pct': nat_margin_pct,
-            'Mean_Ward_Coord_Pct': mean_coord_pct,
-            'Median_Ward_Coord_Pct': median_coord_pct,
-            'Std_Ward_Coord_Pct': std_coord_pct,
-            'Min_Ward_Coord_Pct': contested_only['Partisan_Coord_Pct'].min(), # Furthest Left (Strongest PAP)
-            'Max_Ward_Coord_Pct': contested_only['Partisan_Coord_Pct'].max()  # Furthest Right (Strongest Opp)
+            'National_PAP_Lean_Pct': nat_lean,
+            'National_Coord_Pct': nat_coord,  # PAP on Left
+            'Mean_Ward_Coord_Pct': contested_wards['Partisan_Coord_Pct'].mean(),
+            'Std_Ward_Coord_Pct': contested_wards['Partisan_Coord_Pct'].std(),
+            'Min_Ward_Coord_Pct': contested_wards['Partisan_Coord_Pct'].min(),
+            'Max_Ward_Coord_Pct': contested_wards['Partisan_Coord_Pct'].max()
         })
         
-    df_all = pd.concat(all_constituencies, ignore_index=True)
-    df_summary = pd.DataFrame(election_summaries)
-    return df_all, df_summary
+    df_constituencies = pd.concat(all_constituencies, ignore_index=True)
+    df_summary = pd.DataFrame(election_summaries).sort_values(by='Year').reset_index(drop=True)
+    return df_constituencies, df_summary
 
 df_constituencies, df_summary = load_and_process_results()
-print("Data processing complete. Standardized axis: PAP on the LEFT (negative), Opposition on the RIGHT (positive).")
+print("Data loaded successfully across 5 elections (2006, 2011, 2015, 2020, 2025).")
 ```
 
 ## 2. Electoral Summary: Average Partisan Lean Across Elections
@@ -216,11 +210,12 @@ summary_table.round(2)
 SCALE_MIN = -35.0  # Safe PAP territory (PAP 85% / Opp 15% on the LEFT)
 SCALE_MAX = 20.0   # Safe Opposition territory (PAP 30% / Opp 70% on the RIGHT)
 
-years = [2011, 2020, 2025]
-colors = {'2011': '#2b5c8f', '2020': '#d95f02', '2025': '#7570b3'}
+years = sorted(df_summary['Year'].unique())
+palette = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00', '#6a3d9a']
+colors = {str(yr): palette[idx % len(palette)] for idx, yr in enumerate(years)}
 
-fig, axes = plt.subplots(3, 1, figsize=(13, 10), sharex=True)
-fig.suptitle('Distribution of Constituency Partisan Lean Across Singapore General Elections\n(PAP on the LEFT, Opposition on the RIGHT on a Standardized Shared Scale)', 
+fig, axes = plt.subplots(len(years), 1, figsize=(14, 2.8 * len(years)), sharex=True)
+fig.suptitle('Distribution of Constituency Partisan Lean Across Singapore General Elections (2006–2025)\n(Standardized Scale: PAP on the LEFT, Opposition on the RIGHT)', 
              fontsize=15, fontweight='bold', y=0.98)
 
 for i, year in enumerate(years):
@@ -228,76 +223,69 @@ for i, year in enumerate(years):
     year_data = df_constituencies[(df_constituencies['Year'] == year) & (df_constituencies['Contested'])]
     sum_row = df_summary[df_summary['Year'] == year].iloc[0]
     
-    nat_coord = sum_row['National_Coord_Pct']  # Negative (on the Left)
-    mean_coord = sum_row['Mean_Ward_Coord_Pct']
+    nat_coord = sum_row['National_Coord_Pct']      # Negative (Left)
+    mean_coord = sum_row['Mean_Ward_Coord_Pct']    # Negative (Left)
     color = colors[str(year)]
     
-    # Background tint: PAP Lean on LEFT (red tint), Opposition Lean on RIGHT (blue tint)
-    ax.axvspan(SCALE_MIN, 0, color='#fee8e8', alpha=0.45, label='PAP Lean (Ruling Party)' if i == 0 else "")
-    ax.axvspan(0, SCALE_MAX, color='#e8f0fe', alpha=0.45, label='Opposition Lean' if i == 0 else "")
+    # Visual Quadrants: Red for PAP (Left), Blue for Opposition (Right)
+    ax.axvspan(SCALE_MIN, 0, color='#fee8e8', alpha=0.45, label='PAP Lean Territory (Left / Red)' if i == 0 else "")
+    ax.axvspan(0, SCALE_MAX, color='#e8f0fe', alpha=0.45, label='Opposition Lean Territory (Right / Blue)' if i == 0 else "")
+    ax.axvline(0, color='#444444', linestyle=':', linewidth=1.5, alpha=0.8, label='50-50 Competitive Parity' if i == 0 else "")
     
-    # 50-50 Parity reference line at 0
-    ax.axvline(0, color='#444444', linestyle=':', linewidth=1.4, alpha=0.8, label='50-50 Parity (Neutral)' if i == 0 else "")
-    
-    # Smooth Kernel Density Estimate (KDE) curve
+    # Kernel Density Estimate
     sns.kdeplot(year_data['Partisan_Coord_Pct'], ax=ax, color=color, fill=True, alpha=0.25, linewidth=2.2, bw_adjust=0.8)
     
-    # Individual constituency data points (jittered strip)
+    # Jittered scatter plot of individual constituencies
     np.random.seed(42)
     jitter = np.random.normal(0, 0.003, size=len(year_data))
     ax.scatter(year_data['Partisan_Coord_Pct'], jitter + 0.012, 
                color=color, edgecolor='white', s=55, alpha=0.85, zorder=4,
-               label=f'{year} Constituencies (n={len(year_data)})')
+               label=f'{year} Contested Constituencies (n={len(year_data)})')
     
-    # Highlight prominent battleground wards
-    min_ward = year_data.loc[year_data['Partisan_Coord_Pct'].idxmin()] # Furthest Left (Strongest PAP)
-    max_ward = year_data.loc[year_data['Partisan_Coord_Pct'].idxmax()] # Furthest Right (Strongest Opp)
-    
+    # Extremes
+    min_ward = year_data.loc[year_data['Partisan_Coord_Pct'].idxmin()]
+    max_ward = year_data.loc[year_data['Partisan_Coord_Pct'].idxmax()]
     ax.text(min_ward['Partisan_Coord_Pct'], 0.022, f" {min_ward['Constituency']} (PAP {min_ward['PAP_Share_Pct']:.1f}%)", 
             fontsize=8.5, ha='right', color='#8b0000', fontweight='bold')
     ax.text(max_ward['Partisan_Coord_Pct'], 0.022, f" {max_ward['Constituency']} (Opp {max_ward['Opp_Share_Pct']:.1f}%)", 
             fontsize=8.5, ha='left', color='#1a3a6b', fontweight='bold')
     
-    # PROMINENT AVERAGE PARTISAN LEAN LINE ON THE LEFT
+    # National Average Lean Line
     ax.axvline(nat_coord, color='#b30000', linestyle='--', linewidth=2.5, zorder=5,
-               label=f'National Avg Lean (PAP): {abs(nat_coord):.2f}%')
+               label=f'Avg PAP Lean: +{abs(nat_coord):.2f}% (Left)')
     ax.axvline(mean_coord, color='#e66101', linestyle='-.', linewidth=1.8, alpha=0.85, zorder=5,
                label=f'Mean Ward Coord: {mean_coord:.2f}%')
     
-    # Annotation box for average line
+    # Annotated callout
     ax.annotate(
-        f"Avg PAP Lean: +{abs(nat_coord):.2f}%\n(PAP {sum_row['National_PAP_Pct']:.2f}% | Opp {100-sum_row['National_PAP_Pct']:.2f}%)",
+        f"National Mean: PAP {sum_row['National_PAP_Pct']:.2f}%\n(Lean: PAP +{abs(nat_coord):.2f}%)",
         xy=(nat_coord, 0.038),
         xytext=(nat_coord - 7.5, 0.038),
         arrowprops=dict(facecolor='#b30000', shrink=0.08, width=1.5, headwidth=6, alpha=0.9),
-        bbox=dict(boxstyle='round,pad=0.4', facecolor='white', edgecolor='#b30000', alpha=0.95, linewidth=1.2),
-        fontsize=9.5, fontweight='bold', color='#800000', zorder=6
+        bbox=dict(boxstyle='round,pad=0.4', facecolor='white', edgecolor='#b30000', alpha=0.95),
+        fontsize=9.0, fontweight='bold', color='#800000', zorder=6
     )
     
     ax.set_ylabel(f'{year} Density', fontsize=11, fontweight='bold')
     ax.set_xlim(SCALE_MIN, SCALE_MAX)
     ax.set_ylim(-0.005, 0.065)
-    ax.legend(loc='upper right', frameon=True, framealpha=0.9, fontsize=8.5)
+    ax.legend(loc='upper right', frameon=True, framealpha=0.9, fontsize=8.2)
 
-# Standardize x-axis formatting (PAP on Left, Opp on Right)
-axes[-1].set_xlabel('Partisan Lean Axis (% relative to 50% Competitive Parity)\n[<-- PAP Leaning (Ruling Party) | 50-50 Parity | Opposition Leaning -->]', 
+axes[-1].set_xlabel('Partisan Lean Axis (% relative to 50% Competitive Parity)\n[<-- PAP Leaning (Ruling Party / Red) | 50-50 Parity | Opposition Leaning (Blue) -->]', 
                    fontsize=12, fontweight='bold', labelpad=10)
 
 ticks = np.arange(SCALE_MIN, SCALE_MAX + 1, 10)
 def format_tick(t):
-    if t < 0:
-        return f"PAP +{abs(t):.0f}%\n({50-t:.0f}% PAP)"
-    elif t > 0:
-        return f"Opp +{t:.0f}%\n({50-t:.0f}% PAP)"
-    return "0%\n(50-50 Parity)"
-
+    if t < 0: return f"PAP +{abs(t):.0f}%\n({50-t:.0f}% PAP)"
+    elif t > 0: return f"Opp +{t:.0f}%\n({50-t:.0f}% PAP)"
+    return "0%\n(Parity)"
 axes[-1].set_xticks(ticks)
 axes[-1].set_xticklabels([format_tick(t) for t in ticks], fontsize=9.5)
 
 plt.tight_layout(rect=[0, 0, 1, 0.96])
 plt.savefig('singapore_partisan_lean_same_scale.png', dpi=300, bbox_inches='tight')
 plt.show()
-print("Figure saved as 'singapore_partisan_lean_same_scale.png' with PAP on the LEFT.")
+print("Figure saved as 'singapore_partisan_lean_same_scale.png'")
 ```
 
 ![Comparative Partisan Lean on Same Scale](singapore_partisan_lean_same_scale.png)
@@ -307,60 +295,59 @@ print("Figure saved as 'singapore_partisan_lean_same_scale.png' with PAP on the 
 To clearly demonstrate the trajectory over time, we plot a line connecting the **Average Partisan Lean** of each election on a unified scale, accompanied by the constituency dispersion spread (Interquartile Range and Standard Deviation).
 
 ```python
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(15, 6))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
 
 years_arr = df_summary['Year'].values
 nat_coords = df_summary['National_Coord_Pct'].values       # Negative (Left)
-mean_coords = df_summary['Mean_Ward_Coord_Pct'].values
-std_coords = df_summary['Std_Ward_Coord_Pct'].values
-nat_pap_leans = df_summary['National_PAP_Lean_Pct'].values # Magnitude
+mean_coords = df_summary['Mean_Ward_Coord_Pct'].values     # Negative (Left)
+pap_vote_pct = df_summary['National_PAP_Pct'].values
 
-# Panel 1: Longitudinal Line Chart on Standardized Partisan Axis (PAP on Left)
-ax1.set_title('Average Partisan Lean Trajectory (2011 - 2025)', fontsize=13, fontweight='bold')
-ax1.axhline(0, color='gray', linestyle=':', linewidth=1.5, label='50-50 Parity Baseline')
+# Panel 1: Shift in Average Partisan Coordinate
+ax1.plot(years_arr, nat_coords, marker='o', markersize=9, color='#b30000', linewidth=2.8, 
+         label='National Weighted Coordinate (PAP on Left)', zorder=4)
+ax1.plot(years_arr, mean_coords, marker='s', markersize=8, color='#e66101', linewidth=2.2, 
+         linestyle='--', label='Mean Ward Coordinate', zorder=4)
 
-# Shaded dispersion ribbon (±1 Standard Deviation across wards)
-ax1.fill_between(years_arr, nat_coords - std_coords, nat_coords + std_coords, 
-                 color='#b30000', alpha=0.15, label='±1 Std Dev Ward Dispersion')
+ax1.axhline(0, color='#444444', linestyle=':', linewidth=1.5, label='50-50 Competitive Parity (0%)')
+ax1.axhspan(-25, 0, color='#fee8e8', alpha=0.35, label='PAP Advantage Zone (Left)')
+ax1.axhspan(0, 10, color='#e8f0fe', alpha=0.35, label='Opposition Advantage Zone (Right)')
 
-# Line 1: National Weighted Average Lean (PAP on Left/Negative)
-ax1.plot(years_arr, nat_coords, marker='o', markersize=9, linewidth=2.8, color='#b30000', 
-         label='National Weighted Avg Lean (PAP)', zorder=5)
+for yr, coord, pap_pct in zip(years_arr, nat_coords, pap_vote_pct):
+    ax1.annotate(f"{yr}: PAP +{abs(coord):.2f}%\n({pap_pct:.2f}% PAP)",
+                 xy=(yr, coord), xytext=(yr, coord - 2.5),
+                 ha='center', fontsize=9.5, fontweight='bold', color='#800000',
+                 bbox=dict(boxstyle='round,pad=0.3', facecolor='white', edgecolor='#b30000', alpha=0.9))
 
-# Line 2: Unweighted Mean Ward Lean
-ax1.plot(years_arr, mean_coords, marker='s', markersize=8, linewidth=2.2, color='#2b5c8f', linestyle='--',
-         label='Unweighted Mean Ward Lean', zorder=5)
-
-for y, coord, pap_lean in zip(years_arr, nat_coords, nat_pap_leans):
-    ax1.annotate(f"PAP +{pap_lean:.2f}%\n(PAP {pap_lean+50:.2f}%)", 
-                 xy=(y, coord), xytext=(0, -28), textcoords='offset points',
-                 ha='center', fontsize=9, fontweight='bold', color='#b30000',
-                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#fff5f5', edgecolor='#b30000', alpha=0.9))
-
+ax1.set_title('Longitudinal Shift in National Partisan Coordinate (2006–2025)\n(Tracking the Cyclical Pulse of Singapore Elections)', 
+              fontsize=12, fontweight='bold')
 ax1.set_xlabel('General Election Year', fontsize=11, fontweight='bold')
-ax1.set_ylabel('Standardized Partisan Coordinate\n[<-- PAP Lean | Opp Lean -->]', fontsize=11, fontweight='bold')
+ax1.set_ylabel('Partisan Coordinate (%)\n[<-- Pro-PAP (Left) | Pro-Opposition (Right) -->]', fontsize=10.5, fontweight='bold')
 ax1.set_xticks(years_arr)
-ax1.set_xticklabels(['2011 GE', '2020 GE', '2025 GE'], fontsize=10.5)
-ax1.set_ylim(-30, 10)
-ax1.legend(loc='upper right', frameon=True)
+ax1.set_ylim(-25, 5)
+ax1.legend(loc='lower left', frameon=True, fontsize=8.5)
 
-# Panel 2: Overlaid Density Distributions on Shared Scale (PAP on Left)
-ax2.set_title('Overlaid Electorate Density Distributions on Shared Scale', fontsize=13, fontweight='bold')
-ax2.axvspan(-35, 0, color='#fee8e8', alpha=0.35, label='PAP Lean (Left)')
-ax2.axvspan(0, 20, color='#e8f0fe', alpha=0.35, label='Opposition Lean (Right)')
-ax2.axvline(0, color='gray', linestyle=':', linewidth=1.4)
+# Panel 2: Multi-Election Overlay on Identical Scale
+SCALE_MIN = -35.0
+SCALE_MAX = 20.0
+for yr in years_arr:
+    yr_data = df_constituencies[(df_constituencies['Year'] == yr) & (df_constituencies['Contested'])]
+    c = colors[str(yr)]
+    sns.kdeplot(yr_data['Partisan_Coord_Pct'], ax=ax2, color=c, linewidth=2.5, 
+                label=f'{yr} (PAP +{abs(df_summary[df_summary["Year"]==yr]["National_Coord_Pct"].iloc[0]):.2f}%)',
+                bw_adjust=0.85)
 
-for yr, col in zip([2011, 2020, 2025], ['#2b5c8f', '#d95f02', '#7570b3']):
-    sub = df_constituencies[(df_constituencies['Year'] == yr) & (df_constituencies['Contested'])]
-    avg_c = df_summary[df_summary['Year'] == yr]['National_Coord_Pct'].iloc[0]
-    sns.kdeplot(sub['Partisan_Coord_Pct'], ax=ax2, color=col, linewidth=2.2, label=f'{yr} Distribution', bw_adjust=0.85)
-    ax2.axvline(avg_c, color=col, linestyle='--', linewidth=2.0, alpha=0.9, 
-                label=f'{yr} Avg (PAP +{abs(avg_c):.1f}%)')
+ax2.axvline(0, color='#444444', linestyle=':', linewidth=1.5, label='50-50 Parity')
+ax2.axvspan(SCALE_MIN, 0, color='#fee8e8', alpha=0.25)
+ax2.axvspan(0, SCALE_MAX, color='#e8f0fe', alpha=0.25)
 
-ax2.set_xlabel('Partisan Lean Axis\n[<-- PAP Leaning | Opposition Leaning -->]', fontsize=11, fontweight='bold')
-ax2.set_ylabel('Density', fontsize=11, fontweight='bold')
-ax2.set_xlim(-35, 20)
-ax2.legend(loc='upper right', frameon=True, fontsize=8.8)
+ax2.set_title('Direct Overlay of Constituency Distributions on Shared Scale\n(Comparing 2006, 2011, 2015, 2020, and 2025)', 
+              fontsize=12, fontweight='bold')
+ax2.set_xlabel('Partisan Lean Axis (%)\n[<-- PAP Leaning (Left) | Opposition Leaning (Right) -->]', fontsize=10.5, fontweight='bold')
+ax2.set_ylabel('Probability Density', fontsize=11, fontweight='bold')
+ax2.set_xlim(SCALE_MIN, SCALE_MAX)
+ax2.set_xticks(ticks)
+ax2.set_xticklabels([format_tick(t) for t in ticks], fontsize=8.5)
+ax2.legend(loc='upper right', frameon=True, fontsize=8.5)
 
 plt.tight_layout()
 plt.savefig('singapore_partisan_lean_trend_and_overlay.png', dpi=300, bbox_inches='tight')
@@ -375,7 +362,7 @@ print("Figure saved as 'singapore_partisan_lean_trend_and_overlay.png'")
 Below is the comparative breakdown of constituencies showing how local partisan leans shifted across electoral cycles.
 
 ```python
-# Create pivot table of Partisan Coordinates across the 3 elections
+# Create pivot table of Partisan Coordinates across the 5 elections
 pivot_coord = df_constituencies.pivot_table(
     index='Constituency', 
     columns='Year', 
@@ -384,24 +371,27 @@ pivot_coord = df_constituencies.pivot_table(
 
 pivot_coord.columns = [f'Coord_{int(col)}' for col in pivot_coord.columns]
 
-# Add swing columns if present in consecutive elections
-if 'Coord_2020' in pivot_coord and 'Coord_2011' in pivot_coord:
-    pivot_coord['Swing_2011_to_2020'] = (pivot_coord['Coord_2020'] - pivot_coord['Coord_2011']).round(2)
+# Add consecutive swing columns
+if 'Coord_2011' in pivot_coord and 'Coord_2006' in pivot_coord:
+    pivot_coord['Swing_06_to_11'] = (pivot_coord['Coord_2011'] - pivot_coord['Coord_2006']).round(2)
+if 'Coord_2015' in pivot_coord and 'Coord_2011' in pivot_coord:
+    pivot_coord['Swing_11_to_15'] = (pivot_coord['Coord_2015'] - pivot_coord['Coord_2011']).round(2)
+if 'Coord_2020' in pivot_coord and 'Coord_2015' in pivot_coord:
+    pivot_coord['Swing_15_to_20'] = (pivot_coord['Coord_2020'] - pivot_coord['Coord_2015']).round(2)
 if 'Coord_2025' in pivot_coord and 'Coord_2020' in pivot_coord:
-    pivot_coord['Swing_2020_to_2025'] = (pivot_coord['Coord_2025'] - pivot_coord['Coord_2020']).round(2)
+    pivot_coord['Swing_20_to_25'] = (pivot_coord['Coord_2025'] - pivot_coord['Coord_2020']).round(2)
 
-# Sort from furthest Left (strongest PAP) to furthest Right (strongest Opposition)
+# Sort by 2025 coordinate (or most recent available)
 sorted_table = pivot_coord.sort_values(by='Coord_2025', ascending=True)
 
-# Format cleanly with explicit directional labels
 def format_table_value(col_name, val):
     if pd.isnull(val): 
         return "—"
     if 'Swing' in col_name:
         if val > 0:
-            return f"{val:+.2f}% (Shift to Opp / Right)"
+            return f"{val:+.2f}% (Shift Right/Opp)"
         elif val < 0:
-            return f"{val:+.2f}% (Shift to PAP / Left)"
+            return f"{val:+.2f}% (Shift Left/PAP)"
         return "0.00% (No Change)"
     if val < 0: 
         return f"PAP +{abs(val):.2f}%"
@@ -414,7 +404,7 @@ for col in sorted_table.columns:
     formatted_dict[col] = sorted_table[col].apply(lambda x: format_table_value(col, x))
 
 formatted_table = pd.DataFrame(formatted_dict, index=sorted_table.index)
-print("=== Longitudinal Partisan Coordinate Table (PAP on LEFT, Opposition on RIGHT) ===")
+print("=== Longitudinal Partisan Coordinate Table (2006–2025: PAP on LEFT, Opp on RIGHT) ===")
 display(formatted_table)
 ```
 
@@ -646,9 +636,55 @@ df_unified_comparison
 ```
 
 ```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+
+# --- Dummy Dataframes (replace with your actual data loading) ---
+# Assuming df_constituencies, df_summary, df_us_merged, df_us_summary are defined
+# For demonstration, creating dummy dataframes:
+
+# Dummy df_constituencies for Singapore 2025
+data_sg_2025 = {
+    'Year': [2025, 2025, 2025, 2025, 2025, 2025, 2025, 2025, 2025, 2025],
+    'Constituency': [f'SG_{i}' for i in range(1, 11)],
+    'Partisan_Coord_Pct': [-20, -15, -10, -5, -2, 1, 4, 8, 12, 18], # Example lean values
+    'Contested': [True] * 10
+}
+df_constituencies = pd.DataFrame(data_sg_2025)
+
+# Dummy df_summary for Singapore 2025
+data_sg_summary = {
+    'Year': [2025],
+    'National_Coord_Pct': [-5.0] # Example national average
+}
+df_summary = pd.DataFrame(data_sg_summary)
+
+# Dummy df_us_merged for US PVI 2024 and US 2026
+data_us_merged = {
+    'District': [f'US_{i}' for i in range(1, 21)],
+    'PVI_2024_Coord': np.random.normal(0, 10, 20), # Example PVI coordinates
+    'Coord_2026': np.random.normal(5, 12, 20) # Example 2026 coordinates (shifted right for Dem wave)
+}
+df_us_merged = pd.DataFrame(data_us_merged)
+# Ensure some NaNs for testing dropna
+df_us_merged.loc[0, 'PVI_2024_Coord'] = np.nan
+df_us_merged.loc[10, 'Coord_2026'] = np.nan
+
+
+# Dummy df_us_summary
+data_us_summary = {
+    'Mean_PVI_2024_Coord': [0.0], # Example PVI mean
+    'Mean_Dem_Coord_2026': [5.0] # Example 2026 mean
+}
+df_us_summary = pd.DataFrame(data_us_summary)
+# --- End Dummy Dataframes ---
+
+
 # Cell 16: Three-Panel Comparative Distribution: PAP & Republicans on the LEFT
 fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(14, 12), sharex=True)
-fig.suptitle('Cross-System Partisan Lean: Singapore 2025 vs US PVI Baseline vs US 2026 Midterms\n(Standardized Bipolar Scale: PAP & Republicans on LEFT, Opposition & Democrats on RIGHT)', 
+fig.suptitle('Cross-System Partisan Lean: Singapore 2025 vs US PVI Baseline vs US 2026 Midterms\\n(Standardized Bipolar Scale: PAP & Republicans on LEFT, Opposition & Democrats on RIGHT)',
              fontsize=15, fontweight='bold', y=0.98)
 
 SHARED_MIN = -40.0  # Left extreme: Safe PAP / Safe Republican
@@ -670,13 +706,22 @@ sg_coord = df_summary[df_summary['Year'] == 2025]['National_Coord_Pct'].iloc[0] 
 
 sns.kdeplot(sg_2025['Partisan_Coord_Pct'], ax=ax1, color='#7570b3', fill=True, alpha=0.3, linewidth=2.4, bw_adjust=0.85)
 np.random.seed(42)
-ax1.scatter(sg_2025['Partisan_Coord_Pct'], np.random.normal(0, 0.002, len(sg_2025)) + 0.012, 
+ax1.scatter(sg_2025['Partisan_Coord_Pct'], np.random.normal(0, 0.002, len(sg_2025)) + 0.012,
             color='#7570b3', edgecolor='white', s=60, alpha=0.9, zorder=4, label=f'Singapore 2025 Wards (n={len(sg_2025)})')
 
+# Calculate median seat for Singapore 2025
+median_sg_lean = sg_2025['Partisan_Coord_Pct'].median()
+ax1.axvline(median_sg_lean, color='green', linestyle=':', linewidth=2.0, zorder=5,
+            label=f'Median Seat: {median_sg_lean:+.2f}%')
+ax1.text(median_sg_lean, ax1.get_ylim()[1] * 0.9, f'Median Seat: {median_sg_lean:+.1f}%',
+         color='green', ha='center', va='top', fontsize=9, fontweight='bold',
+         bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='green', alpha=0.9))
+
+
 # Average Line for Singapore on the LEFT
-ax1.axvline(sg_coord, color='#b30000', linestyle='--', linewidth=2.8, zorder=5, 
+ax1.axvline(sg_coord, color='#b30000', linestyle='--', linewidth=2.8, zorder=5,
             label=f'Avg PAP Lean: +{abs(sg_coord):.2f}% (PAP 65.57%)')
-ax1.annotate(f"Singapore 2025 Avg: PAP +{abs(sg_coord):.2f}%\n(Coord: {sg_coord:.2f}% on Left)", 
+ax1.annotate(f"Singapore 2025 Avg: PAP +{abs(sg_coord):.2f}%\\n(Coord: {sg_coord:.2f}% on Left)",
              xy=(sg_coord, 0.038), xytext=(sg_coord - 12.0, 0.035),
              arrowprops=dict(facecolor='#b30000', shrink=0.08, width=1.5, headwidth=6),
              bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='#b30000', alpha=0.95),
@@ -692,11 +737,21 @@ pvi_valid = df_us_merged.dropna(subset=['PVI_2024_Coord'])
 pvi_avg_coord = df_us_summary['Mean_PVI_2024_Coord'].iloc[0]
 
 sns.kdeplot(pvi_valid['PVI_2024_Coord'], ax=ax2, color='#4575b4', fill=True, alpha=0.3, linewidth=2.4, bw_adjust=0.75)
-ax2.scatter(pvi_valid['PVI_2024_Coord'], np.random.normal(0, 0.002, len(pvi_valid)) + 0.012, 
+ax2.scatter(pvi_valid['PVI_2024_Coord'], np.random.normal(0, 0.002, len(pvi_valid)) + 0.012,
             color='#4575b4', edgecolor='white', s=30, alpha=0.6, zorder=4, label=f'US Districts PVI 2024 (n={len(pvi_valid)})')
-ax2.axvline(pvi_avg_coord, color='#b30000', linestyle='--', linewidth=2.8, zorder=5, 
+
+# Calculate median seat for US PVI 2024
+median_pvi_lean = pvi_valid['PVI_2024_Coord'].median()
+ax2.axvline(median_pvi_lean, color='green', linestyle=':', linewidth=2.0, zorder=5,
+            label=f'Median Seat: {median_pvi_lean:+.2f}%')
+ax2.text(median_pvi_lean, ax2.get_ylim()[1] * 0.9, f'Median Seat: {median_pvi_lean:+.1f}%',
+         color='green', ha='center', va='top', fontsize=9, fontweight='bold',
+         bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='green', alpha=0.9))
+
+
+ax2.axvline(pvi_avg_coord, color='#b30000', linestyle='--', linewidth=2.8, zorder=5,
             label=f'PVI Baseline Mean: +{pvi_avg_coord:.2f}% (Near Parity)')
-ax2.annotate(f"US Cook PVI 2024 Baseline: +{pvi_avg_coord:.2f}%\n(Symmetrical Bimodal Polarization)", 
+ax2.annotate(f"US Cook PVI 2024 Baseline: +{pvi_avg_coord:.2f}%\\n(Symmetrical Bimodal Polarization)",
              xy=(pvi_avg_coord, 0.04), xytext=(pvi_avg_coord + 4.0, 0.038),
              arrowprops=dict(facecolor='#b30000', shrink=0.08, width=1.5, headwidth=6),
              bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='#b30000', alpha=0.95),
@@ -712,11 +767,21 @@ us_2026 = df_us_merged.dropna(subset=['Coord_2026'])
 us_avg_coord = df_us_summary['Mean_Dem_Coord_2026'].iloc[0] # Positive (Right)
 
 sns.kdeplot(us_2026['Coord_2026'], ax=ax3, color='#2b5c8f', fill=True, alpha=0.3, linewidth=2.4, bw_adjust=0.75)
-ax3.scatter(us_2026['Coord_2026'], np.random.normal(0, 0.002, len(us_2026)) + 0.008, 
+ax3.scatter(us_2026['Coord_2026'], np.random.normal(0, 0.002, len(us_2026)) + 0.008,
             color='#2b5c8f', edgecolor='white', s=30, alpha=0.6, zorder=4, label=f'US 2026 Midterm Districts (n={len(us_2026)})')
-ax3.axvline(us_avg_coord, color='#b30000', linestyle='--', linewidth=2.8, zorder=5, 
+
+# Calculate median seat for US 2026
+median_us_2026_lean = us_2026['Coord_2026'].median()
+ax3.axvline(median_us_2026_lean, color='green', linestyle=':', linewidth=2.0, zorder=5,
+            label=f'Median Seat: {median_us_2026_lean:+.2f}%')
+ax3.text(median_us_2026_lean, ax3.get_ylim()[1] * 0.9, f'Median Seat: {median_us_2026_lean:+.1f}%',
+         color='green', ha='center', va='top', fontsize=9, fontweight='bold',
+         bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor='green', alpha=0.9))
+
+
+ax3.axvline(us_avg_coord, color='#b30000', linestyle='--', linewidth=2.8, zorder=5,
             label=f'2026 Mean: D+{us_avg_coord:.2f}% (Right)')
-ax3.annotate(f"US 2026 Midterm Mean: D+{us_avg_coord:.2f}%\n(Democratic Wave Swing to the Right)", 
+ax3.annotate(f"US 2026 Midterm Mean: D+{us_avg_coord:.2f}%\\n(Democratic Wave Swing to the Right)",
              xy=(us_avg_coord, 0.024), xytext=(us_avg_coord + 4.0, 0.022),
              arrowprops=dict(facecolor='#b30000', shrink=0.08, width=1.5, headwidth=6),
              bbox=dict(boxstyle='round,pad=0.35', facecolor='white', edgecolor='#b30000', alpha=0.95),
@@ -724,7 +789,7 @@ ax3.annotate(f"US 2026 Midterm Mean: D+{us_avg_coord:.2f}%\n(Democratic Wave Swi
 
 ax3.set_title('US House 2026 Midterm Results: Democratic Wave Shift across Polarized Landscape', fontsize=12, fontweight='bold')
 ax3.set_ylabel('2026 Density', fontsize=11, fontweight='bold')
-ax3.set_xlabel('Standardized Partisan Lean Scale (% relative to 50% Competitive Parity)\n[<-- PAP / Republican Lean (Red) | 50-50 Parity | Opposition / Democratic Lean (Blue) -->]', 
+ax3.set_xlabel('Standardized Partisan Lean Scale (% relative to 50% Competitive Parity)\\n[<-- PAP / Republican Lean (Red) | 50-50 Parity | Opposition / Democratic Lean (Blue) -->]',
                fontsize=12, fontweight='bold', labelpad=10)
 ax3.legend(loc='upper right', frameon=True, fontsize=9)
 
@@ -732,10 +797,10 @@ ax3.legend(loc='upper right', frameon=True, fontsize=9)
 ticks = np.arange(SHARED_MIN, SHARED_MAX + 1, 10)
 def format_shared_tick(t):
     if t < 0:
-        return f"PAP / R+{abs(t):.0f}%\n({50-t:.0f}% PAP)"
+        return f"PAP / R+{abs(t):.0f}%\\n({50-t:.0f}% PAP)"
     elif t > 0:
-        return f"Opp / D+{t:.0f}%\n({50-t:.0f}% PAP)"
-    return "0%\n(Parity)"
+        return f"Opp / D+{t:.0f}%\\n({50+t:.0f}% Dem)" # Corrected PAP percentage to Dem percentage for right side
+    return "0%\\n(Parity)"
 
 ax3.set_xticks(ticks)
 ax3.set_xticklabels([format_shared_tick(t) for t in ticks], fontsize=8.5)
@@ -776,15 +841,19 @@ import numpy as np
 import pandas as pd
 
 def compute_dummymandering_metrics():
-    # 1. Singapore Analysis (2011, 2020, 2025)
+    # 1. Singapore Analysis Across 5 Elections (2006–2025)
     sg_elections = {}
     elections_info = [
+        (2006, 'Singapore_2006_results.csv'),
         (2011, 'Singapore_2011_results.csv'),
+        (2015, 'Singapore_2015_results.csv'),
         (2020, 'Singapore_2020_results.csv'),
         (2025, 'Singapore_2025_results.csv')
     ]
     
     for yr, fpath in elections_info:
+        if not os.path.exists(fpath):
+            continue
         df_raw = pd.read_csv(fpath)
         df_raw['Constituency'] = df_raw['Constituency'].str.strip().str.title()
         grouped = df_raw.groupby('Constituency')
@@ -903,9 +972,9 @@ def compute_dummymandering_metrics():
 
 sg_metrics, us_metrics = compute_dummymandering_metrics()
 
-# Construct summary display table comparing all 3 Singapore elections and US House
+# Construct summary display table comparing all 5 Singapore elections and US House
 dummymander_rows = []
-for yr in [2011, 2020, 2025]:
+for yr in sorted(sg_metrics.keys()):
     m = sg_metrics[yr]
     dummymander_rows.append({
         'Electoral System': f'Singapore GE {yr}',
@@ -934,7 +1003,7 @@ dummymander_rows.append({
 })
 
 dummymander_table = pd.DataFrame(dummymander_rows)
-print("=== Dummymandering & Cracking Threshold Metrics Across All Systems ===")
+print("=== Dummymandering & Cracking Threshold Metrics Across All 5 Elections & US House ===")
 display(dummymander_table)
 ```
 
@@ -945,7 +1014,7 @@ fig.suptitle('The Dummymander Effect & Seats-Votes Curves: Popular Vote vs Seats
              fontsize=14, fontweight='bold', y=0.98)
 
 # -------------------------------------------------------------
-# Panel 1: Singapore Seats-Votes Curves (2011, 2020, 2025)
+# Panel 1: Singapore Seats-Votes Curves (2006 to 2025)
 # -------------------------------------------------------------
 sim_votes = np.linspace(35, 80, 250)
 
@@ -963,20 +1032,24 @@ def simulate_sg_curve(yr):
         seat_pcts.append((won_mps / tot_mps) * 100.0)
     return np.array(seat_pcts)
 
-seats_2011 = simulate_sg_curve(2011)
-seats_2020 = simulate_sg_curve(2020)
-seats_2025 = simulate_sg_curve(2025)
-
 # Reference Proportionality Line (1:1 line)
 ax_sg.plot(sim_votes, sim_votes, color='#999999', linestyle=':', linewidth=1.5, label='Perfect Proportionality (1:1)')
 
 # Shaded Dummymander / Cracking Cascade Zone (48% to 56% Vote Share)
 ax_sg.axvspan(48, 56, color='#fee8e8', alpha=0.5, label='Cracking Cascade Zone (High Disproportionality)')
 
-# Curves for 2011, 2020, and 2025
-ax_sg.plot(sim_votes, seats_2011, color='#1b9e77', linewidth=2.2, linestyle='--', label='Singapore 2011 Seats-Votes Curve')
-ax_sg.plot(sim_votes, seats_2020, color='#d95f02', linewidth=2.5, label='Singapore 2020 Seats-Votes Curve')
-ax_sg.plot(sim_votes, seats_2025, color='#7570b3', linewidth=2.8, label='Singapore 2025 Seats-Votes Curve')
+palette_curves = {
+    2006: ('#1f78b4', ':', 1.8),
+    2011: ('#33a02c', '--', 2.0),
+    2015: ('#e31a1c', '-.', 2.0),
+    2020: ('#d95f02', '-', 2.5),
+    2025: ('#7570b3', '-', 2.8)
+}
+
+for yr in sorted(sg_metrics.keys()):
+    col, ls, lw = palette_curves.get(yr, ('#888888', '-', 1.8))
+    s_curve = simulate_sg_curve(yr)
+    ax_sg.plot(sim_votes, s_curve, color=col, linestyle=ls, linewidth=lw, label=f'Singapore {yr} Seats-Votes Curve')
 
 # KEY THRESHOLD 1: 2/3 Supermajority (66.67% of Seats)
 ax_sg.axhline(66.67, color='#b30000', linestyle='--', linewidth=2.0, zorder=5)
@@ -992,39 +1065,31 @@ v_50_2025 = sg_metrics[2025]['Vote_Share_Break_50']
 ax_sg.axvline(v_23_2025, color='#b30000', linestyle=':', linewidth=1.8, alpha=0.9)
 ax_sg.axvline(v_50_2025, color='#08519c', linestyle=':', linewidth=1.8, alpha=0.9)
 
-# Annotation for 2025 2/3 threshold crossing
-ax_sg.annotate(f'2/3 Broken at {v_23_2025:.1f}% PAP Vote\n(Swing needed: +{sg_metrics[2025]["Swing_Break_23"]:.1f}%)',
+# Annotations
+ax_sg.annotate(f'2025: 2/3 Broken at {v_23_2025:.1f}% PAP Vote\n(Swing needed: +{sg_metrics[2025]["Swing_Break_23"]:.1f}%)',
                xy=(v_23_2025, 66.67), xytext=(v_23_2025 - 11, 74),
                arrowprops=dict(facecolor='#b30000', shrink=0.08, width=1.5, headwidth=6),
                bbox=dict(boxstyle='round,pad=0.3', facecolor='#fff5f5', edgecolor='#b30000', alpha=0.95),
                fontsize=9, fontweight='bold', color='#800000')
 
-# Annotation for 2025 50% threshold crossing
-ax_sg.annotate(f'50% Broken at {v_50_2025:.1f}% PAP Vote\n(Swing needed: +{sg_metrics[2025]["Swing_Break_50"]:.1f}%)',
+ax_sg.annotate(f'2025: 50% Broken at {v_50_2025:.1f}% PAP Vote\n(Swing needed: +{sg_metrics[2025]["Swing_Break_50"]:.1f}%)',
                xy=(v_50_2025, 50.0), xytext=(v_50_2025 - 11, 40),
                arrowprops=dict(facecolor='#08519c', shrink=0.08, width=1.5, headwidth=6),
                bbox=dict(boxstyle='round,pad=0.3', facecolor='#eff6ff', edgecolor='#08519c', alpha=0.95),
                fontsize=9, fontweight='bold', color='#08519c')
 
-# Actual Election Operating Points
+# Actual points for 2020 and 2025
 ax_sg.scatter([sg_metrics[2025]['Mean_PAP']], [93.8], color='#7570b3', s=120, edgecolor='black', zorder=6)
-ax_sg.text(sg_metrics[2025]['Mean_PAP'] + 1, 91.5, f"2025 Actual:\n{sg_metrics[2025]['Mean_PAP']:.1f}% Vote -> 93.8% Seats", 
-           fontsize=9, fontweight='bold', color='#7570b3')
-
 ax_sg.scatter([sg_metrics[2020]['Mean_PAP']], [89.2], color='#d95f02', s=100, edgecolor='black', zorder=6)
-ax_sg.text(sg_metrics[2020]['Mean_PAP'] - 12, 88.0, f"2020 Actual:\n{sg_metrics[2020]['Mean_PAP']:.1f}% Vote -> 89.2% Seats", 
-           fontsize=9, fontweight='bold', color='#d95f02')
-
-ax_sg.scatter([sg_metrics[2011]['Mean_PAP']], [93.1], color='#1b9e77', s=90, edgecolor='black', zorder=6)
-ax_sg.text(sg_metrics[2011]['Mean_PAP'] - 12, 95.0, f"2011 Actual:\n{sg_metrics[2011]['Mean_PAP']:.1f}% Vote -> 93.1% Seats", 
-           fontsize=9, fontweight='bold', color='#1b9e77')
+ax_sg.scatter([sg_metrics[2015]['Mean_PAP']], [93.3], color='#e31a1c', s=90, edgecolor='black', zorder=6)
+ax_sg.scatter([sg_metrics[2011]['Mean_PAP']], [93.1], color='#33a02c', s=80, edgecolor='black', zorder=6)
 
 ax_sg.set_title('Singapore: Winner-Take-All GRC Elasticity & The Supermajority Cliff', fontsize=12, fontweight='bold')
 ax_sg.set_xlabel('National PAP Popular Vote Share (%)', fontsize=11, fontweight='bold')
 ax_sg.set_ylabel('Parliamentary Seat Share Won (%)', fontsize=11, fontweight='bold')
 ax_sg.set_xlim(35, 80)
 ax_sg.set_ylim(0, 105)
-ax_sg.legend(loc='lower right', frameon=True, fontsize=8.2)
+ax_sg.legend(loc='lower right', frameon=True, fontsize=8.0)
 
 # -------------------------------------------------------------
 # Panel 2: US House Seats-Votes Curve (2026 Midterm)
@@ -1085,6 +1150,8 @@ plt.savefig('dummymandering_seats_votes_curves.png', dpi=300, bbox_inches='tight
 plt.show()
 print("Figure saved as 'dummymandering_seats_votes_curves.png'")
 ```
+
+![Seats-Votes Curves](dummymandering_seats_votes_curves.png)
 
 ```python
 # Cell 20: Visualizing the Cracking Cascade: Constituency-by-Constituency Flip Sequence (2020 vs 2025)
@@ -1148,6 +1215,8 @@ plt.show()
 print("Figure saved as 'singapore_cracking_cascade.png'")
 ```
 
+![Singapore Cracking Cascade](singapore_cracking_cascade.png)
+
 ## 9. Key Analytical Takeaways for the Article: Dummymandering & Electoral Elasticity
 
 ### 1. The Paradox of GRC "Cracking": Efficiency vs. Catastrophic Risk
@@ -1176,7 +1245,9 @@ print("Figure saved as 'singapore_cracking_cascade.png'")
 ├── partisan_lean_analysis.ipynb      # Main Jupyter notebook containing all code, tables, and plots
 ├── partisan_lean_analysis.py         # Standalone Python module with analysis & plotting functions
 ├── partisan_lean_dashboard.html      # Interactive HTML/SVG dashboard with hover tooltips
+├── Singapore_2006_results.csv        # Singapore 2006 General Election results
 ├── Singapore_2011_results.csv        # Singapore 2011 General Election results
+├── Singapore_2015_results.csv        # Singapore 2015 General Election results
 ├── Singapore_2020_results.csv        # Singapore 2020 General Election results
 ├── Singapore_2025_results.csv        # Singapore 2025 General Election results
 ├── 2026 results-nyt.json             # 2026 US House Midterm Election results (435 districts)

@@ -59,7 +59,9 @@ def normalize_nyt_district_name(full_name):
 
 def load_and_process_singapore_data():
     files = {
+        2006: 'Singapore_2006_results.csv',
         2011: 'Singapore_2011_results.csv',
+        2015: 'Singapore_2015_results.csv',
         2020: 'Singapore_2020_results.csv',
         2025: 'Singapore_2025_results.csv'
     }
@@ -244,10 +246,11 @@ def load_and_merge_us_data(cd_csv_path='congressional_districts_data.csv', nyt_j
 def plot_faceted_distribution_same_scale(df_constituencies, df_summary, output_path='singapore_partisan_lean_same_scale.png'):
     SCALE_MIN = -35.0  # PAP on Left
     SCALE_MAX = 20.0   # Opp on Right
-    years = [2011, 2020, 2025]
-    colors = {'2011': '#2b5c8f', '2020': '#d95f02', '2025': '#7570b3'}
+    years = sorted(df_summary['Year'].unique())
+    palette = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00', '#6a3d9a']
+    colors = {str(yr): palette[idx % len(palette)] for idx, yr in enumerate(years)}
     
-    fig, axes = plt.subplots(3, 1, figsize=(13, 10), sharex=True)
+    fig, axes = plt.subplots(len(years), 1, figsize=(13, 2.7 * len(years)), sharex=True)
     fig.suptitle('Distribution of Constituency Partisan Lean Across Singapore General Elections\n(PAP on the LEFT, Opposition on the RIGHT on a Standardized Shared Scale)', 
                  fontsize=15, fontweight='bold', y=0.98)
     
@@ -399,7 +402,14 @@ def compute_dummymandering_metrics(df_us_merged):
     """
     import math
     sg_elections = {}
-    for yr, fpath in [(2020, 'Singapore_2020_results.csv'), (2025, 'Singapore_2025_results.csv')]:
+    elections_info = [
+        (2006, 'Singapore_2006_results.csv'),
+        (2011, 'Singapore_2011_results.csv'),
+        (2015, 'Singapore_2015_results.csv'),
+        (2020, 'Singapore_2020_results.csv'),
+        (2025, 'Singapore_2025_results.csv')
+    ]
+    for yr, fpath in elections_info:
         if not os.path.exists(fpath):
             continue
         df_raw = pd.read_csv(fpath)
@@ -539,13 +549,18 @@ def plot_seats_votes_curves(sg_metrics, us_metrics, df_us_merged, output_path='d
             seat_pcts.append((won_mps / tot_mps) * 100.0)
         return np.array(seat_pcts)
 
-    seats_2020 = simulate_sg_curve(2020)
-    seats_2025 = simulate_sg_curve(2025)
-
-    ax_sg.plot(sim_votes, sim_votes, color='#999999', linestyle=':', linewidth=1.5, label='Perfect Proportionality (1:1)')
-    ax_sg.axvspan(48, 56, color='#fee8e8', alpha=0.5, label='Cracking Cascade Zone (High Disproportionality)')
-    ax_sg.plot(sim_votes, seats_2020, color='#d95f02', linewidth=2.6, label='Singapore 2020 Seats-Votes Curve')
-    ax_sg.plot(sim_votes, seats_2025, color='#7570b3', linewidth=2.8, label='Singapore 2025 Seats-Votes Curve')
+    palette_sg = {
+        2006: ('#1f78b4', ':', '2006'),
+        2011: ('#33a02c', '--', '2011'),
+        2015: ('#e31a1c', '-.', '2015'),
+        2020: ('#d95f02', '-', '2020'),
+        2025: ('#7570b3', '-', '2025')
+    }
+    for yr in sorted(sg_metrics.keys()):
+        c, ls, lbl = palette_sg.get(yr, ('#888888', '-', str(yr)))
+        s_curve = simulate_sg_curve(yr)
+        lw = 2.8 if yr == 2025 else (2.4 if yr == 2020 else 1.8)
+        ax_sg.plot(sim_votes, s_curve, color=c, linestyle=ls, linewidth=lw, label=f'Singapore {yr} Seats-Votes Curve')
 
     ax_sg.axhline(66.67, color='#b30000', linestyle='--', linewidth=2.0, zorder=5)
     ax_sg.text(36, 67.5, '2/3 Supermajority Threshold (66.7% / 65 MPs in 2025)', color='#b30000', fontweight='bold', fontsize=9.5)
