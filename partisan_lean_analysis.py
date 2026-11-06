@@ -719,6 +719,93 @@ def plot_singapore_cascade(sg_metrics, output_path='singapore_cracking_cascade.p
     plt.close()
     print(f"Plot saved: {output_path} (PAP on the LEFT)")
 
+def plot_case_study_2006_2011(output_path='singapore_case_study_2006_2011.png'):
+    """
+    Plots the 2006-2011 Case Study for Aljunied, East Coast, West Coast, and Tanjong Pagar vs National Swing.
+    """
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 6))
+    fig.suptitle('Case Study (2006–2011): Aljunied, East Coast, West Coast & Tanjong Pagar vs. National Swing\n(Deconstructing the Asymmetric Impact of Singapore\'s 2011 Watershed Election)', 
+                 fontsize=13, fontweight='bold', y=0.98)
+
+    case_data = [
+        {'Constituency': 'Aljunied GRC', 'PAP_2006': 56.09, 'PAP_2011': 45.28, 'Swing_PAP': -10.81, 'Rel_Swing_vs_Nat': -4.35, 'Status': 'Flipped to WP'},
+        {'Constituency': 'East Coast GRC', 'PAP_2006': 63.86, 'PAP_2011': 54.83, 'Swing_PAP': -9.03, 'Rel_Swing_vs_Nat': -2.57, 'Status': 'Cracking Zone'},
+        {'Constituency': 'National Benchmark', 'PAP_2006': 66.60, 'PAP_2011': 60.14, 'Swing_PAP': -6.46, 'Rel_Swing_vs_Nat': 0.00, 'Status': 'National Baseline'},
+        {'Constituency': 'West Coast GRC', 'PAP_2006': np.nan, 'PAP_2011': 66.57, 'Swing_PAP': np.nan, 'Rel_Swing_vs_Nat': +6.43, 'Status': 'Western Fortress'},
+        {'Constituency': 'Tanjong Pagar GRC', 'PAP_2006': np.nan, 'PAP_2011': np.nan, 'Swing_PAP': 0.00, 'Rel_Swing_vs_Nat': np.nan, 'Status': 'Walkover Firewall'}
+    ]
+
+    df_case = pd.DataFrame(case_data)
+    x = np.arange(len(df_case))
+    width = 0.35
+
+    v06_vals = [r['PAP_2006'] if pd.notnull(r['PAP_2006']) else 0 for _, r in df_case.iterrows()]
+    bars1 = ax1.bar(x - width/2, v06_vals, width, label='2006 PAP Vote Share (%)', color='#9ecae1', edgecolor='black', linewidth=0.6)
+
+    v11_vals = [r['PAP_2011'] if pd.notnull(r['PAP_2011']) else 0 for _, r in df_case.iterrows()]
+    bars2 = ax1.bar(x + width/2, v11_vals, width, label='2011 PAP Vote Share (%)', color='#fc9272', edgecolor='black', linewidth=0.6)
+
+    ax1.axhline(50.0, color='black', linestyle=':', linewidth=1.5, label='50% Win Parity')
+    ax1.set_ylabel('PAP Vote Share (%)', fontsize=11, fontweight='bold')
+    ax1.set_title('Direct Vote Share Comparison: 2006 vs. 2011', fontsize=12, fontweight='bold')
+    ax1.set_xticks(x)
+    ax1.set_xticklabels(df_case['Constituency'], fontsize=9.5, fontweight='bold', rotation=15)
+    ax1.set_ylim(0, 85)
+    ax1.legend(loc='lower left', frameon=True, fontsize=8.5)
+
+    for idx, r in df_case.iterrows():
+        if pd.notnull(r['PAP_2006']):
+            ax1.text(idx - width/2, r['PAP_2006'] + 1.2, f"{r['PAP_2006']:.1f}%", ha='center', fontsize=8.5, fontweight='bold', color='#1f77b4')
+        else:
+            ax1.text(idx - width/2, 2.5, "Walkover\n(100% Seats)", ha='center', fontsize=7.5, color='#555555', style='italic')
+            
+        if pd.notnull(r['PAP_2011']):
+            ax1.text(idx + width/2, r['PAP_2011'] + 1.2, f"{r['PAP_2011']:.1f}%", ha='center', fontsize=8.5, fontweight='bold', color='#d62728')
+        else:
+            ax1.text(idx + width/2, 2.5, "Walkover\n(100% Seats)", ha='center', fontsize=7.5, color='#555555', style='italic')
+
+    rel_swings = []
+    rel_colors = []
+    for _, r in df_case.iterrows():
+        val = r['Rel_Swing_vs_Nat']
+        if pd.notnull(val):
+            rel_swings.append(val)
+            rel_colors.append('#2b5c8f' if val < 0 else ('#b30000' if val > 0 else '#888888'))
+        else:
+            rel_swings.append(0.0)
+            rel_colors.append('#cccccc')
+
+    bars_rel = ax2.barh(df_case['Constituency'], rel_swings, color=rel_colors, edgecolor='black', linewidth=0.7, height=0.6)
+    ax2.axvline(0, color='black', linewidth=1.5, linestyle='-')
+    ax2.axvspan(-8, 0, color='#e8f0fe', alpha=0.35, label='Swung Harder to Opposition than National Avg')
+    ax2.axvspan(0, 8, color='#fee8e8', alpha=0.35, label='PAP Outperformed National Baseline')
+
+    ax2.set_xlabel('Relative Performance vs. National Swing (% Points)\n[<-- Swung Harder to Opp (Right) | PAP Outperformed National Baseline (Left) -->]', 
+                  fontsize=10.5, fontweight='bold')
+    ax2.set_title('Swing Relative to the National Tide (-6.46% PAP Drop)', fontsize=12, fontweight='bold')
+    ax2.set_xlim(-8, 8)
+
+    for bar, (_, r) in zip(bars_rel, df_case.iterrows()):
+        val = r['Rel_Swing_vs_Nat']
+        y_pos = bar.get_y() + bar.get_height()/2.0
+        if pd.notnull(val) and val != 0.0:
+            offset = 0.25 if val > 0 else -0.25
+            ha = 'left' if val > 0 else 'right'
+            sign = '+' if val > 0 else ''
+            ax2.text(val + offset, y_pos, f"{sign}{val:.2f}% ({r['Status'].split('(')[0].strip()})", 
+                     va='center', ha=ha, fontsize=8.2, fontweight='bold', color='#111111')
+        elif r['Constituency'] == 'National Benchmark':
+            ax2.text(0.25, y_pos, 'Baseline (-6.46% Swing)', va='center', ha='left', fontsize=8.2, fontweight='bold', color='#b30000')
+        else:
+            ax2.text(0.25, y_pos, 'Uncontested (Insulated from Swing)', va='center', ha='left', fontsize=8.0, style='italic', color='#555555')
+
+    ax2.legend(loc='lower right', frameon=True, fontsize=8.2)
+
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"Plot saved: {output_path}")
+
 if __name__ == '__main__':
     df_const, df_sum = load_and_process_singapore_data()
     df_us, df_us_sum = load_and_merge_us_data()
@@ -728,6 +815,7 @@ if __name__ == '__main__':
     print(df_us_sum)
     plot_faceted_distribution_same_scale(df_const, df_sum)
     plot_three_panel_comparison(df_const, df_sum, df_us, df_us_sum)
+    plot_case_study_2006_2011()
     
     # Dummymandering metrics & graphs
     sg_met, us_met = compute_dummymandering_metrics(df_us)
