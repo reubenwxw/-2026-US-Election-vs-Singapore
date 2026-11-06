@@ -243,6 +243,21 @@ def load_and_merge_us_data(cd_csv_path='congressional_districts_data.csv', nyt_j
     }
     return df_us_merged, pd.DataFrame([summary])
 
+TARGET_CONFIG = {
+    'Aljunied': {'color': '#1f77b4', 'marker': 's', 'size': 110, 'label': 'Aljunied GRC'},
+    'East Coast': {'color': '#ff7f0e', 'marker': 'D', 'size': 105, 'label': 'East Coast GRC'},
+    'West Coast': {'color': '#2ca02c', 'marker': '^', 'size': 115, 'label': 'West Coast GRC'},
+    'Tanjong Pagar': {'color': '#d62728', 'marker': '*', 'size': 160, 'label': 'Tanjong Pagar GRC'}
+}
+
+def match_target_ward(name):
+    nl = str(name).lower().strip()
+    if 'aljunied' in nl: return 'Aljunied'
+    if 'east coast' in nl: return 'East Coast'
+    if 'west coast' in nl: return 'West Coast'
+    if 'tanjong pagar' in nl: return 'Tanjong Pagar'
+    return None
+
 def plot_faceted_distribution_same_scale(df_constituencies, df_summary, output_path='singapore_partisan_lean_same_scale.png'):
     SCALE_MIN = -35.0  # PAP on Left
     SCALE_MAX = 20.0   # Opp on Right
@@ -250,13 +265,15 @@ def plot_faceted_distribution_same_scale(df_constituencies, df_summary, output_p
     palette = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00', '#6a3d9a']
     colors = {str(yr): palette[idx % len(palette)] for idx, yr in enumerate(years)}
     
-    fig, axes = plt.subplots(len(years), 1, figsize=(13, 2.7 * len(years)), sharex=True)
-    fig.suptitle('Distribution of Constituency Partisan Lean Across Singapore General Elections\n(PAP on the LEFT, Opposition on the RIGHT on a Standardized Shared Scale)', 
-                 fontsize=15, fontweight='bold', y=0.98)
+    fig, axes = plt.subplots(len(years), 1, figsize=(14, 3.1 * len(years)), sharex=True)
+    fig.suptitle('Individual Constituency Partisan Leans Across Singapore General Elections (2006–2025)\n(Highlighting Tanjong Pagar, Aljunied, East Coast & West Coast; Non-Overlapping Labels; PAP on LEFT, Opp on RIGHT)', 
+                 fontsize=14, fontweight='bold', y=0.99)
     
+    df_constituencies['Target_Key'] = df_constituencies['Constituency'].apply(match_target_ward)
+
     for i, year in enumerate(years):
         ax = axes[i]
-        year_data = df_constituencies[(df_constituencies['Year'] == year) & (df_constituencies['Contested'])]
+        year_data = df_constituencies[(df_constituencies['Year'] == year) & (df_constituencies['Contested'])].copy()
         sum_row = df_summary[df_summary['Year'] == year].iloc[0]
         
         nat_coord = sum_row['National_Coord_Pct']
@@ -267,43 +284,105 @@ def plot_faceted_distribution_same_scale(df_constituencies, df_summary, output_p
         ax.axvspan(0, SCALE_MAX, color='#e8f0fe', alpha=0.45, label='Opposition Lean' if i == 0 else "")
         ax.axvline(0, color='#444444', linestyle=':', linewidth=1.4, alpha=0.8, label='50-50 Parity' if i == 0 else "")
         
-        sns.kdeplot(year_data['Partisan_Coord_Pct'], ax=ax, color=color, fill=True, alpha=0.25, linewidth=2.2, bw_adjust=0.8)
+        sns.kdeplot(year_data['Partisan_Coord_Pct'], ax=ax, color=color, fill=True, alpha=0.20, linewidth=2.0, bw_adjust=0.8)
         
-        np.random.seed(42)
-        jitter = np.random.normal(0, 0.003, size=len(year_data))
-        ax.scatter(year_data['Partisan_Coord_Pct'], jitter + 0.012, 
-                   color=color, edgecolor='white', s=55, alpha=0.85, zorder=4,
-                   label=f'{year} Constituencies (n={len(year_data)})')
+        # Plot ALL other constituencies as standard dots
+        np.random.seed(42 + year)
+        jitter = np.random.normal(0, 0.0025, size=len(year_data))
+        year_data['Jitter_Y'] = jitter + 0.012
         
-        min_ward = year_data.loc[year_data['Partisan_Coord_Pct'].idxmin()]
-        max_ward = year_data.loc[year_data['Partisan_Coord_Pct'].idxmax()]
-        ax.text(min_ward['Partisan_Coord_Pct'], 0.022, f" {min_ward['Constituency']} (PAP {min_ward['PAP_Share_Pct']:.1f}%)", 
-                fontsize=8.5, ha='right', color='#8b0000', fontweight='bold')
-        ax.text(max_ward['Partisan_Coord_Pct'], 0.022, f" {max_ward['Constituency']} (Opp {max_ward['Opp_Share_Pct']:.1f}%)", 
-                fontsize=8.5, ha='left', color='#1a3a6b', fontweight='bold')
+        non_target = year_data[year_data['Target_Key'].isnull()]
+        ax.scatter(non_target['Partisan_Coord_Pct'], non_target['Jitter_Y'], 
+                   color=color, edgecolor='black', linewidth=0.6, s=55, alpha=0.65, zorder=4,
+                   label=f'Other Contested Wards (n={len(non_target)})')
         
-        ax.axvline(nat_coord, color='#b30000', linestyle='--', linewidth=2.5, zorder=5,
+        # Walkovers in this year
+        if year == 2006:
+            ax.text(-34.2, 0.051, 'Walkovers (100% PAP Seats):\n★ Tanjong Pagar (6 MPs) | ▲ West Coast (5 MPs)', 
+                    fontsize=8.5, fontweight='bold', color='#8b0000',
+                    bbox=dict(boxstyle='round,pad=0.35', facecolor='#fff5f5', edgecolor='#d62728', alpha=0.95))
+        elif year == 2011:
+            ax.text(-34.2, 0.051, 'Walkover (100% PAP Seats):\n★ Tanjong Pagar (5 MPs)', 
+                    fontsize=8.5, fontweight='bold', color='#8b0000',
+                    bbox=dict(boxstyle='round,pad=0.35', facecolor='#fff5f5', edgecolor='#d62728', alpha=0.95))
+            
+        # Target Wards: High-priority highlights with custom non-overlapping staggered anchors
+        target_rows = year_data[year_data['Target_Key'].notnull()]
+        for _, r in target_rows.iterrows():
+            t_key = r['Target_Key']
+            cfg = TARGET_CONFIG[t_key]
+            cx = r['Partisan_Coord_Pct']
+            cy = r['Jitter_Y']
+            
+            # Scatter highlighted point
+            ax.scatter(cx, cy, color=cfg['color'], marker=cfg['marker'], s=cfg['size'], 
+                       edgecolor='black', linewidth=1.2, zorder=7)
+            
+            # Base label text
+            if r['PAP_Share_Pct'] >= 50.0:
+                txt = f"★ {r['Constituency']}\n(PAP {r['PAP_Share_Pct']:.1f}%)"
+            else:
+                txt = f"★ {r['Constituency']}\n(Opp {r['Opp_Share_Pct']:.1f}%)"
+                
+            # Stagger logic per year to prevent ANY overlapping
+            if year == 2006:
+                if t_key == 'East Coast':
+                    tx, ty, ha = cx - 0.5, 0.038, 'right'
+                else: # Aljunied
+                    tx, ty, ha = cx + 0.5, 0.038, 'left'
+            elif year == 2011:
+                if t_key == 'West Coast':
+                    tx, ty, ha = cx, 0.038, 'center'
+                elif t_key == 'East Coast':
+                    tx, ty, ha = cx - 0.5, 0.040, 'right'
+                else: # Aljunied
+                    tx, ty, ha = cx + 0.5, 0.038, 'left'
+            elif year == 2015:
+                if t_key == 'West Coast':
+                    tx, ty, ha = cx - 2.5, 0.026, 'right'
+                elif t_key == 'Tanjong Pagar':
+                    tx, ty, ha = cx + 2.5, 0.048, 'left'
+                elif t_key == 'East Coast':
+                    tx, ty, ha = cx - 0.5, 0.038, 'right'
+                else: # Aljunied
+                    tx, ty, ha = cx + 0.5, 0.038, 'left'
+            elif year == 2020:
+                if t_key == 'Tanjong Pagar':
+                    tx, ty, ha = cx, 0.038, 'center'
+                elif t_key == 'East Coast':
+                    tx, ty, ha = cx - 2.8, 0.046, 'right'
+                elif t_key == 'West Coast':
+                    tx, ty, ha = cx + 2.8, 0.026, 'left'
+                else: # Aljunied
+                    tx, ty, ha = cx + 0.5, 0.038, 'left'
+            elif year == 2025:
+                if t_key == 'Tanjong Pagar':
+                    tx, ty, ha = cx, 0.038, 'center'
+                elif t_key == 'West Coast':
+                    tx, ty, ha = cx - 3.2, 0.026, 'right'
+                elif t_key == 'East Coast':
+                    tx, ty, ha = cx + 3.2, 0.048, 'left'
+                else: # Aljunied
+                    tx, ty, ha = cx + 0.5, 0.038, 'left'
+                    
+            ax.annotate(txt, xy=(cx, cy), xytext=(tx, ty),
+                        fontsize=8.0, fontweight='bold', color=cfg['color'], ha=ha, va='center',
+                        bbox=dict(boxstyle='round,pad=0.25', facecolor='white', edgecolor=cfg['color'], alpha=0.92, lw=1.1),
+                        arrowprops=dict(arrowstyle='->', color=cfg['color'], lw=1.2), zorder=8)
+            
+        # Average and Mean lines
+        ax.axvline(nat_coord, color='#b30000', linestyle='--', linewidth=2.3, zorder=5,
                    label=f'Avg PAP Lean: +{abs(nat_coord):.2f}%')
-        ax.axvline(mean_coord, color='#e66101', linestyle='-.', linewidth=1.8, alpha=0.85, zorder=5,
-                   label=f'Mean Ward Coord: {mean_coord:.2f}%')
-        
-        ax.annotate(
-            f"Avg PAP Lean: +{abs(nat_coord):.2f}%\n(PAP {sum_row['National_PAP_Pct']:.2f}%)",
-            xy=(nat_coord, 0.038),
-            xytext=(nat_coord - 7.5, 0.038),
-            arrowprops=dict(facecolor='#b30000', shrink=0.08, width=1.5, headwidth=6, alpha=0.9),
-            bbox=dict(boxstyle='round,pad=0.4', facecolor='white', edgecolor='#b30000', alpha=0.95),
-            fontsize=9.5, fontweight='bold', color='#800000', zorder=6
-        )
+        ax.axvline(mean_coord, color='#e66101', linestyle='-.', linewidth=1.6, alpha=0.85, zorder=5,
+                   label=f'Mean Ward: {mean_coord:.2f}%')
         
         ax.set_ylabel(f'{year} Density', fontsize=11, fontweight='bold')
         ax.set_xlim(SCALE_MIN, SCALE_MAX)
-        ax.set_ylim(-0.005, 0.065)
-        ax.legend(loc='upper right', frameon=True, framealpha=0.9, fontsize=8.5)
-
+        ax.set_ylim(-0.005, 0.068)
+        ax.legend(loc='upper right', frameon=True, framealpha=0.9, fontsize=7.8)
+        
     axes[-1].set_xlabel('Partisan Lean Axis (% relative to 50% Competitive Parity)\n[<-- PAP Leaning (Ruling Party) | 50-50 Parity | Opposition Leaning -->]', 
                        fontsize=12, fontweight='bold', labelpad=10)
-
     ticks = np.arange(SCALE_MIN, SCALE_MAX + 1, 10)
     def format_tick(t):
         if t < 0: return f"PAP +{abs(t):.0f}%\n({50-t:.0f}% PAP)"
@@ -312,10 +391,169 @@ def plot_faceted_distribution_same_scale(df_constituencies, df_summary, output_p
     axes[-1].set_xticks(ticks)
     axes[-1].set_xticklabels([format_tick(t) for t in ticks], fontsize=9.5)
     
-    plt.tight_layout(rect=[0, 0, 1, 0.96])
+    plt.tight_layout(rect=[0, 0, 1, 0.97])
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"Plot saved: {output_path} (PAP on Left)")
+    print(f"Plot saved: {output_path} (PAP on Left, Target Wards Highlighted)")
+
+def plot_trend_and_overlay(df_constituencies, df_summary, output_path='singapore_partisan_lean_trend_and_overlay.png'):
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(18, 7.5))
+    fig.suptitle('Longitudinal Trajectories of Singapore General Elections (2006–2025)\n(Prominently Highlighting Tanjong Pagar, Aljunied, East Coast & West Coast with Anti-Collision Labels)', 
+                 fontsize=14, fontweight='bold', y=0.98)
+
+    years_arr = df_summary['Year'].values
+    nat_coords = df_summary['National_Coord_Pct'].values
+    mean_coords = df_summary['Mean_Ward_Coord_Pct'].values
+
+    # Panel 1: Trajectories
+    ax1.axhline(0, color='gray', linestyle=':', linewidth=1.5, label='50-50 Parity Baseline')
+    ax1.axhspan(-36, 0, color='#fee8e8', alpha=0.30, label='PAP Advantage Zone (Left / Negative)')
+    ax1.axhspan(0, 20, color='#e8f0fe', alpha=0.30, label='Opposition Advantage Zone (Right / Positive)')
+
+    # Background dots for ALL other individual constituencies
+    np.random.seed(42)
+    for yr in years_arr:
+        yr_data = df_constituencies[(df_constituencies['Year'] == yr) & (df_constituencies['Contested'])]
+        other_wards = yr_data[yr_data['Target_Key'].isnull()]
+        jit = np.random.uniform(-0.15, 0.15, size=len(other_wards))
+        ax1.scatter(yr + jit, other_wards['Partisan_Coord_Pct'], color='#999999', edgecolor='white', 
+                    s=45, alpha=0.45, zorder=3, label='Other Contested Constituencies' if yr == 2006 else "")
+
+    # Overlay National Weighted Average
+    ax1.plot(years_arr, nat_coords, marker='o', markersize=8, color='#800000', linewidth=2.8, 
+             linestyle='-', label='National Weighted Avg (PAP on Left)', zorder=6)
+
+    # Highlight Target Wards
+    traj_data = {
+        'Aljunied': {'years': [2006, 2011, 2015, 2020, 2025], 'coords': [-6.09, 4.72, 0.96, 9.95, 9.71]},
+        'East Coast': {'years': [2006, 2011, 2015, 2020, 2025], 'coords': [-13.86, -4.83, -10.73, -3.39, -8.73]},
+        'West Coast': {'years': [2011, 2015, 2020, 2025], 'coords': [-16.57, -28.57, -1.68, -9.99], 'walkovers': [2006]},
+        'Tanjong Pagar': {'years': [2015, 2020, 2025], 'coords': [-27.71, -13.10, -31.02], 'walkovers': [2006, 2011]}
+    }
+
+    for t_key, d in traj_data.items():
+        cfg = TARGET_CONFIG[t_key]
+        xs = d['years']
+        ys = d['coords']
+        ax1.plot(xs, ys, color=cfg['color'], linewidth=2.5, marker=cfg['marker'], 
+                 markersize=cfg['size']**0.5, markeredgecolor='black', markeredgewidth=1.1,
+                 label=f"★ {cfg['label']}", zorder=7)
+        
+        # Walkover indicators
+        if 'walkovers' in d:
+            for w_yr in d['walkovers']:
+                ax1.scatter([w_yr], [-34.0], marker=cfg['marker'], s=cfg['size']*0.8, 
+                            facecolor='none', edgecolor=cfg['color'], linewidth=1.8, zorder=7)
+                # Dotted line to first contested
+                ax1.plot([w_yr, xs[0]], [-34.0, ys[0]], color=cfg['color'], linestyle=':', linewidth=1.3, alpha=0.7)
+
+    # Annotations at 2025 Terminus (Carefully staggered to avoid overlap)
+    ax1.annotate('★ Aljunied GRC (WP 59.7%)\n[Held by WP since 2011]', 
+                 xy=(2025, 9.71), xytext=(2025.3, 10.5),
+                 fontsize=8.5, fontweight='bold', color=TARGET_CONFIG['Aljunied']['color'], va='center',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='white', edgecolor=TARGET_CONFIG['Aljunied']['color'], alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color=TARGET_CONFIG['Aljunied']['color'], lw=1.2), zorder=8)
+
+    ax1.annotate('★ East Coast GRC (PAP 58.7%)\n[Persistent 50-55% Battleground]', 
+                 xy=(2025, -8.73), xytext=(2025.3, -5.5),
+                 fontsize=8.5, fontweight='bold', color=TARGET_CONFIG['East Coast']['color'], va='center',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='white', edgecolor=TARGET_CONFIG['East Coast']['color'], alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color=TARGET_CONFIG['East Coast']['color'], lw=1.2), zorder=8)
+
+    ax1.annotate('★ West Coast-Jurong W (PAP 60.0%)\n[PSP 48.3% Close-Call in 2020]', 
+                 xy=(2025, -9.99), xytext=(2025.3, -12.5),
+                 fontsize=8.5, fontweight='bold', color=TARGET_CONFIG['West Coast']['color'], va='center',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='white', edgecolor=TARGET_CONFIG['West Coast']['color'], alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color=TARGET_CONFIG['West Coast']['color'], lw=1.2), zorder=8)
+
+    ax1.annotate('★ Tanjong Pagar GRC (PAP 81.0%)\n[LKY Walkover Fortress to 81% PAP]', 
+                 xy=(2025, -31.02), xytext=(2025.3, -31.02),
+                 fontsize=8.5, fontweight='bold', color=TARGET_CONFIG['Tanjong Pagar']['color'], va='center',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='white', edgecolor=TARGET_CONFIG['Tanjong Pagar']['color'], alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color=TARGET_CONFIG['Tanjong Pagar']['color'], lw=1.2), zorder=8)
+
+    ax1.annotate('National Weighted Avg\n(PAP +15.8% / 65.8%)', 
+                 xy=(2025, nat_coords[-1]), xytext=(2025.3, -18.5),
+                 fontsize=8.5, fontweight='bold', color='#800000', va='center',
+                 bbox=dict(boxstyle='round,pad=0.25', facecolor='#fff5f5', edgecolor='#800000', alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color='#800000', lw=1.2), zorder=8)
+
+    # Landmark historic callouts (Zero overlap)
+    ax1.annotate('2011: Historic WP Flip\n(PAP 45.3% vs WP 54.7%)', 
+                 xy=(2011, 4.72), xytext=(2009.5, 14.0),
+                 fontsize=8.2, fontweight='bold', color=TARGET_CONFIG['Aljunied']['color'],
+                 bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor=TARGET_CONFIG['Aljunied']['color'], alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color=TARGET_CONFIG['Aljunied']['color'], lw=1.2), zorder=8)
+
+    ax1.annotate('2020: Razor-Thin PAP Win\n(PAP 51.7% vs PSP 48.3%)', 
+                 xy=(2020, -1.68), xytext=(2017.5, 2.5),
+                 fontsize=8.2, fontweight='bold', color=TARGET_CONFIG['West Coast']['color'],
+                 bbox=dict(boxstyle='round,pad=0.2', facecolor='white', edgecolor=TARGET_CONFIG['West Coast']['color'], alpha=0.95),
+                 arrowprops=dict(arrowstyle='->', color=TARGET_CONFIG['West Coast']['color'], lw=1.2), zorder=8)
+
+    ax1.text(2006, -35.2, 'Walkovers\n(LKY / PAP 100%)', fontsize=7.8, ha='center', color='#555555', style='italic')
+    ax1.text(2011, -35.2, 'Walkover\n(LKY / PAP 100%)', fontsize=7.8, ha='center', color='#555555', style='italic')
+
+    ax1.set_title('Longitudinal Trajectories of 4 Anchor Constituencies (2006–2025)', fontsize=12, fontweight='bold')
+    ax1.set_xlabel('General Election Year', fontsize=11, fontweight='bold')
+    ax1.set_ylabel('Partisan Coordinate (% relative to Parity)\n[<-- PAP Advantage (Left) | Opposition Advantage (Right) -->]', fontsize=10.5, fontweight='bold')
+    ax1.set_xticks(years_arr)
+    ax1.set_xticklabels([f'{yr} GE' for yr in years_arr], fontsize=10)
+    ax1.set_xlim(2005.5, 2028.5)
+    ax1.set_ylim(-37, 18)
+    ax1.legend(loc='lower left', frameon=True, fontsize=8.0)
+
+    # Panel 2: Density Overlay with Strip Highlights
+    SCALE_MIN = -35.0
+    SCALE_MAX = 20.0
+    palette = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00', '#6a3d9a']
+    colors = {str(yr): palette[idx % len(palette)] for idx, yr in enumerate(years_arr)}
+    
+    ax2.axvline(0, color='gray', linestyle=':', linewidth=1.5, label='50-50 Parity')
+    ax2.axvspan(SCALE_MIN, 0, color='#fee8e8', alpha=0.25)
+    ax2.axvspan(0, SCALE_MAX, color='#e8f0fe', alpha=0.25)
+
+    y_strip_offset = 0.0055
+    for idx, yr in enumerate(years_arr):
+        yr_data = df_constituencies[(df_constituencies['Year'] == yr) & (df_constituencies['Contested'])]
+        c = colors[str(yr)]
+        
+        sns.kdeplot(yr_data['Partisan_Coord_Pct'], ax=ax2, color=c, linewidth=2.0, 
+                    label=f'{yr} (PAP +{abs(df_summary[df_summary["Year"]==yr]["National_Coord_Pct"].iloc[0]):.1f}%)',
+                    bw_adjust=0.85)
+        
+        # Scatter non-target dots
+        non_t = yr_data[yr_data['Target_Key'].isnull()]
+        ax2.scatter(non_t['Partisan_Coord_Pct'], [y_strip_offset * (idx + 1)] * len(non_t), 
+                    color=c, edgecolor='black', linewidth=0.5, s=40, alpha=0.6, zorder=4)
+        
+        # Scatter highlighted target dots on strip
+        t_rows = yr_data[yr_data['Target_Key'].notnull()]
+        for _, r in t_rows.iterrows():
+            cfg = TARGET_CONFIG[r['Target_Key']]
+            ax2.scatter(r['Partisan_Coord_Pct'], y_strip_offset * (idx + 1), 
+                        color=cfg['color'], marker=cfg['marker'], s=cfg['size']*0.7, 
+                        edgecolor='black', linewidth=1.1, zorder=6)
+
+    ax2.set_title('Overlay of Constituency Distributions with Strip Scatter\n(Highlighted Symbols Mark Aljunied, East Coast, West Coast, Tanjong Pagar)', 
+                  fontsize=12, fontweight='bold')
+    ax2.set_xlabel('Partisan Lean Axis (%)\n[<-- PAP Leaning (Left) | Opposition Leaning (Right) -->]', fontsize=10.5, fontweight='bold')
+    ax2.set_ylabel('Probability Density', fontsize=11, fontweight='bold')
+    ax2.set_xlim(SCALE_MIN, SCALE_MAX)
+    
+    ticks = np.arange(SCALE_MIN, SCALE_MAX + 1, 10)
+    def format_tick(t):
+        if t < 0: return f"PAP +{abs(t):.0f}%\n({50-t:.0f}% PAP)"
+        elif t > 0: return f"Opp +{t:.0f}%\n({50-t:.0f}% PAP)"
+        return "0%\n(Parity)"
+    ax2.set_xticks(ticks)
+    ax2.set_xticklabels([format_tick(t) for t in ticks], fontsize=8.5)
+    ax2.legend(loc='upper right', frameon=True, fontsize=8.0)
+
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.close()
+    print(f"Plot saved: {output_path} (PAP on Left, Target Wards Highlighted)")
 
 def plot_three_panel_comparison(df_constituencies, df_summary, df_us_merged, df_us_summary, output_path='singapore_vs_us_pvi_and_2026.png'):
     fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(14, 12), sharex=True)
@@ -651,73 +889,97 @@ def plot_seats_votes_curves(sg_metrics, us_metrics, df_us_merged, output_path='d
     print(f"Plot saved: {output_path}")
 
 def plot_singapore_cascade(sg_metrics, output_path='singapore_cracking_cascade.png'):
-    """
-    Plots the Singapore 2025 Seat Cascade Waterfall chart.
-    Standardized Bipolar Orientation: PAP on LEFT (Negative / Red), Opposition on RIGHT (Positive / Blue).
-    """
-    fig, ax = plt.subplots(figsize=(14, 8))
-    fig.suptitle('The Singapore 2025 Seat Cascade: Key Swings Required to Flip Wards & Break Thresholds\n(PAP on the LEFT, Opposition on the RIGHT | GRC Block Voting Waterfall)', 
-                 fontsize=13, fontweight='bold', y=0.98)
+    fig, (ax20, ax25) = plt.subplots(1, 2, figsize=(18, 10), sharex=True)
+    fig.suptitle('The Singapore Seat Cascade: Flip Sequences & Threshold Fragility (2020 vs 2025)\n(Prominently Highlighting Aljunied, East Coast, West Coast & Tanjong Pagar; Zero-Collision Labels)', 
+                 fontsize=14, fontweight='bold', y=0.98)
 
-    df_w25 = sg_metrics[2025]['Ward_DF'].copy()
-    x_values = -(df_w25['PAP_Share'] - 50.0)
+    def plot_cascade_panel(ax, yr, title):
+        df_w = sg_metrics[yr]['Ward_DF'].copy()
+        x_vals = -(df_w['PAP_Share'] - 50.0)
+        
+        colors_bar = []
+        edge_colors = []
+        lw_list = []
+        
+        for idx, r in df_w.iterrows():
+            c_name = r['Constituency']
+            t_key = match_target_ward(c_name)
+            
+            # Base color by threshold
+            if not r['Won_By_PAP']:
+                base_c = '#2b5c8f'
+            elif r['Swing_Needed_To_Flip'] <= 5.0:
+                base_c = '#d73027'
+            elif r['Constituency'] == sg_metrics[yr]['Tipping_Ward_23']:
+                base_c = '#7f0000'
+            elif r['Swing_Needed_To_Flip'] <= sg_metrics[yr]['Swing_Break_23']:
+                base_c = '#fc8d59'
+            elif r['Constituency'] == sg_metrics[yr]['Tipping_Ward_50']:
+                base_c = '#542788'
+            elif r['Swing_Needed_To_Flip'] <= sg_metrics[yr]['Swing_Break_50']:
+                base_c = '#fee090'
+            else:
+                base_c = '#bdbdbd'
+                
+            colors_bar.append(base_c)
+            
+            # Highlight target wards with Gold border
+            if t_key:
+                edge_colors.append('#ffd700')
+                lw_list.append(2.4)
+            else:
+                edge_colors.append('black')
+                lw_list.append(0.5)
 
-    colors_bar = []
-    for idx, r in df_w25.iterrows():
-        if not r['Won_By_PAP']:
-            colors_bar.append('#2b5c8f')  # Won by Opposition (Hougang, Aljunied, Sengkang) - Blue
-        elif r['Swing_Needed_To_Flip'] <= 5.0:
-            colors_bar.append('#d73027')  # Volatile Cracking Zone (<= 5% swing) - Bright Red
-        elif r['Constituency'] == sg_metrics[2025]['Tipping_Ward_23']:
-            colors_bar.append('#7f0000')  # 2/3 Supermajority Breaker - Deep Maroon
-        elif r['Swing_Needed_To_Flip'] <= sg_metrics[2025]['Swing_Break_23']:
-            colors_bar.append('#fc8d59')  # Flips before 2/3 - Orange
-        elif r['Constituency'] == sg_metrics[2025]['Tipping_Ward_50']:
-            colors_bar.append('#542788')  # 50% Majority Breaker - Purple
-        elif r['Swing_Needed_To_Flip'] <= sg_metrics[2025]['Swing_Break_50']:
-            colors_bar.append('#fee090')  # Flips before 50% - Gold
-        else:
-            colors_bar.append('#bdbdbd')  # Safe PAP Core - Gray
+        bars = ax.barh(df_w['Constituency'], x_vals, color=colors_bar, edgecolor=edge_colors, linewidth=lw_list, height=0.7)
+        ax.axvline(0, color='black', linewidth=1.5, linestyle='-')
+        
+        swing_23 = sg_metrics[yr]['Swing_Break_23']
+        swing_50 = sg_metrics[yr]['Swing_Break_50']
+        ax.axvline(-swing_23, color='#7f0000', linestyle='--', linewidth=1.8, label=f'2/3 Breaker (-{swing_23:.1f}% PAP Margin)')
+        ax.axvline(-swing_50, color='#542788', linestyle='-.', linewidth=1.8, label=f'50% Breaker (-{swing_50:.1f}% PAP Margin)')
+        ax.axvspan(-5.0, 0, color='#fee8e8', alpha=0.45, label='Cracking Zone (<= 5% Swing)')
+        
+        ax.set_title(title, fontsize=12, fontweight='bold')
+        ax.set_xlim(-35, 15)
+        
+        ax.set_yticks(range(len(df_w)))
+        yticklabels = []
+        for c in df_w['Constituency']:
+            t_key = match_target_ward(c)
+            if t_key:
+                yticklabels.append(f"★ {c}")
+            else:
+                yticklabels.append(c)
+        ax.set_yticklabels(yticklabels, fontsize=8.2)
+        
+        for bar, (_, r), val in zip(bars, df_w.iterrows(), x_vals):
+            w_width = bar.get_width()
+            t_key = match_target_ward(r['Constituency'])
+            offset = -0.5 if w_width < 0 else 0.5
+            ha = 'right' if w_width < 0 else 'left'
+            
+            if r['Won_By_PAP']:
+                txt = f"{r['MPs']} MPs ({r['PAP_Share']:.1f}%)"
+            else:
+                txt = f"{r['MPs']} MPs ({100-r['PAP_Share']:.1f}% Opp)"
+                
+            txt_color = '#b30000' if t_key else '#222222'
+            font_w = 'bold' if t_key else 'normal'
+            
+            ax.text(w_width + offset, bar.get_y() + bar.get_height()/2.0, txt, 
+                    va='center', ha=ha, fontsize=7.8, fontweight=font_w, color=txt_color,
+                    bbox=dict(facecolor='white', edgecolor='none', alpha=0.7, pad=0.15))
+        
+        ax.legend(loc='lower left', frameon=True, fontsize=8)
 
-    bars = ax.barh(df_w25['Constituency'], x_values, color=colors_bar, edgecolor='black', linewidth=0.6, height=0.7)
-
-    ax.axvline(0, color='black', linewidth=1.5, linestyle='-')
-
-    swing_23 = sg_metrics[2025]['Swing_Break_23']
-    swing_50 = sg_metrics[2025]['Swing_Break_50']
-    ax.axvline(-swing_23, color='#7f0000', linestyle='--', linewidth=2.0, label=f'2/3 Supermajority Threshold (-{swing_23:.2f}% PAP Margin)')
-    ax.axvline(-swing_50, color='#542788', linestyle='-.', linewidth=2.0, label=f'50% Simple Majority Threshold (-{swing_50:.2f}% PAP Margin)')
-
-    ax.axvspan(-5.0, 0, color='#fee8e8', alpha=0.45, label='Volatile Cracking Zone (<= 5% Swing: Jalan Kayu, Tampines, Sembawang West)')
-
-    ax.set_xlabel('[<-- PAP Strongholds (Swing Required to Flip to Opposition) | Won by Opposition -->]\nMargin from 50% Win Parity (Percentage Points)', 
-                  fontsize=11, fontweight='bold')
-    ax.set_xlim(-35, 15)
-
-    for bar, (_, r), val in zip(bars, df_w25.iterrows(), x_values):
-        w_width = bar.get_width()
-        offset = -0.5 if w_width < 0 else 0.5
-        ha = 'right' if w_width < 0 else 'left'
-        txt = f"{r['MPs']} MPs ({r['PAP_Share']:.1f}% PAP)" if r['Won_By_PAP'] else f"{r['MPs']} MPs ({100-r['PAP_Share']:.1f}% Opp)"
-        ax.text(w_width + offset, bar.get_y() + bar.get_height()/2.0, txt, 
-                va='center', ha=ha, fontsize=8, fontweight='bold', color='#222222')
-
-    from matplotlib.patches import Patch
-    legend_elements = [
-        Patch(facecolor='#2b5c8f', label='Already Opposition Held (10 MPs: Hougang, Aljunied, Sengkang)'),
-        Patch(facecolor='#d73027', label='Volatile Cracking Zone (<= 5% Swing: 7 MPs)'),
-        Patch(facecolor='#fc8d59', label='Flips to Break 2/3 Supermajority (<= 11.38% Swing: 23 MPs)'),
-        Patch(facecolor='#7f0000', label='Tipping Point Seat for 2/3 (Bukit Panjang)'),
-        Patch(facecolor='#fee090', label='Flips to Break 50% Majority (<= 18.49% Swing: 16 MPs)'),
-        Patch(facecolor='#542788', label='Tipping Point Seat for 50% (Kebun Baru)'),
-        Patch(facecolor='#bdbdbd', label='Safe PAP Heartland (> 18.5% Swing: 48 MPs)')
-    ]
-    ax.legend(handles=legend_elements, loc='lower left', frameon=True, fontsize=8.2)
+    plot_cascade_panel(ax20, 2020, f"Singapore GE 2020 (93 MPs)\n2/3 Tipping: {sg_metrics[2020]['Tipping_Ward_23']} (+{sg_metrics[2020]['Swing_Break_23']:.1f}%) | 50% Tipping: {sg_metrics[2020]['Tipping_Ward_50']} (+{sg_metrics[2020]['Swing_Break_50']:.1f}%)")
+    plot_cascade_panel(ax25, 2025, f"Singapore GE 2025 (97 MPs)\n2/3 Tipping: {sg_metrics[2025]['Tipping_Ward_23']} (+{sg_metrics[2025]['Swing_Break_23']:.1f}%) | 50% Tipping: {sg_metrics[2025]['Tipping_Ward_50']} (+{sg_metrics[2025]['Swing_Break_50']:.1f}%)")
 
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     plt.close()
-    print(f"Plot saved: {output_path} (PAP on the LEFT)")
+    print(f"Plot saved: {output_path} (Highlighting Target Wards)")
 
 def plot_case_study_2006_2011(output_path='singapore_case_study_2006_2011.png'):
     """
@@ -814,6 +1076,7 @@ if __name__ == '__main__':
     print("--- US Data Integrated Summary (GOP on Left, Dem on Right) ---")
     print(df_us_sum)
     plot_faceted_distribution_same_scale(df_const, df_sum)
+    plot_trend_and_overlay(df_const, df_sum)
     plot_three_panel_comparison(df_const, df_sum, df_us, df_us_sum)
     plot_case_study_2006_2011()
     
